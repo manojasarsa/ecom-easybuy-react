@@ -1,0 +1,24 @@
+.main_container {
+    display: grid;
+    height: 100vh;
+    grid-gap: 1rem;
+    grid-template-columns: 5% 1fr 5%;
+    grid-template-rows: 10% 2fr 50vh 4fr;
+    padding-bottom: 0.5rem;
+    grid-template-areas:
+    "header header header"
+    ". nav ."
+    ". main ."
+    ". section .";
+}
+
+@media only screen and (max-width: 600px) {
+    .main_container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "section";
+    }
+}
