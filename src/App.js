@@ -8,7 +8,6 @@ import {Logout} from "./pages";
 import {SignUp} from "./pages";
 import {ForgotPwd} from "./pages";
 import {Routes, Route} from "react-router-dom";
-import {Link } from "react-router-dom";
 
 function App() {
   return (
@@ -23,15 +22,6 @@ function App() {
         <Route path="/signup" element = {<SignUp />} />
         <Route path="/forgotpwd" element = {<ForgotPwd />} />
       </Routes>
-      
-      <Link to = "/" ></Link>
-      <Link to = "/productlist" ></Link>
-      <Link to = "/cart" ></Link>
-      <Link to = "/wishlist" ></Link>
-      <Link to = "/login" ></Link>
-      <Link to = "/logout" ></Link>
-      <Link to = "/signup" ></Link>
-      <Link to = "/forgotpwd" ></Link>
     </div>
   );
 }
