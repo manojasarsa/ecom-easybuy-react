@@ -16,7 +16,7 @@ const Header = () => {
 
                     <Link className="btn btn_primary" to="/login">Login</Link>
 
-                    <a className="badge_container badge_icon">
+                    <a className="badge_container badge_icon" href="/" >
                         <i className="fas fa-user-circle profile"></i>
                     </a>
 
@@ -28,10 +28,10 @@ const Header = () => {
                                     <Link className="btn btn_secondary" to="/signup">Sign Up</Link>
                                 </div>
                                 <a className="menu_link" href="/user-profile/user-profile.html" ><li className="profile_content">Your Profile</li> </a>
-                                <a className="menu_link" href="#"><li className="profile_content">Order Summary</li> </a>
-                                <a className="menu_link" href="#"><li className="profile_content">Apply Coupons</li> </a>
-                                <a className="menu_link" href="#"><li className="profile_content">Checkout</li> </a>
-                                <a className="menu_link" href="#"> <li className="profile_content">Address Management</li></a>
+                                <a className="menu_link" href="/"><li className="profile_content">Order Summary</li> </a>
+                                <a className="menu_link" href="/"><li className="profile_content">Apply Coupons</li> </a>
+                                <a className="menu_link" href="/"><li className="profile_content">Checkout</li> </a>
+                                <a className="menu_link" href="/"> <li className="profile_content">Address Management</li></a>
                                 <Link className="menu_link" to="/forgotpwd"> <li className="profile_content">Forgot Password</li> </Link>
                                 <Link className="menu_link" to="/logout"> <li className="profile_content">Logout</li> </Link>
                             </ul>

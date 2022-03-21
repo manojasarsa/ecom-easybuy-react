@@ -1,4 +1,5 @@
 import "./filters.css";
+import { Link } from "react-router-dom";
 
 const Filters = () => {
     return (
@@ -6,7 +7,7 @@ const Filters = () => {
 
             <div className="flex flex_row flex_justify_between filter_spaces">
                 <h3 className="filter_headings">Filters</h3>
-                <a className="filter_clear" href="#">Clear</a>
+                <Link className="btn" to="/productlist">Clear</Link>
             </div>
 
             <div className="filter_price flex flex_col filter_spaces">
