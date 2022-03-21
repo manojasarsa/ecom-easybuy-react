@@ -1,0 +1,36 @@
+.cart_qty {
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.qty_minus , .qty_add{
+    color: var(--primary-color);
+    outline: none;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    padding: 0 0.5rem;
+    background-color: var(--white-color);
+    cursor: pointer;
+}
+
+.qty_input {
+    outline: none;
+    width: 2rem;
+    text-align: center;
+    border-radius: 2px;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    margin: 0 0.2rem;
+}
+
+.qty_name {
+    font-size: 0.8rem;
+}
+
+/* To remove number icon in number input css */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

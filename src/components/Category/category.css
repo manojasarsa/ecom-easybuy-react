@@ -1,6 +1,7 @@
 .main_nav {
-    gap: 1rem;
+    gap: 1.5rem;
     grid-area: nav;
+    margin-top: 1rem;
 }
 
 .nav_item {

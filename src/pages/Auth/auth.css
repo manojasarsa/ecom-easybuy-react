@@ -1,0 +1,45 @@
+#auth_container {
+    margin: 0 auto;
+    margin-top: 10rem;
+    padding-bottom: 1rem;
+}
+
+#input_subheading {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+#login_button {
+    color: var(--white-color);
+}
+
+form .inp_checkbox {
+    column-gap: 0.6rem;
+}
+
+.checkbox_notify {
+    padding-top: 1.1rem;
+    font-size: 0.9rem;
+}
+
+/* logout */
+
+.logout_container {
+    margin-top: 10rem;
+}
+
+.logout_box {
+    box-shadow: 1px 1px 1px 5px var(--shadow-color);
+    width: 40rem;
+    height: 20rem;
+    margin: 0 auto;
+}
+
+.logout_text {
+    margin: 1rem;
+}
+
+.logout_box .link {
+    color: var(--secondary-color);
+}

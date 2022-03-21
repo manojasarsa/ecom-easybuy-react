@@ -1,0 +1,32 @@
+.filter_container {
+    grid-area: aside;
+    padding: 2rem;
+    margin-top: 5rem;
+    background-color: var(--shadow-color);
+}
+
+.filter_clear {
+    color: var(--primary-color);
+    align-self: center;
+    font-weight: var(--fw-semi-bold);
+    font-size: 1rem;
+}
+
+.filter_spaces {
+    margin: 0.5rem 0;
+}
+
+.filter_headings {
+    padding: 0.5rem 0;
+}
+.checkbox_notify {
+    font-size: 0.8rem;
+}
+
+.filter_category .inp_checkbox {
+    column-gap: 0.6rem;
+}
+
+.filter_headings {
+    font-size: 1rem;
+}

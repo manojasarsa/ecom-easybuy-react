@@ -1,0 +1,20 @@
+.product_main_wrapper {
+    display: grid;
+    height: 100vh;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 7fr;
+    padding-bottom: 0.5rem;
+    grid-template-areas:
+        "header header"
+        "aside main";
+}
+
+.main_header {
+    grid-area: header;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 0;
+    z-index: 5;
+}
