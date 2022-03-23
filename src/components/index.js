@@ -7,3 +7,4 @@ export {Products} from "./Products/Products";
 export {CartCard} from "./CartCard/CartCard";
 export {PriceBox} from "./PriceBox/PriceBox";
 export {WishlistCard} from "./WishlistCard/WishlistCard";
+export {ProductCard} from "./ProductCard/ProductCard";

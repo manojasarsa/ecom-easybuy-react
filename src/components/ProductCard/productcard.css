@@ -1,0 +1,4 @@
+.overflow_desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
