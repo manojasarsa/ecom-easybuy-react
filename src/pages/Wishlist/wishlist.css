@@ -1,0 +1,13 @@
+.wishlist_wrapper {
+    margin-top: 7rem;
+    grid-gap: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.wishlist_items {
+    display: grid;
+    height: 100vh;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: 0.3rem 3rem;
+} 

@@ -1,0 +1,22 @@
+.main_nav {
+    gap: 1.5rem;
+    grid-area: nav;
+    margin-top: 1rem;
+}
+
+.nav_item {
+    background-color: var(--shadow-color);
+    height: 100%;
+    width: 25%;
+    transition: var(--trans-5);
+}
+
+.nav_item:hover {
+    opacity: 1;
+    transform: scale(0.96);
+    transition: var(--trans-5);
+}
+
+.main_nav a{
+    color: var(--primary-color);
+}

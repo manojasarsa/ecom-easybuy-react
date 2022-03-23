@@ -1,0 +1,20 @@
+.product_container {
+    grid-area: main;
+    margin: 5rem;
+}
+
+.product_heading {
+    column-gap: 0.5rem;
+}
+
+.product_list {
+    display: grid;
+    height: 100vh;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 0.3rem;
+}
+
+.rating_options label {
+    font-size: 0.8rem;
+}

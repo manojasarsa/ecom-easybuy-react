@@ -1,0 +1,10 @@
+.main_main {
+    color: var(--primary-color);
+    padding-left: 1rem;
+    background-color: var(--shadow-color);
+    grid-area: main;
+    background-image: url("https://github.com/manojasarsa/easybuy-ecom/blob/dev/images/glares.jpg?raw=true");
+    background-repeat: no-repeat;
+    background-position: start ;
+    background-size: cover;
+}
