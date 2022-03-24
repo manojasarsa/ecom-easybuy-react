@@ -6,10 +6,11 @@ const filterContext = createContext();
 const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(filterReducer, {
     sortBy: null,
-    categories: {men: false, women: false, kids: false, bestsellers: false},
+    categories: {men: false, women: false, boys: false, girls: false},
     showInventory: true,
     fastDelivery: false,
-    rangeValue: 6000
+    rangeValue: 6000,
+    rating: null
   });
 
   return (

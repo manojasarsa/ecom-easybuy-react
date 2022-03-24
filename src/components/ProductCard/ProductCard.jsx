@@ -7,7 +7,7 @@ const ProductCard = ({product}) => {
     return (
         <div className="card_image flex">
             <div className="card_vertical">
-                <div className="card_vertical_info flex flex_col flex_justify_start flex_wrap">
+                <div className="card_vertical_info flex flex_col flex_justify_start">
                     <img className="img_responsive adjust_image" src={image} alt={title} />
                     <p className="card_text left_space">{title}</p>
                     <p className="card_subtext left_space overflow_desc">{description}</p>

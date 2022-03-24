@@ -1,6 +1,6 @@
 .filter_container {
     grid-area: aside;
-    padding: 2rem;
+    padding: 0 2rem;
     margin-top: 5rem;
     background-color: var(--shadow-color);
 }
@@ -16,85 +16,51 @@
     margin: 0.5rem 0;
 }
 
+.filter_margin {
+  margin: 0.5rem 0;
+}
+
 .filter_headings {
     padding: 0.5rem 0;
+    font-size: 0.9rem;
 }
-.checkbox_notify {
+
+.filter_sub_headings {
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+}
+
+.inp_checkbox .checkbox_notify {
     font-size: 0.8rem;
+    user-select: none;
+    padding-left: 0.5rem;
 }
 
-.filter_category .inp_checkbox {
-    column-gap: 0.6rem;
+.inp_checkbox {
+  font-size: 1.5rem;
 }
 
-.filter_headings {
-    font-size: 1rem;
+.filter_clearAll {
+  color: var(--secondary-color);
+  padding-top: 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
-/* New Css */
+.input_range {
+  width: 200px;
+  -webkit-appearance: none;
+  background-color: var(--primary-color);
+  height: 4px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
 
-/* .App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  
-  .range {
-    height: 80px;
-    width: 380px;
-    background-color: lightpink;
-    border-radius: 10px;
-    padding: 0 65px 0 45px;
-  }
-  
-  .field {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  
-  .range .field input {
-    -webkit-appearance: none;
-    height: 4px;
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-  }
-  
-  .range .value {
-    position: absolute;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  
-  .range .sliderValue {
-    position: relative;
-    width: 100%;
-    padding-left: 10rem;
-  }
-  
-  .range .sliderValue span {
-    position: absolute;
-    height: 45px;
-    width: 45px;
-  }
-  
-  .range .field input::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    background-color: red;
-    border-radius: 50%;
-  }
-  
-  .range .value.left {
-    left: -22px;
-  }
-  
-  .range .value.right {
-    right: -43px;
-  }
-   */
+.range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+}
