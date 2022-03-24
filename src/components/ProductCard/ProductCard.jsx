@@ -2,12 +2,7 @@ import "./productcard.css";
 
 const ProductCard = ({product}) => {
 
-    console.log(product);
-
-    const {title, description, image, price, discountedPrice } = product;
-    // rating,
-        // inStock,
-        // fastDelivery,
+    const {title, description, image, price, discountedPrice, rating } = product;
 
     return (
         <div className="card_image flex">
@@ -22,7 +17,7 @@ const ProductCard = ({product}) => {
                     
                     <button className="btn btn_secondary btn_toast right_space btn_leading">Add to Cart</button>
                     <i className="fa-solid fa-heart icon"></i>
-                    <span className="pill">Sale</span>
+                    <span className="pill">{rating}⭐</span>
 
                     <div className="alert_success toast flex flex_justify_center flex_align_center  toast_box">
                         <i className="fa-solid fa-check"></i>

@@ -30,3 +30,71 @@
 .filter_headings {
     font-size: 1rem;
 }
+
+/* New Css */
+
+/* .App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .range {
+    height: 80px;
+    width: 380px;
+    background-color: lightpink;
+    border-radius: 10px;
+    padding: 0 65px 0 45px;
+  }
+  
+  .field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .range .field input {
+    -webkit-appearance: none;
+    height: 4px;
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+  }
+  
+  .range .value {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .range .sliderValue {
+    position: relative;
+    width: 100%;
+    padding-left: 10rem;
+  }
+  
+  .range .sliderValue span {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+  }
+  
+  .range .field input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+  .range .value.left {
+    left: -22px;
+  }
+  
+  .range .value.right {
+    right: -43px;
+  }
+   */

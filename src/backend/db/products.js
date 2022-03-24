@@ -61,7 +61,7 @@ export const products = [
     image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17464922/2022/3/10/c6a73cb2-0ba4-4fdd-8fb5-c41d08fcd7b41646917282995PrintedT-shirt1.jpg",
     price: 5000,
     discountedPrice: 3999,
-    category: "bestSellers",
+    category: "bestsellers",
     rating: 5,
     inStock: true,
     fastDelivery: true,
