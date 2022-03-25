@@ -1,0 +1,5 @@
+.card_vertical .card_vertical_info .overflow_desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

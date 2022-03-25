@@ -1,6 +1,6 @@
 .filter_container {
     grid-area: aside;
-    padding: 2rem;
+    padding: 0 2rem;
     margin-top: 5rem;
     background-color: var(--shadow-color);
 }
@@ -16,17 +16,51 @@
     margin: 0.5rem 0;
 }
 
+.filter_margin {
+  margin: 0.5rem 0;
+}
+
 .filter_headings {
     padding: 0.5rem 0;
+    font-size: 0.9rem;
 }
-.checkbox_notify {
+
+.filter_sub_headings {
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+}
+
+.inp_checkbox .checkbox_notify {
     font-size: 0.8rem;
+    user-select: none;
+    padding-left: 0.5rem;
 }
 
-.filter_category .inp_checkbox {
-    column-gap: 0.6rem;
+.inp_checkbox {
+  font-size: 1.5rem;
 }
 
-.filter_headings {
-    font-size: 1rem;
+.filter_clearAll {
+  color: var(--secondary-color);
+  padding-top: 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.input_range {
+  width: 200px;
+  -webkit-appearance: none;
+  background-color: var(--primary-color);
+  height: 4px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
 }
