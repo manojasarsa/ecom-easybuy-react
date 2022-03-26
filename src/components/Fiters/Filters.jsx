@@ -1,5 +1,5 @@
 import "./filters.css";
-import { useFilter } from "../../contexts/filterContext";
+import { useFilter } from "../../contexts";
 
 const Filters = () => {
 

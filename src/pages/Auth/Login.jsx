@@ -9,10 +9,12 @@ const Login = () => {
             <div className="input_container flex flex_col" id="auth_container">
                 <form className="input_field flex flex_col">
                     <h2 className="input_heading">Login</h2>
-                    <label className="input_label">Email address</label>
-                    <input className="input_box" type="email" placeholder="manoj@neog.camp" required />
-                    <label className="input_label">Password</label>
-                    <input className="input_box" type="name" placeholder="***********" required />
+                    <label className="input_label">Email address<span className="form_label">*</span>
+                        <input className="input_box" type="email" required />
+                    </label>
+                    <label className="input_label">Password<span className="form_label">*</span>
+                        <input className="input_box" type="password" required />
+                    </label>
                     <div className="inp_checkbox flex flex_justify_start flex_align_center">
                         <input type="checkbox" className="input_checkbox" /> 
                         <p className="checkbox_notify">Remember me</p>

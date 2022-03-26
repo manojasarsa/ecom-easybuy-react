@@ -16,10 +16,10 @@ export const categories = [
   },
   {
     _id: uuid(),
-    category: "kids",
+    category: "boys",
   },
   {
     _id: uuid(),
-    category: "bestSellers",
+    category: "girls",
   },
 ];

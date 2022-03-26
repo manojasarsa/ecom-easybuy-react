@@ -1,8 +1,8 @@
 import "./products.css";
-import {ProductCard} from "../../components";
-import { useProduct } from "../../contexts/productContext";
-import { useFilter } from "../../contexts/filterContext";
-import {sortData, filterData, sortByCategory, sortRange, sortRating} from "../../utils/filterMethods";
+import { ProductCard } from "../../components";
+import { useProduct } from "../../contexts";
+import { useFilter } from "../../contexts";
+import { sortData, filterData, sortByCategory, sortRange, sortRating } from "../../utils/filterMethods";
 
 const Products = () => {
     const {products, loader, error} = useProduct();
@@ -10,11 +10,7 @@ const Products = () => {
     const { men, women, boys, girls } = state.categories;
     
     const getSortedList = sortData(products, state.sortBy);   
-    const getFilteredList = filterData(                         
-        getSortedList,
-        state.showInventory,
-        state.fastDelivery
-    );
+    const getFilteredList = filterData(getSortedList, state.showInventory, state.fastDelivery);
     const getCategoryList = sortByCategory(getFilteredList, men, women, boys, girls);
     const getSortRangeList = sortRange(getCategoryList, state.rangeValue);      
     const getRatingList = sortRating(getSortRangeList, state.rating); 
