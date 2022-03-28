@@ -44,8 +44,7 @@ const AuthProvider = ({children}) => {
     }
 
     const login = async ({email, password, setError, setErrorState}) => {
-        console.log("email:", email)
-        console.log("password:", password)
+        
         try{
             const response = await axios.post("/api/auth/login", {
                 email: email, 
@@ -61,12 +60,8 @@ const AuthProvider = ({children}) => {
              }
 
         } catch(err) {
-            console.log("email:", email)
-            console.log("password:", password)
-            console.log(err.response.data.errors)
             setError(err.response.data.errors);
-            setErrorState(true);
-            
+            setErrorState(true);    
         }
     }
     
