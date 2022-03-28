@@ -7,6 +7,7 @@ import {Login} from "./pages";
 import {Logout} from "./pages";
 import {SignUp} from "./pages";
 import {ForgotPwd} from "./pages";
+import {Profile} from "./pages";
 import {Routes, Route} from "react-router-dom";
 import Mockman from "mockman-js";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/logout" element = {<Logout />} />
         <Route path="/signup" element = {<SignUp />} />
         <Route path="/forgotpwd" element = {<ForgotPwd />} />
+        <Route path="/profile" element = {<Profile />} />
         <Route path="/mock" element = {<Mockman />} />
       </Routes>
     </div>

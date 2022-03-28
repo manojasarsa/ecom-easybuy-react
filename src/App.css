@@ -1,3 +1,7 @@
 .route_link {
     text-align: center;
 }
+
+.user_select {
+    user-select: none;
+}

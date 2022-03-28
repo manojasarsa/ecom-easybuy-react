@@ -52,3 +52,8 @@ input.input_checkbox {
 .form_label {
     color: var(--secondary-color);
 }
+
+.input_container .toast {
+    display: flex;
+    background-color: var(--secondary-color);
+}
