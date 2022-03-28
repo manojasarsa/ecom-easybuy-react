@@ -3,7 +3,7 @@ const authReducer = (state, action) => {
         case "LOGIN":
             return {
                 ...state,
-                userName: action.payload.name, token: action.payload.token, isAuth: action.payload.isAuth
+                userName: action.payload.userName, token: action.payload.token, isAuth: action.payload.isAuth
             }
         case "LOGOUT":
             return {
@@ -11,7 +11,7 @@ const authReducer = (state, action) => {
                 userName: "", token: "", isAuth: false
             }
         default:
-            return state;
+            console.log("Error Occured!");   // will display the error page later
     }
 }
 

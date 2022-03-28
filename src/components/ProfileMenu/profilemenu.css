@@ -23,3 +23,8 @@
 .menu .menu_link:hover {
     font-weight: var(--fw-bold);
 }
+
+.profile_box .userName {
+    color: var(--secondary-color);
+    font-size: 1rem;
+}

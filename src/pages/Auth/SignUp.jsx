@@ -6,7 +6,9 @@ import { useAuth } from "../../contexts";
 
 const SignUp = () => {
 
-    const { signup, error, setError, errorState, setErrorState } = useAuth();
+    const [termsAndCondition, setTermsAndCondition] = useState(true);
+
+    const { signup } = useAuth();
 
     const signUpInputs = {
         firstName:"",
@@ -17,13 +19,15 @@ const SignUp = () => {
     }
 
     const [ formInputs, setFormInputs ] = useState(signUpInputs);
+    const [error, setError] = useState("");
+    const [errorState, setErrorState] = useState(false);
     const {firstName, lastName, email, password, confirmPwd} = formInputs;
     
     const formHandler = (e) => {
         e.preventDefault();
         if(firstName && lastName && email && password && confirmPwd ) {
             if(formInputs.password === formInputs.confirmPwd) {
-                signup({firstName, lastName, email, password});
+                signup({firstName, lastName, email, password, setError, setErrorState});
             }
             else {
                 setError("Password does not match!");
@@ -40,6 +44,8 @@ const SignUp = () => {
             }, 3000);
         }
     }
+
+    const toggleTermsCondition = () => termsAndCondition ? setTermsAndCondition(false) : setTermsAndCondition(true);
 
     return (
         <>
@@ -106,6 +112,7 @@ const SignUp = () => {
 
                     <div className="inp_checkbox flex flex_justify_start flex_align_center">
                         <input 
+                        onClick={toggleTermsCondition}
                             type="checkbox" 
                             className="input_checkbox" 
                             required={true}
@@ -113,13 +120,13 @@ const SignUp = () => {
                         <p className="checkbox_notify">I accept all Terms & Conditions</p>
                     </div>
 
-                    <Link onClick={(e) => formHandler(e)} className="route_link btn btn_secondary" to="/signup">Create New Account</Link>
+                    <button onClick={(e) => formHandler(e)} disabled={termsAndCondition} className="btn btn_secondary">Create New Account</button>
 
                     <p className="input_subheading"><Link id="input_subheading" to="/login">Already have an account {">"} </Link></p>
 
                 </form>    
 
-                {errorState && <div class="alert_error toast flex flex_justify_center flex_align_center toast_box toast_active_leading toast_position">
+                {errorState && <div class="toast flex flex_justify_center flex_align_center toast_active_leading toast_position">
                     <span> {error} </span>
                 </div> }
 

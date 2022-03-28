@@ -6,7 +6,7 @@ import { useAuth } from "../../contexts";
 
 const Login = () => {
 
-    const { login, error, setError, errorState, setErrorState } = useAuth();
+    const { login } = useAuth();
 
     const loginInputs = {
         email: "",
@@ -14,12 +14,14 @@ const Login = () => {
     }
 
     const [ formInputs, setFormInputs ] = useState(loginInputs);
+    const [error, setError] = useState("");
+    const [errorState, setErrorState] = useState(false);
 
     const { email, password } = formInputs;
 
     const formHandler = (e) => {
         e.preventDefault();
-        login({email, password});   
+        login({email, password, setError, setErrorState});   
     }
 
     return (
@@ -64,7 +66,7 @@ const Login = () => {
 
                     <p className="input_subheading"><Link id="input_subheading" to="/forgotpwd">Forgot your Password?</Link> </p>
 
-                    <Link className="route_link btn btn_secondary" to="/login" onClick={(e) => formHandler(e)} >Login</Link>
+                    <button className=" btn btn_secondary" onClick={(e) => formHandler(e)} >Login</button>
 
                     <p className="input_subheading"><Link id="input_subheading" to="/signup">Create New Account</Link> </p>
 

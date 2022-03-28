@@ -14,51 +14,59 @@ const initialState = {
 
 const AuthProvider = ({children}) => {
 
-    const [error, setError] = useState("");
-    const [errorState, setErrorState] = useState(false);
-    const [state, dispatch] = useReducer( authReducer, initialState);
+    const [state, dispatch] = useReducer(authReducer, initialState);
+    const [customer, setCustomer] = useState("");
     const navigate = useNavigate();
 
-    const signup = async ({firstName, lastName, email, password}) => {
+    const signup = async ({firstName, lastName, email, password, setError, setErrorState}) => {
         try {
-            const response = await axios.post("/api/auth/signup", {firstName, lastName, email, password});
+            const response = await axios.post("/api/auth/signup", {
+                firstName: firstName, 
+                lastName: lastName, 
+                email: email, 
+                password: password
+            });
 
             if(response.status === 201) {
-                const fName = response.data.createdUser.firstName;
-                const encodedToken = response.data.encodedToken;
+                
+                const {fName} = response.data.createdUser;
+                const {encodedToken} = response.data;
+                setCustomer(response.data.createdUser.firstName);
 
                 localStorage.setItem("jwtToken", JSON.stringify({userName: fName, token: encodedToken, isAuth: true}));
-                dispatch({type: "LOGIN", payload: {name: fName, token: encodedToken, isAuth: true},});
+                dispatch({ type: "LOGIN", payload: {userName: fName, token: encodedToken, isAuth: true },});
                 navigate("/");
             }
-        } catch (error) {
-            setError(error.response.data.errors);
+        } catch (err) {
+            setError(err.response.data.errors);
             setErrorState(true);
-            setTimeout(() => {
-                setErrorState(false);
-            }, 3000);
         }
     }
 
-    const login = async ({email, password}) => {
+    const login = async ({email, password, setError, setErrorState}) => {
+        console.log("email:", email)
+        console.log("password:", password)
         try{
-            const response = await axios.post("/api/auth/logi", {email, password});
-            
+            const response = await axios.post("/api/auth/login", {
+                email: email, 
+                password: password
+            });
             if(response.status === 200) {
-                const fName = response.data.foundUser.firstName;
-                const encodedToken = response.data.encodedToken;
+                const {fName} = response.data.foundUser;
+                const {encodedToken} = response.data;
 
                 localStorage.setItem("jwtToken", JSON.stringify({userName: fName, token: encodedToken, isAuth: true}));
-                dispatch({type: "LOGIN", payload: {name: fName, token: encodedToken, isAuth: true},});
+                dispatch({type: "LOGIN", payload: {userName: fName, token: encodedToken, isAuth: true},});
                 navigate("/");
              }
 
-        } catch(error) {
-            setError(error.response.data.errors);
+        } catch(err) {
+            console.log("email:", email)
+            console.log("password:", password)
+            console.log(err.response.data.errors)
+            setError(err.response.data.errors);
             setErrorState(true);
-            setTimeout(() => {
-                setErrorState(false);
-            }, 3000);
+            
         }
     }
     
@@ -68,7 +76,7 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={{state, dispatch, signup, login, logout, error, setError, errorState, setErrorState}}>
+        <AuthContext.Provider value={{state, dispatch, signup, login, logout, customer}}>
             {children}
         </AuthContext.Provider>
     );
