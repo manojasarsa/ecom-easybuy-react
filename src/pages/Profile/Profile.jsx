@@ -1,5 +1,6 @@
 import "./profile.css";
 import {Header} from "../../components";
+import {Link} from "react-router-dom";
 
 const Profile = () => {
     return (
@@ -16,16 +17,16 @@ const Profile = () => {
                 <div className="quick_links flex flex_col flex_justify_center flex_align_center">
 
                     <ul className="menu flex flex_col flex_justify_center flex_align_start">
-                        <a className="menu_link" href="#">
+                        <a className="menu_link" href="/">
                             <li className="profile_content">Overview</li>
                         </a>
-                        <a className="menu_link" href="#">
+                        <a className="menu_link" href="/">
                             <li className="profile_content">Order Summary</li>
                         </a>
-                        <a className="menu_link" href="#">
+                        <a className="menu_link" href="/">
                             <li className="profile_content">Apply Coupons</li>
                         </a>
-                        <a className="menu_link" href="#">
+                        <a className="menu_link" href="/">
                             <li className="profile_content">Address Management</li>
                         </a>
                         <Link className="menu_link" to="/forgotpwd">
@@ -69,7 +70,7 @@ const Profile = () => {
                             <span>- not added -</span>
                         </div>
 
-                        <a className="btn btn_secondary" href="#">Edit</a>
+                        <a className="btn btn_secondary" href="/">Edit</a>
                     </div>
                 </div>
             </div>

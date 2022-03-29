@@ -1,7 +1,16 @@
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
+import { useAuth } from "../../contexts";
 
 const Header = () => {
+
+    const [menu, setMenu] = useState(false);
+    const { state } = useAuth();
+
+    const menuHandler = () => menu ? setMenu(false) : setMenu(true)
+
     return (
         <header className="main_header">
             <div className="navigation flex flex_justify_between flex_align_center" id="header_box">
@@ -14,29 +23,13 @@ const Header = () => {
                 </div>
                 <div className="nav_right flex flex_justify_between flex_align_center">
 
-                    <Link className="btn btn_primary" to="/login">Login</Link>
+                    {state.isAuth ? <Link className="btn btn_secondary" to="/productlist">NEW!</Link> : <Link className="btn btn_primary" to="/login">Login</Link>}
 
-                    <a className="badge_container badge_icon" href="/" >
-                        <i className="fas fa-user-circle profile"></i>
-                    </a>
+                    <Link className="badge_container badge_icon" to="#">
+                        <i onClick={menuHandler} className="fas fa-user-circle profile"></i>
+                    </Link> 
 
-                    <div className="profile_box profile_menu flex_col">
-                        <div className="profile_options">
-                            <ul className="menu flex flex_col flex_justify_center flex_align_start">
-                                <div className="flex flex_row flex_justify_around flex_align_center">
-                                    <p>New Customer?</p>
-                                    <Link className="btn btn_secondary" to="/signup">Sign Up</Link>
-                                </div>
-                                <a className="menu_link" href="/user-profile/user-profile.html" ><li className="profile_content">Your Profile</li> </a>
-                                <a className="menu_link" href="/"><li className="profile_content">Order Summary</li> </a>
-                                <a className="menu_link" href="/"><li className="profile_content">Apply Coupons</li> </a>
-                                <a className="menu_link" href="/"><li className="profile_content">Checkout</li> </a>
-                                <a className="menu_link" href="/"> <li className="profile_content">Address Management</li></a>
-                                <Link className="menu_link" to="/forgotpwd"> <li className="profile_content">Forgot Password</li> </Link>
-                                <Link className="menu_link" to="/logout"> <li className="profile_content">Logout</li> </Link>
-                            </ul>
-                        </div>
-                    </div>
+                    {menu && <ProfileMenu />}
 
                     <div className="badge_container badge_icon">
                         <Link className="header_logo" to="/wishlist">

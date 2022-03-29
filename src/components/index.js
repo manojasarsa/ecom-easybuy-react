@@ -8,3 +8,4 @@ export {CartCard} from "./CartCard/CartCard";
 export {PriceBox} from "./PriceBox/PriceBox";
 export {WishlistCard} from "./WishlistCard/WishlistCard";
 export {ProductCard} from "./ProductCard/ProductCard";
+export { ProfileMenu } from "./ProfileMenu/ProfileMenu";

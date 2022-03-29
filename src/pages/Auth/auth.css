@@ -4,8 +4,12 @@
     padding-bottom: 1rem;
 }
 
+.input_field .input_label .input_box {
+    color: var(--grey-color);
+}
+
 #input_subheading {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 0.9rem;
     font-weight: 400;
 }
@@ -14,8 +18,9 @@
     color: var(--white-color);
 }
 
-form .inp_checkbox {
-    column-gap: 0.6rem;
+input.input_checkbox {
+    width: 1rem;
+    height: 1rem;
 }
 
 .checkbox_notify {
@@ -42,4 +47,13 @@ form .inp_checkbox {
 
 .logout_box .link {
     color: var(--secondary-color);
+}
+
+.form_label {
+    color: var(--secondary-color);
+}
+
+.input_container .toast {
+    display: flex;
+    background-color: var(--secondary-color);
 }
