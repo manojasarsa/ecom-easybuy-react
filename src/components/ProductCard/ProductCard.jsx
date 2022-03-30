@@ -1,6 +1,10 @@
 import "./productcard.css";
+import { useCart } from "../../contexts";
+// import { Link } from "react-router-dom";
 
 const ProductCard = ({product}) => {
+
+    const { cartDispatch } = useCart();
 
     const {title, description, image, price, discountedPrice, rating } = product;
 
@@ -14,8 +18,46 @@ const ProductCard = ({product}) => {
                     <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(price)}
                         <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
                     </p>
+
+                    <button
+                        className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                        onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})} >
+                        Add to Cart
+                    </button>
                     
-                    <button className="btn btn_secondary btn_toast right_space btn_leading">Add to Cart</button>
+                    {/* {cartState.itemExist 
+                    ?   <Link
+                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                            to="/cart" >
+                            Go to Cart
+                        </Link>
+                    :   <Link
+                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                            onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})}
+                            to="/cart" >
+                            Add to Cart
+                        </Link>
+                    } */}
+
+                    {/* <Link
+                        className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                        onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})}
+                        to="#" >
+                        Add to Cart
+                    </Link>
+
+                    <Link
+                        className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                        onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})}
+                        to="/cart" >
+                        Go to Cart
+                    </Link> */}
+
+                    
+
+
+                    
+                    
                     <i className="fa-solid fa-heart icon"></i>
                     <span className="pill">{rating}⭐</span>
 

@@ -1,6 +1,9 @@
 .cart_price_box {
     background-color: var(--shadow-color);
     padding: 1rem;
+    height: fit-content;
+    position: sticky;
+    top: 150px;
 }
 
 .price_menu {
