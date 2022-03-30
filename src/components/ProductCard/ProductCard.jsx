@@ -1,12 +1,21 @@
 import "./productcard.css";
-import { useCart } from "../../contexts";
+// import { useCart } from "../../contexts";
+import { useAuth } from "../../contexts";
 // import { Link } from "react-router-dom";
 
 const ProductCard = ({product}) => {
 
-    const { cartDispatch } = useCart();
+    // const { cartDispatch } = useCart();
+    const { state, navigate } = useAuth();
 
     const {title, description, image, price, discountedPrice, rating } = product;
+
+    const addToCartHandler = () => {
+
+        state.isAuth 
+        ? navigate("/") 
+        : navigate("/login")
+    }
 
     return (
         <div className="card_image flex">
@@ -19,25 +28,15 @@ const ProductCard = ({product}) => {
                         <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
                     </p>
 
+                    
                     <button
                         className="btn btn_secondary route_link btn_toast right_space btn_leading"
-                        onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})} >
+                        // onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})} 
+                        onClick={addToCartHandler} 
+                        
+                        >
                         Add to Cart
                     </button>
-                    
-                    {/* {cartState.itemExist 
-                    ?   <Link
-                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
-                            to="/cart" >
-                            Go to Cart
-                        </Link>
-                    :   <Link
-                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
-                            onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})}
-                            to="/cart" >
-                            Add to Cart
-                        </Link>
-                    } */}
 
                     {/* <Link
                         className="btn btn_secondary route_link btn_toast right_space btn_leading"
@@ -52,11 +51,6 @@ const ProductCard = ({product}) => {
                         to="/cart" >
                         Go to Cart
                     </Link> */}
-
-                    
-
-
-                    
                     
                     <i className="fa-solid fa-heart icon"></i>
                     <span className="pill">{rating}⭐</span>

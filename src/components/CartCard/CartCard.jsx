@@ -48,8 +48,6 @@ const CartCard = ({product}) => {
 
             </div>        
         </div>
-
-        
     );
 }
 
