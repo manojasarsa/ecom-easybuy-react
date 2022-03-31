@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
 import { useAuth } from "../../contexts";
-// import { useCart } from "../../contexts";
+import { useCart } from "../../contexts";
 
 const Header = () => {
 
     const [menu, setMenu] = useState(false);
     const { state } = useAuth();
-    // const { cartState } = useCart();
+    const { cartState } = useCart();
+    const cartCounter = cartState.cartItems.length;
 
     const menuHandler = () => menu ? setMenu(false) : setMenu(true)
 
@@ -44,7 +45,7 @@ const Header = () => {
                         <Link className="header_logo" to="/cart">
                             <i className="fa fa-shopping-cart"></i>
 
-                            <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center"> 3 </span>
+                            {cartCounter === 0 ? "" : <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center">{cartCounter}</span>}
 
                             {/* {cartState.cartCounter !== 0 && <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center"> {cartState.cartCounter} </span>} */}
 
