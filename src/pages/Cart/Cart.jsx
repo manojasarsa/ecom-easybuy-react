@@ -1,10 +1,10 @@
 import "./cart.css";
 import { Header, CartCard, PriceBox } from "../../components";
-// import { useCart } from "../../contexts";
+import { useCart } from "../../contexts";
 
 const Cart = () => {
 
-    // const { cartState } = useCart();
+    const { cartState } = useCart();
 
     return (
 
@@ -16,17 +16,18 @@ const Cart = () => {
                 : <h2 className="cart_title"> MY CART </h2>
             }               */}
 
-                <h2 className="cart_title"> MY CART(3) </h2>
+                <h2 className="cart_title"> MY CART(0) </h2>
 
                 <div className="cart_box ">
 
                     <div className="cart_box_items">
 
-                        {/* {cartState.cartItems.map((item) => <CartCard key={item._id} product={item} /> )} */}
+                        {cartState.cartItems.map((item) => <CartCard key={item._id} product={item} /> )}
 
                     </div>
 
                     {/* {cartState.cartCounter !== 0 && <PriceBox />} */}
+                    <PriceBox />
                     
                 </div>
             </main>

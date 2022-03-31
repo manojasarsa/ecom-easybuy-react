@@ -3,7 +3,7 @@ import "./cartcard.css";
 
 const CartCard = ({product}) => {
 
-    // const { cartDispatch } = useCart();
+    // const { cartState } = useCart();
 
     const {title, description, image, price, discountedPrice } = product;
 
@@ -46,7 +46,10 @@ const CartCard = ({product}) => {
                     <span>Moved to Wishlist - check it out! </span>
                 </div>    
 
-            </div>        
+            </div>  
+
+
+            {/* <h2>{cartState.cartItems}</h2>       */}
         </div>
     );
 }

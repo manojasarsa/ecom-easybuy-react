@@ -1,21 +1,20 @@
 import "./productcard.css";
-// import { useCart } from "../../contexts";
+import { useCart } from "../../contexts";
 import { useAuth } from "../../contexts";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({product}) => {
 
-    // const { cartDispatch } = useCart();
-    const { state, navigate } = useAuth();
+    const { cartState, addToCart } = useCart();
+    const { state } = useAuth();
+
+    const navigate = useNavigate();
 
     const {title, description, image, price, discountedPrice, rating } = product;
+    
+    const itemExist = cartState.cartItems.find((p) => p.id === product.id);
 
-    const addToCartHandler = () => {
-
-        state.isAuth 
-        ? navigate("/") 
-        : navigate("/login")
-    }
 
     return (
         <div className="card_image flex">
@@ -28,15 +27,27 @@ const ProductCard = ({product}) => {
                         <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
                     </p>
 
-                    
-                    <button
-                        className="btn btn_secondary route_link btn_toast right_space btn_leading"
-                        // onClick={ () => cartDispatch( { type: "ADD_TO_CART", payload: product})} 
-                        onClick={addToCartHandler} 
+                    {itemExist
+                    ?   <Link
+                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                            to="/cart" >
+                            Go to Cart
+                        </Link>
+                    :  <button
+                            className="btn btn_secondary route_link btn_toast right_space btn_leading">
+                            
+                            Add to Cart 
+                        </button>  
+                    }
+
                         
-                        >
+                    
+                    {/* <button
+                        className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                        onClick={() => addToCart(product)} 
+                    >
                         Add to Cart
-                    </button>
+                    </button> */}
 
                     {/* <Link
                         className="btn btn_secondary route_link btn_toast right_space btn_leading"
