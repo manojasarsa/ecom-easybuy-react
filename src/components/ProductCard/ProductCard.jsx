@@ -34,8 +34,8 @@ const ProductCard = ({product}) => {
                             Go to Cart
                         </Link>
                     :  <button
-                            className="btn btn_secondary route_link btn_toast right_space btn_leading">
-                            
+                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                            onClick={() => addToCart(product)} >
                             Add to Cart 
                         </button>  
                     }

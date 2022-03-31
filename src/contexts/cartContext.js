@@ -51,31 +51,31 @@ const CartProvider = ({ children }) => {
       : cartDispatch({ type: "SET_CART", payload: [] });
   }, [state.isAuth]);
 
-//   const addToCart = async (product) => {
-//     console.log("inside addtocartfunction");
-//     try {
-//       console.log("inside try2");
-//       console.log("token:", state.token);
-//       console.log("product", product);
-//       const response = await axios.post(
-//         "/api/user/cart",
-//         {
-//           product,
-//         },
-//         {
-//           headers: { authorization: state.token },
-//         }
-//       );
+  const addToCart = async (product) => {
+    console.log("inside addtocartfunction");
+    try {
+      console.log("inside try2");
+      console.log("token:", state.token);
+      console.log("product", product);
+      const response = await axios.post(
+        "/api/user/cart",
+        {
+          product,
+        },
+        {
+          headers: { authorization: state.token },
+        }
+      );
 
-//       console.log("before status");
+      console.log("before status");
 
-//       if (response.status === 201) {
-//        	cartDispatch({ type: "SET_CART", payload: response.data.cart });
-//       }
-//     } catch (err) {
-//       console.log("error occurred", err.message);
-//     }
-//   };
+      if (response.status === 201) {
+       	cartDispatch({ type: "SET_CART", payload: response.data.cart });
+      }
+    } catch (err) {
+      console.log("error occurred", err.message);
+    }
+  };
 
 //   const removeFromCart = () => {
 // 	  try {
@@ -93,7 +93,7 @@ const CartProvider = ({ children }) => {
 //   }
 
   return (
-    <CartContext.Provider value={{ cartState, cartDispatch }}>
+    <CartContext.Provider value={{ cartState, cartDispatch, addToCart }}>
       {children}
     </CartContext.Provider>
   );
