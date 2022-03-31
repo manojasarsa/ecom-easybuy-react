@@ -1,11 +1,11 @@
 import "./cartcard.css";
-// import { useCart } from "../../contexts";
+import { useCart } from "../../contexts";
 
 const CartCard = ({product}) => {
 
-    // const { cartState } = useCart();
+    const { removeFromCart } = useCart();
 
-    const {title, description, image, price, discountedPrice } = product;
+    const {_id, title, description, image, price, discountedPrice } = product;
 
     return (
 
@@ -31,8 +31,10 @@ const CartCard = ({product}) => {
                 </div>
 
                 <button  
-                className="btn btn_primary_outline btn_toast right_space btn_leading">Remove from Cart</button>
-                {/* onClick={() => cartDispatch({ type: "REMOVE_FROM_CART", payload: product })} */}
+                    className="btn btn_primary_outline btn_toast right_space btn_leading"
+                    onClick={() => removeFromCart(_id)}>
+                    Remove from Cart
+                </button>
 
                 <div className="alert_success toast flex flex_justify_center flex_align_center toast_box">
                     <i className="fa-solid fa-check"></i>
