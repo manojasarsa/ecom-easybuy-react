@@ -3,9 +3,9 @@ import { useCart } from "../../contexts";
 
 const CartCard = ({product}) => {
 
-    const { removeFromCart } = useCart();
+    const { removeFromCart, updateQty } = useCart();
 
-    const {_id, title, description, image, price, discountedPrice } = product;
+    const {_id, title, description, image, price, discountedPrice, qty } = product;
 
     return (
 
@@ -25,9 +25,11 @@ const CartCard = ({product}) => {
 
                 <div className="cart_qty flex flex_justify_center flex_align_center">
                     <p className="qty_name">Quantity:</p>
-                    <button className="qty_minus"> - </button>
-                    <input className="qty_input" type="number" value="1" />
-                    <button className="qty_add"> + </button>
+                    <button className="qty_minus"
+                    disabled = {qty === 1 ? true : false}
+                    onClick = {() => updateQty("decrement", _id)}> - </button>
+                    <span className="qty"> {qty} </span>
+                    <button className="qty_add" onClick = {() => updateQty("increment", _id)}> + </button>
                 </div>
 
                 <button  
@@ -50,8 +52,6 @@ const CartCard = ({product}) => {
 
             </div>  
 
-
-            {/* <h2>{cartState.cartItems}</h2>       */}
         </div>
     );
 }

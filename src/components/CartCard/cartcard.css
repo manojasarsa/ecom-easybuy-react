@@ -13,7 +13,7 @@
     cursor: pointer;
 }
 
-.qty_input {
+.qty {
     outline: none;
     width: 2rem;
     text-align: center;
@@ -25,12 +25,4 @@
 
 .qty_name {
     font-size: 0.8rem;
-}
-
-/* To remove number icon in number input css */
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
 }

@@ -79,9 +79,27 @@ const CartProvider = ({ children }) => {
 		  	console.log("error occured", err.message);
 	  	}
   	}
+	  
+	const updateQty = async (typeValue, productId) => {
+		try {
+		  const response = await axios.post(`/api/user/cart/${productId}` ,
+		  {
+			  action: { type: typeValue }
+		  },
+		  {
+			  headers: { authorization: state.token }
+		  });
+
+		  if(response.status === 200 ) {
+			  cartDispatch({type: "SET_CART", payload: response.data.cart})
+		  }
+		} catch(err) {
+			console.log("error occured", err.message);
+		}
+	}
 
 	return (
-	<CartContext.Provider value={{ cartState, cartDispatch, addToCart, removeFromCart }}>
+	<CartContext.Provider value={{ cartState, cartDispatch, addToCart, removeFromCart, updateQty }}>
 	  {children}
 	</CartContext.Provider>
   );
