@@ -1,7 +1,6 @@
 import "./products.css";
 import { ProductCard } from "../../components";
-import { useProduct } from "../../contexts";
-import { useFilter } from "../../contexts";
+import { useProduct, useFilter } from "../../contexts";
 import { sortData, filterData, sortByCategory, sortRange, sortRating } from "../../utils/filterMethods";
 
 const Products = () => {

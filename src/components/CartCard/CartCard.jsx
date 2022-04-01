@@ -10,11 +10,9 @@ const CartCard = ({product}) => {
     return (
 
         <div className="card_grid card_wrap">
-
             <div className="cart_img">
                 <img className="img_responsive" src={image} alt={title} />
             </div>
-
             <div className="card_horizontal_text flex flex_col">
 
                 <p className="card_text left_space">{title}</p>
@@ -49,9 +47,7 @@ const CartCard = ({product}) => {
                     <i className="fa-solid fa-check"></i>
                     <span>Moved to Wishlist - check it out! </span>
                 </div>    
-
             </div>  
-
         </div>
     );
 }

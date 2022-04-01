@@ -1,5 +1,5 @@
 import "./wishlist.css";
-import {Header, WishlistCard} from "../../components";
+import { Header, WishlistCard } from "../../components";
 import { useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
 

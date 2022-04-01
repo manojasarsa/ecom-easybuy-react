@@ -1,25 +1,16 @@
 import "./wishlistcard.css";
-import { useCart } from "../../contexts";
-import { useAuth } from "../../contexts";
-import { useWishlist } from "../../contexts";
+import { useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const WishlistCard = ({product}) => {
 
-    const {_id, title, description, image, price, discountedPrice, qty, rating } = product;
+    const {title, description, image, price, discountedPrice, rating } = product;
 
     const { cartState, addToCart } = useCart();
 
-    const { wishlistState, addToWishlist, removeFromWishlist } = useWishlist();
-
-    const { state } = useAuth();
-
-    const navigate = useNavigate();
+    const { removeFromWishlist } = useWishlist();
     
     const cartItemExist = cartState.cartItems.find((p) => p._id === product._id);
-
-    const wishlistItemExist = wishlistState.wishlistItems.find((p) => p._id === product._id);
 
     return (
         <div className="card_image flex">

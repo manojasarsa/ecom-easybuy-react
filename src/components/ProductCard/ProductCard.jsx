@@ -1,19 +1,12 @@
 import "./productcard.css";
-import { useCart } from "../../contexts";
-import { useAuth } from "../../contexts";
-import { useWishlist } from "../../contexts";
+import { useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({product}) => {
 
     const { cartState, addToCart } = useCart();
 
     const { wishlistState, addToWishlist, removeFromWishlist } = useWishlist();
-
-    const { state } = useAuth();
-
-    const navigate = useNavigate();
 
     const {title, description, image, price, discountedPrice, rating } = product;
     

@@ -1,7 +1,5 @@
 import axios from "axios";
-import { createContext, useReducer } from "react";
-import { useContext } from "react";
-import { useEffect } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 import { useAuth } from "./authContext";
 
 const WishlistContext = createContext();
@@ -35,7 +33,6 @@ const WishlistProvider = ({ children }) => {
 				});
 
 				if (response.status === 200) {
-					console.log("response.status is success");
 					wishlistDispatch({ type: "SET_WISHLIST", payload: response.data.wishlist });
 				}
 				} catch (err) {

@@ -37,7 +37,6 @@ const Cart = () => {
                 <Link className="btn btn_secondary" to="/productlist">Shop Now</Link>
             </div>
             }
-
         </div>
     );
 }

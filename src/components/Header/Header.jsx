@@ -53,7 +53,6 @@ const Header = () => {
                             {cartCounter === 0 ? "" : <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center">{cartCounter}</span>}
 
                         </Link>
-
                     </div>
                 </div>
             </div>

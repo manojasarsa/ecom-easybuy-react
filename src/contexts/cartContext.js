@@ -1,7 +1,5 @@
 import axios from "axios";
-import { createContext, useReducer } from "react";
-import { useContext } from "react";
-import { useEffect } from "react";
+import { createContext, useReducer, useEffect, useContext } from "react";
 import { useAuth } from "./authContext";
 
 const CartContext = createContext();
@@ -35,7 +33,6 @@ const CartProvider = ({ children }) => {
 				});
 
 				if (response.status === 200) {
-					console.log("response.status is success");
 					cartDispatch({ type: "SET_CART", payload: response.data.cart });
 				}
 				} catch (err) {
