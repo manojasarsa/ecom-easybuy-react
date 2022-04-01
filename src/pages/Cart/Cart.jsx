@@ -31,7 +31,7 @@ const Cart = () => {
             </main>
             : 
             <div className="empty_cart flex flex_col flex_justify_start flex_align_center"> 
-                <img src="../../assets/cart.svg" />
+                <img src="../../assets/cart.svg" alt="empty-cart" />
                 <h1>Your cart is empty!</h1>
                 <h3>Add items to it now.</h3>
                 <Link className="btn btn_secondary" to="/productlist">Shop Now</Link>

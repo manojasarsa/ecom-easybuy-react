@@ -29,7 +29,7 @@ const Wishlist = () => {
             </div>
             : 
             <div className="empty_cart flex flex_col flex_justify_start flex_align_center"> 
-                <img src="../../assets/cart.svg" />
+                <img src="../../assets/cart.svg" alt="empty-wishlist" />
                 <h1>Empty Wishlist</h1>
                 <h3>You have no items in your wishlist. Start adding!</h3>
                 <Link className="btn btn_secondary" to="/productlist">Shop Now</Link>
