@@ -7,7 +7,12 @@ const Cart = () => {
 
     const { cartState } = useCart();
     const cartCounter = cartState.cartItems.length;
+    const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+    const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
 
+
+    console.log("totalPrice in Cart:", totalPrice);
+    console.log("discounted totalPrice in Cart:", totalDiscountedPrice);
     return (
 
         <div className="cart_wrapper">
@@ -23,7 +28,7 @@ const Cart = () => {
                     <div className="cart_box_items">
                         {cartState.cartItems.map((item) => <CartCard key={item._id} product={item} /> )}
                     </div>
-                    {cartCounter !== 0 && <PriceBox /> }   
+                    {cartCounter !== 0 && <PriceBox tPrice={totalPrice} dPrice={totalDiscountedPrice} /> }   
                 </div>
             </main>
             : 

@@ -3,22 +3,29 @@
     padding: 1rem;
     height: fit-content;
     position: sticky;
-    top: 150px;
+    top: 6.5rem;
 }
 
 .price_menu {
     column-gap: 1rem;
     padding-right: 1rem;
 }
+
 .price_name {
-    font-size: 0.8rem;
-    margin: 0 1rem;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
 }
 
 .price_amount {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
 }
 
 .line_space {
+    margin: 0.5rem 0;
+}
+
+.total_amount {
+    color: var(--success-color);
     margin: 0.5rem 0;
 }
