@@ -26,3 +26,11 @@
 .qty_name {
     font-size: 0.8rem;
 }
+
+.card_horizontal_text .overflow_desc {
+    font-size: .75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 12rem;
+}

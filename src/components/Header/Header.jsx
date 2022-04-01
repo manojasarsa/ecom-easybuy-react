@@ -2,15 +2,20 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
-import { useAuth } from "../../contexts";
+import { useAuth, useWishlist } from "../../contexts";
 import { useCart } from "../../contexts";
 
 const Header = () => {
 
     const [menu, setMenu] = useState(false);
+
     const { state } = useAuth();
+    
     const { cartState } = useCart();
     const cartCounter = cartState.cartItems.length;
+
+    const { wishlistState } = useWishlist();    
+    const wishlistCounter = wishlistState.wishlistItems.length;
 
     const menuHandler = () => menu ? setMenu(false) : setMenu(true)
 
@@ -37,7 +42,7 @@ const Header = () => {
                     <div className="badge_container badge_icon">
                         <Link className="header_logo" to="/wishlist">
                             <i className="fa-regular fa-heart"></i>
-                            <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center"> 3 </span>
+                            {wishlistCounter === 0 ? "" : <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center">{wishlistCounter}</span>}
                         </Link>
                     </div>
 
@@ -46,8 +51,6 @@ const Header = () => {
                             <i className="fa fa-shopping-cart"></i>
 
                             {cartCounter === 0 ? "" : <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center">{cartCounter}</span>}
-
-                            {/* {cartState.cartCounter !== 0 && <span className="badge_icon_num badge_status flex flex_justify_center flex_align_center"> {cartState.cartCounter} </span>} */}
 
                         </Link>
 

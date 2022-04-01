@@ -9,7 +9,7 @@ const CartCard = ({product}) => {
 
     return (
 
-        <div className="card_grid">
+        <div className="card_grid card_wrap">
 
             <div className="cart_img">
                 <img className="img_responsive" src={image} alt={title} />
@@ -18,7 +18,7 @@ const CartCard = ({product}) => {
             <div className="card_horizontal_text flex flex_col">
 
                 <p className="card_text left_space">{title}</p>
-                <p className="card_subtext left_space">{description}</p>
+                <p className="card_subtext left_space overflow_desc">{description}</p>
                 <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(price)}
                     <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
                 </p>
