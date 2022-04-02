@@ -22,14 +22,14 @@ const WishlistProvider = ({ children }) => {
 		wishlistItems: [],
 	});
 
-	const { state } = useAuth();
+	const { state: { token } } = useAuth();
 
 	useEffect(() => {
-		state.isAuth
+		token
 		? (async () => {
 			try {
 				const response = await axios.get("/api/user/wishlist", {
-					headers: { authorization: state.token },
+					headers: { authorization: token },
 				});
 
 				if (response.status === 200) {
@@ -40,7 +40,7 @@ const WishlistProvider = ({ children }) => {
 				}
 		})()
 		: wishlistDispatch({ type: "SET_WISHLIST", payload: [] });
-	}, [state.isAuth]);
+	}, [token]);
 
 	const addToWishlist = async (product) => {
 		try {
@@ -50,7 +50,7 @@ const WishlistProvider = ({ children }) => {
 				product,
 			},
 			{
-				headers: { authorization: state.token },
+				headers: { authorization: token },
 			}
 			);
 
@@ -66,7 +66,7 @@ const WishlistProvider = ({ children }) => {
 	  	try {
 			const response = await axios.delete(`/api/user/wishlist/${productId}` ,
 			{
-				headers: { authorization: state.token }
+				headers: { authorization: token }
 			});
 
 			if(response.status === 200 ) {

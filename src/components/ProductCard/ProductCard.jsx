@@ -1,10 +1,12 @@
 import "./productcard.css";
 import { useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts";
 
 const ProductCard = ({product}) => {
 
     const { cartState, addToCart } = useCart();
+    const { state } = useAuth();
 
     const { wishlistState, addToWishlist, removeFromWishlist } = useWishlist();
 
@@ -25,9 +27,12 @@ const ProductCard = ({product}) => {
                     ? <button className="icon_btn" onClick={() => removeFromWishlist(product._id)}>
                         <i className="fa fa-heart wishlist_icon"></i>
                       </button>
-                    : <button className="icon_btn" onClick={() => addToWishlist(product)}>
+                    : state.isAuth ? <button className="icon_btn" onClick={() => addToWishlist(product)}>
                         <i className="far fa-heart wishlist_icon"></i>
                       </button>
+                      : <Link className="icon_btn" to="/login" onClick={() => addToWishlist(product)}>
+                      <i className="far fa-heart wishlist_icon"></i>
+                    </Link>
                     }
 
                     <p className="card_text left_space">{title}</p>
@@ -42,11 +47,17 @@ const ProductCard = ({product}) => {
                             to="/cart" >
                             Go to Cart
                         </Link>
-                    :  <button
+                    :  state.isAuth ? <button
                             className="btn btn_secondary route_link btn_toast right_space btn_leading"
                             onClick={() => addToCart(product)} >
                             Add to Cart 
                         </button>  
+                        :   <Link
+                                className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                                onClick={() => addToCart(product)} 
+                                to="/login">
+                                Add to Cart 
+                            </Link>
                     }
                     
                     <span className="pill">{rating} ⭐</span>

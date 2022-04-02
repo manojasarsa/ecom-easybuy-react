@@ -16,20 +16,19 @@ const cartReducer = (state, action) => {
 	}
 };
 
-
 const CartProvider = ({ children }) => {
 	const [cartState, cartDispatch] = useReducer(cartReducer, {
 		cartItems: [],
 	});
 
-	const { state } = useAuth();
+	const { state: { token } } = useAuth();
 
 	useEffect(() => {
-		state.isAuth
+		token
 		? (async () => {
 			try {
 				const response = await axios.get("/api/user/cart", {
-					headers: { authorization: state.token },
+					headers: { authorization: token },
 				});
 
 				if (response.status === 200) {
@@ -40,7 +39,7 @@ const CartProvider = ({ children }) => {
 				}
 		})()
 		: cartDispatch({ type: "SET_CART", payload: [] });
-	}, [state.isAuth]);
+	}, [token]);
 
 	const addToCart = async (product) => {
 		try {
@@ -50,7 +49,7 @@ const CartProvider = ({ children }) => {
 				product,
 			},
 			{
-				headers: { authorization: state.token },
+				headers: { authorization: token },
 			}
 			);
 
@@ -66,7 +65,7 @@ const CartProvider = ({ children }) => {
 	  	try {
 			const response = await axios.delete(`/api/user/cart/${productId}` ,
 			{
-				headers: { authorization: state.token }
+				headers: { authorization: token }
 			});
 
 			if(response.status === 200 ) {
@@ -84,7 +83,7 @@ const CartProvider = ({ children }) => {
 			  action: { type: typeValue }
 		  },
 		  {
-			  headers: { authorization: state.token }
+			  headers: { authorization: token }
 		  });
 
 		  if(response.status === 200 ) {
