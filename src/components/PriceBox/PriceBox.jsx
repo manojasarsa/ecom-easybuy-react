@@ -7,14 +7,7 @@ const PriceBox = (totalPrice) => {
     const cartCounter = cartState.cartItems.length;
     const finalAmount = totalPrice.tPrice - totalPrice.dPrice + 99;
     const savedAmount = totalPrice.tPrice - finalAmount;
-
-    // const {_id, price, discountedPrice, qty } = product;
-
-    console.log("totalPrice:", totalPrice);
-    // console.log("discounted totalPrice in Cart:", totalDiscountedPrice);
-    console.log("finalamount:", finalAmount);
     
-
     return (
         <div className="cart_price_box flex flex_col">
 
