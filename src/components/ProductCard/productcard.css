@@ -1,5 +1,27 @@
 .card_vertical .card_vertical_info .overflow_desc {
+    font-size: .75rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 12rem;
 }
 
+.wishlist_icon {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 2rem;
+    cursor: pointer;
+}
+
+.card_vertical_info .pill {
+     background-color: var(--line-color);
+     color: var(--primary-color);
+     top: 17.7rem;
+     left: 0;
+}
+
+.card_vertical_info .icon_btn {
+    border:white;
+}

@@ -11,7 +11,7 @@ const ProfileMenu = () => {
             <div className="profile_options">
                 <ul className="menu flex flex_col flex_justify_center flex_align_start">
                     <div className="flex flex_row flex_justify_around flex_align_center">
-                        {state.isAuth ? <h3>Hello <span className="userName"> {customer}! </span> </h3> : <p>New Customer?</p> }
+                        {state.isAuth ? <h3>Hello <span className="userName"> {customer} </span> </h3> : <p>New Customer?</p> }
                         {state.isAuth || <Link className="btn btn_secondary user_select" to="/signup">Sign Up</Link>}
                     </div>
                     <Link className="menu_link" to="/profile">

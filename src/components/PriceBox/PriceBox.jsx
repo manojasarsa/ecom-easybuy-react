@@ -1,6 +1,13 @@
 import "./pricebox.css";
+import { useCart } from "../../contexts";
 
-const PriceBox = () => {
+const PriceBox = (totalPrice) => {
+
+    const { cartState } = useCart();
+    const cartCounter = cartState.cartItems.length;
+    const finalAmount = totalPrice.tPrice - totalPrice.dPrice + 99;
+    const savedAmount = totalPrice.tPrice - finalAmount;
+    
     return (
         <div className="cart_price_box flex flex_col">
 
@@ -9,28 +16,28 @@ const PriceBox = () => {
             <hr className="line_space" />
 
             <div className="price_menu flex flex_justify_between">
-                <span className="price_name">Price (2 items)</span>
-                <span className="price_amount">₹4,999</span>
+                <span className="price_name">Price ( {cartCounter} {cartCounter ===1 ? "item" : "items"})</span>
+                <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(totalPrice.tPrice)}</span>
             </div>
             <div className="price_menu flex flex_justify_between">
                 <span className="price_name">Discount</span>
-                <span className="price_amount">- ₹2,000</span>
+                <span className="price_amount">- ₹ {new Intl.NumberFormat("en-IN").format(totalPrice.dPrice)}</span>
             </div>
             <div className="price_menu flex flex_justify_between">
                 <span className="price_name">Delivery Charges</span>
-                <span className="price_amount">₹499</span>
+                <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(99)}</span>
             </div>
 
             <hr className="line_space" />
 
             <div className="price_menu flex flex_justify_between">
-                <span className="price_name">Delivery Charges</span>
-                <span className="price_amount">₹3,499</span>
+                <h4> Total Amount</h4>
+                <h4>₹ {new Intl.NumberFormat("en-IN").format(finalAmount)}</h4>
             </div>
 
             <hr className="line_space" />
 
-            <h5 className="line_space">You will save ₹1,499 on this order</h5>
+            <h4 className="line_space total_amount">You will save ₹ {new Intl.NumberFormat("en-IN").format(savedAmount)} on this order</h4>
 
             <button className="btn btn_secondary">PLACE ORDER</button>
 
