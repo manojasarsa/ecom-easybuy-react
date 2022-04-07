@@ -2,7 +2,7 @@ import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
-import { useAuth, useWishlist, useProduct, useFilter} from "../../contexts";
+import { useAuth, useWishlist, useFilter} from "../../contexts";
 import { useCart } from "../../contexts";
 
 const Header = () => {
@@ -10,8 +10,6 @@ const Header = () => {
     const [menu, setMenu] = useState(false);
 
     const { dispatch } = useFilter();
-
-    const {products} = useProduct();
 
     const navigate = useNavigate();
 
