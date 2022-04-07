@@ -1,0 +1,38 @@
+.card_grids {
+      margin: 8rem 8rem 0 8rem;
+      width: 60rem;
+      height: 30rem;
+      background-color: white;
+      position: relative;
+      gap: 5rem;
+}
+
+.card_grid .card_horizontal_text {
+      gap: 0.5rem;
+      width: 20rem;
+      background-color: var(--grey-color);
+}
+
+.single_product_sub {
+      padding: 1rem;
+      font-size: 1rem;
+      color: var(--grey-color)
+}
+
+.wish_icon {
+      color: var(--secondary-color);
+      font-size: 2rem;
+      position: absolute;
+      left: 19rem;
+      top: 2rem;
+      cursor: pointer;
+}
+
+.single_product_text {
+      font-size: 3rem;
+      padding: 1rem;
+}
+
+.card .btn_icon {
+      border: var(--white-color);
+}

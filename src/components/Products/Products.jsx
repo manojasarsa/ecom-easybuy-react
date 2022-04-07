@@ -1,7 +1,9 @@
 import "./products.css";
 import { ProductCard } from "../../components";
 import { useProduct, useFilter } from "../../contexts";
-import { sortData, filterData, sortByCategory, sortRange, sortRating } from "../../utils/filterMethods";
+import { sortData, filterData, sortByCategory, sortRange, sortRating, searchByName} from "../../utils/filterMethods";
+
+
 
 const Products = () => {
     const {products, loader, error} = useProduct();
@@ -13,6 +15,8 @@ const Products = () => {
     const getCategoryList = sortByCategory(getFilteredList, men, women, boys, girls);
     const getSortRangeList = sortRange(getCategoryList, state.rangeValue);      
     const getRatingList = sortRating(getSortRangeList, state.rating); 
+    const getSearchedItem = searchByName(getRatingList, state.searchQuery);
+    
 
     return (
         <main className="product_container">
@@ -24,7 +28,7 @@ const Products = () => {
             <div className="product_list">
                 {loader && <h2>Loading...</h2>}
                 {error && <h2>{error}</h2>}
-                {getRatingList.map((item) => <ProductCard key={item._id} product={item} /> )}
+                {getSearchedItem.map((item) => <ProductCard key={item._id} product={item} /> )}
             </div>
         </main>
     );

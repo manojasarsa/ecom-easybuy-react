@@ -28,6 +28,21 @@ input.input_checkbox {
     font-size: 0.9rem;
 }
 
+.input_field .input_label {
+    position: relative;
+}
+
+.input_field .input_label .show_hide_btn {
+    position: absolute;
+    font-size: 0.9rem;
+    right: 2rem;
+    bottom: 3rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: var(--grey-color);
+}
+
 /* logout */
 
 .logout_container {

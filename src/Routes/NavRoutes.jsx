@@ -1,13 +1,13 @@
 import Mockman from "mockman-js";
-import {Home} from "../pages";
-import {ProductList} from "../pages";
-import {Cart} from "../pages";
-import {Wishlist} from "../pages";
-import {Login} from "../pages";
-import {Logout} from "../pages";
-import {SignUp} from "../pages";
-import {ForgotPwd} from "../pages";
-import {Profile} from "../pages";
+import {Home, ProductList, Cart, Wishlist, Login, Logout, SignUp, ForgotPwd, Profile, SingleProduct} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
+import {} from "../pages";
 import {Routes, Route} from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -40,6 +40,8 @@ const NavRoutes = () => {
                     </PrivateRoutes>
                 }
             ></Route>
+
+            <Route path="/productlist/:productId" element = {<SingleProduct />} />
             <Route path="/login" element = {<Login />} />
             <Route path="/logout" element = {<Logout />} />
             <Route path="/signup" element = {<SignUp />} />

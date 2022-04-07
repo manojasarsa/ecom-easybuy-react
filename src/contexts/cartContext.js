@@ -35,7 +35,7 @@ const CartProvider = ({ children }) => {
 					cartDispatch({ type: "SET_CART", payload: response.data.cart });
 				}
 				} catch (err) {
-					console.log("error", err);
+					console.error("error", err);
 				}
 		})()
 		: cartDispatch({ type: "SET_CART", payload: [] });
@@ -57,7 +57,7 @@ const CartProvider = ({ children }) => {
 				cartDispatch({ type: "SET_CART", payload: response.data.cart });
 			}
 		} catch (err) {
-			console.log("error occurred", err.message);
+			console.error("error occurred", err.message);
 		}
 	};
 
@@ -72,7 +72,7 @@ const CartProvider = ({ children }) => {
 				cartDispatch({type: "SET_CART", payload: response.data.cart})
 			}
 	  	} catch(err) {
-		  	console.log("error occured", err.message);
+		  	console.error("error occured", err.message);
 	  	}
   	}
 	  
@@ -90,7 +90,7 @@ const CartProvider = ({ children }) => {
 			  cartDispatch({type: "SET_CART", payload: response.data.cart})
 		  }
 		} catch(err) {
-			console.log("error occured", err.message);
+			console.error("error occured", err.message);
 		}
 	}
 

@@ -64,6 +64,12 @@ const filterReducer = (state, action) => {
           rating: null
         };
       
+      case "SET_SEARCH_QUERY":
+        return {
+          ...state,
+          searchQuery: action.payload,
+        };
+      
       default:
         return state;
     }

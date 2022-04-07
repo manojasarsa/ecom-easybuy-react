@@ -15,6 +15,7 @@ header .header_logo {
 
 .nav_center {
     flex-basis: 25%;
+    position: relative;
 }
 
 header .tagline {
@@ -54,4 +55,15 @@ header .nav_right span {
 
 #header_box {
     border: 0;
+}
+
+.search_icon {
+    position: absolute;
+    font-size: 0.9rem;
+    left: 93%;;
+    bottom: 1.3rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: var(--grey-color);
 }

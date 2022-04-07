@@ -21,7 +21,10 @@ const ProductCard = ({product}) => {
         <div className="card_image flex">
             <div className="card_vertical">
                 <div className="card_vertical_info flex flex_col flex_justify_start">
-                    <img className="img_responsive adjust_image" src={image} alt={title} />
+
+                    <Link to = {`/productlist/${product._id}`}>
+                            <img className="img_responsive adjust_image" src={image} alt={title} />
+                    </Link>
 
                     { wishlistItemExist
                     ? <button className="icon_btn" onClick={() => removeFromWishlist(product._id)}>

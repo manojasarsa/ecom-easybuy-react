@@ -22,6 +22,8 @@ const SignUp = () => {
     const [error, setError] = useState("");
     const [errorState, setErrorState] = useState(false);
     const {firstName, lastName, email, password, confirmPwd} = formInputs;
+    const [showHideOne, setShowHideOne] = useState(false);
+    const [showHideTwo, setShowHideTwo] = useState(false);
     
     const formHandler = (e) => {
         e.preventDefault();
@@ -94,9 +96,14 @@ const SignUp = () => {
                             name="password"
                             value={password} 
                             className="input_box" 
-                            type="password" 
+                            type= {showHideOne ? "text" : "password" } 
                             required={true} 
                         />
+
+                        <i class="fa-solid fa-eye show_hide_btn"
+                            onClick={() => setShowHideOne((prev) => !prev)}>
+                        </i>
+
                     </label>
 
                     <label className="input_label">Confirm Password<span className="form_label">*</span>
@@ -105,9 +112,14 @@ const SignUp = () => {
                             name="confirmPwd"
                             value={confirmPwd} 
                             className="input_box" 
-                            type="password"
+                            type= {showHideTwo ? "text" : "password" }
                             required={true} 
                         />
+                        
+                        <i class="fa-solid fa-eye show_hide_btn"
+                            onClick={() => setShowHideTwo((prev) => !prev)}>
+                        </i>
+
                     </label>
 
                     <div className="inp_checkbox flex flex_justify_start flex_align_center">
