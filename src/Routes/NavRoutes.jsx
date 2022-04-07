@@ -1,13 +1,5 @@
 import Mockman from "mockman-js";
 import {Home, ProductList, Cart, Wishlist, Login, Logout, SignUp, ForgotPwd, Profile, SingleProduct} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
-import {} from "../pages";
 import {Routes, Route} from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
 
