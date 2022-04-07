@@ -11,7 +11,7 @@ export const sortData = (productList, sortBy) =>
     : productList;
 
 export const sortRange = (productList, rangeValue) =>
-    productList.filter((item) => item.discountedPrice <= rangeValue);
+    productList.filter((item) => item.price <= rangeValue);
 
 export const sortByCategory = (productList, men, women, boys, girls) => {
 
@@ -49,3 +49,8 @@ export const sortRating = (productList, ratings) =>
     : ratings === "1 Stars & above"
     ? productList.filter(item => item.rating >= 1)
     : productList;
+
+export const searchByName = (listData, searchQuery) =>
+    listData.filter((product) =>
+        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+);

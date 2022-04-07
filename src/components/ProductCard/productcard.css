@@ -23,5 +23,5 @@
 }
 
 .card_vertical_info .icon_btn {
-    border:white;
+    border: var(--white-color);
 }

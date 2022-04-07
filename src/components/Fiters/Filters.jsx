@@ -67,7 +67,7 @@ const Filters = () => {
                     <h3 className="filter_headings">6000</h3>
                 </div>             
                 <label className="range">
-                    <input className="input_range" type="range" min="100" max="6000" value={state.rangeValue} onChange={ event => dispatch({ type: "PRICE_RANGE", payload: event })}
+                    <input className="input_range" type="range" min="0" max="6000" step="1000" value={state.rangeValue} onChange={ event => dispatch({ type: "PRICE_RANGE", payload: event })}
                     /> 
                 </label>
             </div>

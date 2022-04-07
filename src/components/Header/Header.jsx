@@ -1,13 +1,17 @@
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
-import { useAuth, useWishlist } from "../../contexts";
+import { useAuth, useWishlist, useFilter} from "../../contexts";
 import { useCart } from "../../contexts";
 
 const Header = () => {
 
     const [menu, setMenu] = useState(false);
+
+    const { dispatch } = useFilter();
+
+    const navigate = useNavigate();
 
     const { state } = useAuth();
     
@@ -17,7 +21,7 @@ const Header = () => {
     const { wishlistState } = useWishlist();    
     const wishlistCounter = wishlistState.wishlistItems.length;
 
-    const menuHandler = () => menu ? setMenu(false) : setMenu(true)
+    const menuHandler = () => menu ? setMenu(false) : setMenu(true);
 
     return (
         <header className="main_header">
@@ -26,9 +30,22 @@ const Header = () => {
                     <Link className="header_logo" to="/">easYbuY</Link>
                     <p className="tagline">We Value Your Choices</p>
                 </div>
+
                 <div className="nav_center searchbar">
-                    <input type="search" className="input input_search search" placeholder="Search for products, brands and more" />
+                    
+                        <input 
+                            name="search"
+                            className="input input_search search" 
+                            type="text" 
+                            placeholder="Search for products, brands and more"
+                            onChange={(e) => dispatch({type: "SET_SEARCH_QUERY", payload: e.target.value})}
+                        />
+
+                        <i class="fa-solid fa-magnifying-glass search_icon" 
+                            onClick={() => navigate("/productlist")}>
+                        </i>
                 </div>
+
                 <div className="nav_right flex flex_justify_between flex_align_center">
 
                     {state.isAuth ? <Link className="btn btn_secondary_outline" to="/productlist">Shop Now</Link> : <Link className="btn btn_primary_outlined" to="/login">Login</Link>}

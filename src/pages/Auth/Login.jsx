@@ -16,6 +16,7 @@ const Login = () => {
     const [ formInputs, setFormInputs ] = useState(loginInputs);
     const [error, setError] = useState("");
     const [errorState, setErrorState] = useState(false);
+    const [showHide, setShowHide] = useState(false);
 
     const { email, password } = formInputs;
 
@@ -43,6 +44,7 @@ const Login = () => {
                             required={true} 
                             onChange={(e) => setFormInputs({...formInputs, email: e.target.value})}
                         />
+                        
                     </label>
 
                     <label className="input_label">Password<span className="form_label">*</span>
@@ -50,10 +52,15 @@ const Login = () => {
                             name="password"
                             value={password}
                             className="input_box" 
-                            type="password" 
+                            type= {showHide ? "text" : "password" }
                             required= {true} 
                             onChange={(e) => setFormInputs({...formInputs, password: e.target.value})}
                         />
+
+                        <i class="fa-solid fa-eye show_hide_btn"
+                            onClick={() => setShowHide((prev) => !prev)}>
+                        </i>
+
                     </label>
 
                     <div className="inp_checkbox flex flex_justify_start flex_align_center">

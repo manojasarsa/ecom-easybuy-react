@@ -10,7 +10,8 @@ const FilterProvider = ({ children }) => {
     showInventory: true,
     fastDelivery: false,
     rangeValue: 6000,
-    rating: null
+    rating: null,
+    searchQuery: ""
   });
 
   return (

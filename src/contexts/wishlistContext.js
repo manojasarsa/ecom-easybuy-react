@@ -36,7 +36,7 @@ const WishlistProvider = ({ children }) => {
 					wishlistDispatch({ type: "SET_WISHLIST", payload: response.data.wishlist });
 				}
 				} catch (err) {
-					console.log("error", err);
+					console.error("error", err);
 				}
 		})()
 		: wishlistDispatch({ type: "SET_WISHLIST", payload: [] });
@@ -58,7 +58,7 @@ const WishlistProvider = ({ children }) => {
 				wishlistDispatch({ type: "SET_WISHLIST", payload: response.data.wishlist });
 			}
 		} catch (err) {
-			console.log("error occurred", err.message);
+			console.error("error occurred", err.message);
 		}
 	};
 
@@ -73,7 +73,7 @@ const WishlistProvider = ({ children }) => {
 				wishlistDispatch({type: "SET_WISHLIST", payload: response.data.wishlist})
 			}
 	  	} catch(err) {
-		  	console.log("error occured", err.message);
+		  	console.error("error occured", err.message);
 	  	}
   	}
 
