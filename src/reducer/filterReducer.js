@@ -61,7 +61,8 @@ const filterReducer = (state, action) => {
           showInventory: true,
           fastDelivery: false,
           rangeValue: 6000,
-          rating: null
+          rating: null,
+          searchQuery: ""
         };
       
       case "SET_SEARCH_QUERY":

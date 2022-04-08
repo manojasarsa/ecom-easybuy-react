@@ -1,9 +1,11 @@
 import "./cartcard.css";
-import { useCart } from "../../contexts";
+import { useCart, useWishlist } from "../../contexts";
 
 const CartCard = ({product}) => {
 
     const { removeFromCart, updateQty } = useCart();
+
+    const { addToWishlist } = useWishlist();
 
     const {_id, title, description, image, price, discountedPrice, qty } = product;
 
@@ -41,7 +43,7 @@ const CartCard = ({product}) => {
                     <span>Removed from Cart! </span>
                 </div>
 
-                <button className="btn btn_secondary btn_toast right_space btn_leading">Move to Wishlist</button>
+                <button onClick={() => addToWishlist(product)} className="btn btn_secondary btn_toast right_space btn_leading">Move to Wishlist</button>
 
                 <div className="alert_success toast flex flex_justify_center flex_align_center  toast_box">
                     <i className="fa-solid fa-check"></i>
