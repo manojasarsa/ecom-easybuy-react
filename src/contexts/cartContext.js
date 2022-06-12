@@ -43,8 +43,9 @@ const CartProvider = ({ children }) => {
 
 	const addToCart = async (product) => {
 		try {
-			const response = await axios.post(
-			"/api/user/cart",
+            console.log("token", token);
+            console.log("product", product);
+			const response = await axios.post("/api/user/cart",
 			{
 				product,
 			},
@@ -57,7 +58,7 @@ const CartProvider = ({ children }) => {
 				cartDispatch({ type: "SET_CART", payload: response.data.cart });
 			}
 		} catch (err) {
-			console.error("error occurred", err.message);
+			console.error("error occurred", err.response.data);
 		}
 	};
 
