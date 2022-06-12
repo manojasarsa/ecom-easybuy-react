@@ -46,7 +46,7 @@ const ProductCard = ({product}) => {
 
                     {cartItemExist
                     ?   <Link
-                            className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                            className="btn btn_secondary_outline route_link btn_toast right_space btn_leading"
                             to="/cart" >
                             Go to Cart
                         </Link>

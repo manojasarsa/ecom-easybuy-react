@@ -57,6 +57,10 @@
   border: none;
 }
 
+.filter_price .range {
+    margin-bottom: 0.4rem;
+}
+
 .range input::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 18px;

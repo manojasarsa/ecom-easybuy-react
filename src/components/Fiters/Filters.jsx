@@ -63,13 +63,18 @@ const Filters = () => {
                 <h3 className="filter_sub_headings">PRICE</h3>
                 <div className="flex flex_row flex_justify_between">
                     <h3 className="filter_headings">0</h3>
-                    <h3 className="filter_headings">{state.rangeValue}</h3>
+                    
                     <h3 className="filter_headings">6000</h3>
-                </div>             
+                </div>
+
                 <label className="range">
                     <input className="input_range" type="range" min="0" max="6000" step="1000" value={state.rangeValue} onChange={ event => dispatch({ type: "PRICE_RANGE", payload: event })}
                     /> 
                 </label>
+
+                <div className="flex flex_col flex_align_end">                    
+                    <h3 className="filter_headings">{state.rangeValue}</h3>             
+                </div>
             </div>
             <div className="filter_sortby flex flex_col filter_spaces">
                 <h3 className="filter_sub_headings">SORT BY</h3>

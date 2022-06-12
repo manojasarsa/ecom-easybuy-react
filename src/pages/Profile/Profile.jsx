@@ -43,35 +43,35 @@ const Profile = () => {
 
                     <h2 className="lines">Profile Details</h2>
 
-                    <div className="edit_list flex flex_col flex_justify_center flex_align_start">
+                    <ul className="edit_list flex flex_col flex_justify_center flex_align_start">
 
-                        <div className="profile_details flex flex_row ">
+                        <li className="profile_details flex flex_row ">
                             <span>Full Name</span>
                             <span>Manoj Asarsa</span>
-                        </div>
-                        <div className="profile_details flex flex_row ">
+                        </li>
+                        <li className="profile_details flex flex_row ">
                             <span>Mobile Number</span>
                             <span>982899999</span>
-                        </div>
-                        <div className="profile_details flex flex_row flex_justify_between">
+                        </li>
+                        <li className="profile_details flex flex_row flex_justify_between">
                             <span>Email ID</span>
                             <span>manojasarsa@xyz.com</span>
-                        </div>
-                        <div className="profile_details flex flex_row flex_justify_between flex_align_start">
+                        </li>
+                        <li className="profile_details flex flex_row flex_justify_between flex_align_start">
                             <span>Gender</span>
                             <span>MALE</span>
-                        </div>
-                        <div className="profile_details flex flex_row flex_justify_between">
+                        </li>
+                        <li className="profile_details flex flex_row flex_justify_between">
                             <span>Date of Birth</span>
                             <span>- not added -</span>
-                        </div>
-                        <div className="profile_details flex flex_row flex_justify_between">
+                        </li>
+                        <li className="profile_details flex flex_row flex_justify_between">
                             <span>Location</span>
                             <span>- not added -</span>
-                        </div>
+                        </li>
 
                         <a className="btn btn_secondary" href="/">Edit</a>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>

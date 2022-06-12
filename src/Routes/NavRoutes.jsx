@@ -1,5 +1,5 @@
 import Mockman from "mockman-js";
-import {Home, ProductList, Cart, Wishlist, Login, Logout, SignUp, ForgotPwd, Profile, SingleProduct} from "../pages";
+import {Home, ProductList, Cart, Wishlist, Login, Logout, SignUp, Profile, SingleProduct} from "../pages";
 import {Routes, Route} from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -36,8 +36,7 @@ const NavRoutes = () => {
             <Route path="/productlist/:productId" element = {<SingleProduct />} />
             <Route path="/login" element = {<Login />} />
             <Route path="/logout" element = {<Logout />} />
-            <Route path="/signup" element = {<SignUp />} />
-            <Route path="/forgotpwd" element = {<ForgotPwd />} />
+            <Route path="/signup" element = {<SignUp />} /> 
             <Route path="/mock" element = {<Mockman />} />
         </Routes>
     )

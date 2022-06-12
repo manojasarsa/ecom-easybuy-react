@@ -21,22 +21,16 @@ const ProfileMenu = () => {
                         <li className="profile_content user_select">Order Summary</li>
                     </Link>
                     <Link className="menu_link" to="/">
-                        <li className="profile_content user_select">Apply Coupons</li>
-                    </Link>
-                    <Link className="menu_link" to="/">
                         <li className="profile_content user_select">Checkout</li>
                     </Link>
                     <Link className="menu_link" to="/">
                         <li className="profile_content user_select">Address Management</li>
                     </Link>
-                    <Link className="menu_link" to="/forgotpwd">
-                        <li className="profile_content user_select">Forgot Password</li>
-                    </Link>
-                    <Link className="menu_link" to="/login">
-                        <li className="profile_content user_select">Login</li>
-                    </Link>
-                    {state.isAuth && <Link className="menu_link" to="/logout">
+                    {state.isAuth ? <Link className="menu_link" to="/logout">
                         <li onClick={logout} className="profile_content user_select">Logout</li>
+                    </Link>
+                    : <Link className="menu_link" to="/login">
+                        <li className="profile_content user_select">Login</li>
                     </Link>}
                 </ul>
             </div>
