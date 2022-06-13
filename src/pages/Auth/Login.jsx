@@ -68,14 +68,6 @@ const Login = () => {
 
                     </label>
 
-                    <div className="inp_checkbox flex flex_justify_start flex_align_center">
-                        <input 
-                            type="checkbox" 
-                            className="input_checkbox"
-                        /> 
-                        <p className="checkbox_notify">Remember me</p>
-                    </div>
-
                     <p className="input_subheading"><Link id="input_subheading" to="/forgotpwd">Forgot your Password?</Link> </p>
 
                     <button className=" btn btn_secondary" onClick={(e) => loginHandler(e)} >Login</button>

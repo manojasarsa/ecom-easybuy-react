@@ -17,9 +17,7 @@
 .cart_box {
     padding: 2rem;
     margin: 0 auto;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
 }
 
 .cart_box_items {
