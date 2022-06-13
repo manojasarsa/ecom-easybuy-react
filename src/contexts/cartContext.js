@@ -1,20 +1,9 @@
 import axios from "axios";
 import { createContext, useReducer, useEffect, useContext } from "react";
+import { cartReducer } from "../reducer/cartReducer";
 import { useAuth } from "./authContext";
 
 const CartContext = createContext();
-
-const cartReducer = (state, action) => {
-	switch (action.type) {
-	case "SET_CART":
-		return {
-			...state,
-			cartItems: action.payload,
-		};
-		default:
-			return state;
-	}
-};
 
 const CartProvider = ({ children }) => {
 	const [cartState, cartDispatch] = useReducer(cartReducer, {
