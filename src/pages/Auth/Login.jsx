@@ -13,17 +13,22 @@ const Login = () => {
         password: ""
     }
 
-    const [ formInputs, setFormInputs ] = useState(loginInputs);
+    const [formInputs, setFormInputs] = useState(loginInputs);
     const [error, setError] = useState("");
     const [errorState, setErrorState] = useState(false);
     const [showHide, setShowHide] = useState(false);
 
     const { email, password } = formInputs;
 
-    const formHandler = (e) => {
+    const loginHandler = (e) => {
         e.preventDefault();
         login({email, password, setError, setErrorState});   
     }
+
+    const guestLoginHandler = (e) => {
+        e.preventDefault();
+        login({email: "manojasarsa7611@gmail.com", password: "Manoj@8947", setError, setErrorState});
+    } 
 
     return (
         <>
@@ -73,7 +78,8 @@ const Login = () => {
 
                     <p className="input_subheading"><Link id="input_subheading" to="/forgotpwd">Forgot your Password?</Link> </p>
 
-                    <button className=" btn btn_secondary" onClick={(e) => formHandler(e)} >Login</button>
+                    <button className=" btn btn_secondary" onClick={(e) => loginHandler(e)} >Login</button>
+                    <button className=" btn btn_secondary_outline" onClick={(e) => guestLoginHandler(e)} >Guest Login</button>
 
                     <p className="input_subheading"><Link id="input_subheading" to="/signup">Create New Account</Link> </p>
 

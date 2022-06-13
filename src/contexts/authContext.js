@@ -51,8 +51,9 @@ const AuthProvider = ({children}) => {
                 password: password
             });
             if(response.status === 200) {
-                const {fName} = response.data.foundUser;
+                const fName = response.data.foundUser;
                 const {encodedToken} = response.data;
+                setCustomer(fName);
 
                 localStorage.setItem("jwtToken", JSON.stringify({userName: fName, token: encodedToken, isAuth: true}));
                 dispatch({type: "LOGIN", payload: {userName: fName, token: encodedToken, isAuth: true},});
