@@ -24,13 +24,13 @@ const UserAddress = () => {
                         <div className="quick_links">
 
                             <ul className="menu flex flex_col flex_justify_center flex_align_start">
-                                <Link className="menu_link" to="/">
+                                <Link className="menu_link" to="/user/profile">
                                     <li className="profile_option">Profile</li>
                                 </Link>
-                                <Link className="menu_link" to="/">
+                                <Link className="menu_link" to="/user/address">
                                     <li className="profile_option">Address Management</li>
                                 </Link>
-                                <Link className="menu_link" to="/">
+                                <Link className="menu_link" to="/user/orders">
                                     <li className="profile_option">Order Summary</li>
                                 </Link>
                             </ul>
@@ -64,7 +64,7 @@ const UserAddress = () => {
                                 </li>
                             </ul>
                         </div> */}
-                        
+
                     </div>
                 </div>
             </div>

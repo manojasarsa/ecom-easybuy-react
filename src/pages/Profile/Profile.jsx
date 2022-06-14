@@ -22,7 +22,6 @@ const Profile = () => {
                     <div className="profile_container flex flex_row flex_justify_center flex_align_center">
 
                         <div className="quick_links">
-
                             <ul className="menu flex flex_col flex_justify_center flex_align_start">
                                 <Link className="menu_link" to="/user/profile">
                                     <li className="profile_option">Profile</li>
@@ -34,7 +33,6 @@ const Profile = () => {
                                     <li className="profile_option">Order Summary</li>
                                 </Link>
                             </ul>
-
                         </div>
 
                         <div className="profile_edit flex flex_col flex_justify_center flex_align_center">
