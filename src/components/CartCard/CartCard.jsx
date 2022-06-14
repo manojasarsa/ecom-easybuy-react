@@ -1,6 +1,5 @@
 import "./cartcard.css";
 import { useCart, useWishlist } from "../../contexts";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { toastHandler } from "../../utils/toastHandler";
 
