@@ -4,8 +4,8 @@ const Home = () => {
     return (
         <div class="main_container">
             <Header />
-            <Category />
             <ShopNow />
+            <Category />
             <HeroBanner />
         </div>
     );
