@@ -17,3 +17,9 @@
 ::-webkit-scrollbar-thumb {
     background: var(--line-color);
 }
+
+@media (max-width: 600px) {
+    html {
+        font-size: 62.5%;
+    }
+} 

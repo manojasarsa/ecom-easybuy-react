@@ -18,3 +18,34 @@
     border-bottom: 0;
     z-index: 5;
 }
+
+.mobile_filter_btn {
+    /* grid-area: header; */
+    display: none;
+    background-color: var(--line-color);
+    color: var(--primary-color);
+    position: fixed;
+    bottom: 0;
+    /* right: 5; */
+    width: 100%;
+    /* height: 100%; */
+    padding: 0.4rem;
+    font-size: 1.9rem;
+    cursor: pointer;
+    border: none;
+    z-index: 10;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .product_main_wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header header"
+        "main main";
+    }
+
+    .mobile_filter_btn {
+        display: block;
+    }
+}
