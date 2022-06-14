@@ -2,6 +2,8 @@ import Mockman from "mockman-js";
 import {Home, ProductList, Cart, Wishlist, Login, Logout, SignUp, Profile, SingleProduct} from "../pages";
 import {Routes, Route} from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
+import { UserAddress } from "../pages/Profile/UserAddress";
+import { UserOrders } from "../pages/Profile/UserOrders";
 
 const NavRoutes = () => {
     return (
@@ -25,10 +27,26 @@ const NavRoutes = () => {
                 }
             ></Route>
             <Route 
-                path="/profile" 
+                path="/user/profile" 
                 element= {
                     <PrivateRoutes>
                         <Profile />
+                    </PrivateRoutes>
+                }
+            ></Route>
+            <Route 
+                path="/user/address" 
+                element= {
+                    <PrivateRoutes>
+                        <UserAddress />
+                    </PrivateRoutes>
+                }
+            ></Route>
+            <Route 
+                path="/user/orders" 
+                element= {
+                    <PrivateRoutes>
+                        <UserOrders />
                     </PrivateRoutes>
                 }
             ></Route>

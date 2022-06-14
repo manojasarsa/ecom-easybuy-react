@@ -55,6 +55,7 @@
 
 .quick_links .menu_link {
     font-size: 1rem;
+    margin: 1.5rem 3rem;
 }
 
 .profile_title {
@@ -63,4 +64,8 @@
 
 .title_text {
     color: var(--grey-color);
+}
+
+.profile_logout_btn {
+    align-self: center;
 }

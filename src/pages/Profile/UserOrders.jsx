@@ -3,7 +3,7 @@ import { Header } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts";
 
-const Profile = () => {
+const UserOrders = () => {
 
     const { customer: {fname, lname}, logout } = useAuth();
 
@@ -24,20 +24,20 @@ const Profile = () => {
                         <div className="quick_links">
 
                             <ul className="menu flex flex_col flex_justify_center flex_align_start">
-                                <Link className="menu_link" to="/user/profile">
+                                <Link className="menu_link" to="/">
                                     <li className="profile_option">Profile</li>
                                 </Link>
-                                <Link className="menu_link" to="/user/address">
+                                <Link className="menu_link" to="/">
                                     <li className="profile_option">Address Management</li>
                                 </Link>
-                                <Link className="menu_link" to="/user/orders">
+                                <Link className="menu_link" to="/">
                                     <li className="profile_option">Order Summary</li>
                                 </Link>
                             </ul>
 
                         </div>
 
-                        <div className="profile_edit flex flex_col flex_justify_center flex_align_center">
+                        {/* <div className="profile_edit flex flex_col flex_justify_center flex_align_center">
 
                             <h2 className="lines">Profile Details</h2>
 
@@ -63,7 +63,8 @@ const Profile = () => {
                                     </button>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
+                        
                     </div>
                 </div>
             </div>
@@ -71,4 +72,4 @@ const Profile = () => {
     )
 }
 
-export { Profile };
+export { UserOrders };
