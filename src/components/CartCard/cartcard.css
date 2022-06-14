@@ -2,7 +2,7 @@
     padding: 1rem 0;
 }
 
-.card_wrap #horizontal_text-card {
+.card_wrap #horizontal_text_card {
     background-color: var(--line-color);
 }
 
@@ -41,4 +41,8 @@
 
 .qty_name {
     font-size: 0.8rem;
+}
+
+.card_wrap #horizontal_text_card .toasty {
+    background-color: var(--secondary-color);
 }

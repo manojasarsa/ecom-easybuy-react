@@ -3,6 +3,7 @@ import { Header } from "../../components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../contexts";
+import { toastHandler } from "../../utils/toastHandler";
 
 const SignUp = () => {
 
@@ -29,13 +30,6 @@ const SignUp = () => {
     const regex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
     const toggleTermsCondition = () => termsAndCondition ? setTermsAndCondition(false) : setTermsAndCondition(true);
-
-    const toastHandler = () => {
-        setErrorState(true);
-        setTimeout(() => {
-            setErrorState(false);
-        }, 3000);
-    }
     
     const submitFormHandler = (e) => {
 
@@ -50,18 +44,19 @@ const SignUp = () => {
                 setError("Required 1 Uppercase, 1 Lowercase letter, 1 Special character, and 1 number");
 
             } else {
-                setError("");
                 if(formInputs.password === formInputs.confirmPwd) {
                     signup({firstName, lastName, email, password, setError, setErrorState});
+                    setError("Account created!");
+                    toastHandler(setErrorState);
                 }
                 else {
                     setError("Password does not match!");
                 } 
             }  
-            toastHandler();   
+            toastHandler(setErrorState);   
         } else {
             setError("All fields are required!");
-            toastHandler(); 
+            toastHandler(setErrorState); 
         }
     }
 

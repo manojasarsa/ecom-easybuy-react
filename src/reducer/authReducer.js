@@ -11,7 +11,7 @@ const authReducer = (state, action) => {
                 userName: "", token: "", isAuth: false
             }
         default:
-            console.log("Error Occured!");   // will display the error page later
+            console.log("Error Occured!");
     }
 }
 
