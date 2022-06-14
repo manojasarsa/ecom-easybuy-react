@@ -3,7 +3,7 @@
     height: 100vh;
     grid-gap: 1rem;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 1fr;
+    grid-template-rows: 1fr;
     padding-bottom: 0.5rem;
     grid-template-areas:
         "header header"
@@ -22,10 +22,8 @@
 
 .cart_box_items {
     display: grid;
-    height: fit-content;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    margin-top: 0.3rem;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
 }
 
 .card_grid {

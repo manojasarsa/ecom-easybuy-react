@@ -1,38 +1,63 @@
 .card_grids {
-      margin: 8rem 8rem 0 8rem;
-      width: 60rem;
-      height: 30rem;
-      background-color: white;
-      position: relative;
-      gap: 5rem;
+    margin: 0 auto;
+    margin-top: 10rem;
+    width: 60rem;
+    height: 30rem;
+    position: relative;
+    gap: 5rem;
 }
 
-.card_grid .card_horizontal_text {
-      gap: 0.5rem;
-      width: 20rem;
-      background-color: var(--grey-color);
+.card_horizontal_text .single_product_text {
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--primary-color)
 }
 
 .single_product_sub {
-      padding: 1rem;
-      font-size: 1rem;
-      color: var(--grey-color)
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    color: var(--grey-color)
 }
 
 .wish_icon {
-      color: var(--secondary-color);
-      font-size: 2rem;
-      position: absolute;
-      left: 19rem;
-      top: 2rem;
-      cursor: pointer;
-}
-
-.single_product_text {
-      font-size: 3rem;
-      padding: 1rem;
+    color: var(--secondary-color);
+    font-size: 2rem;
+    position: absolute;
+    left: 19rem;
+    top: 2rem;
+    cursor: pointer;
 }
 
 .card .btn_icon {
-      border: var(--white-color);
+    border: var(--white-color);
+}
+
+.single_product_price {
+    padding-left: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .card_grids {
+        width: 60rem;
+        height: 30rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .wish_icon {
+        font-size: 3rem;
+        left: 33rem;
+        top: 1rem;
+    }
+
+    .card_horizontal_text .pill {
+        font-size: 2rem;
+    }
+
+    .single_prod .btn {
+        font-size: 2rem;
+    }
 }

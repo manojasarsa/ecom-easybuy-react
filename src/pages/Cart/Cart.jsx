@@ -17,14 +17,14 @@ const Cart = () => {
 
             {cartCounter !== 0
             ?
-            <main className="cart_container flex flex_col">
+            <main className="cart_container flex flex_col flex_align_center">
 
                 {cartCounter === 0 
                     ? <h2 className="cart_title"> MY CART </h2>
                     : <h2 className="cart_title">MY CART({cartCounter})</h2>
                 }
 
-                <div className="cart_box flex flex_justify_between">
+                <div className="cart_box flex flex_justify_between flex_wrap">
                     <div className="cart_box_items">
                         
                         {cartState.cartItems.map((item) => 

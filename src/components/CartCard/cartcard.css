@@ -2,6 +2,11 @@
     padding: 1rem 0;
 }
 
+/* #cart_wrapper {
+    background-color:yellow;
+    margin: 0;
+} */
+
 .card_wrap #horizontal_text_card {
     background-color: var(--line-color);
 }
