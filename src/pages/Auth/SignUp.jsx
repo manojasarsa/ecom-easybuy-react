@@ -3,12 +3,15 @@ import { Header } from "../../components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../contexts";
+import { toastHandler } from "../../utils/toastHandler";
 
 const SignUp = () => {
 
-    const [termsAndCondition, setTermsAndCondition] = useState(true);
-
-    const { signup } = useAuth();
+    const [showHideOne, setShowHideOne] = useState(false);
+    const [showHideTwo, setShowHideTwo] = useState(false);
+    const [error, setError] = useState("");
+    const [errorState, setErrorState] = useState(false);
+    const [termsAndCondition, setTermsAndCondition] = useState(false);
 
     const signUpInputs = {
         firstName:"",
@@ -18,36 +21,44 @@ const SignUp = () => {
         confirmPwd: ""
     }
 
-    const [ formInputs, setFormInputs ] = useState(signUpInputs);
-    const [error, setError] = useState("");
-    const [errorState, setErrorState] = useState(false);
-    const {firstName, lastName, email, password, confirmPwd} = formInputs;
-    const [showHideOne, setShowHideOne] = useState(false);
-    const [showHideTwo, setShowHideTwo] = useState(false);
+    const [formInputs, setFormInputs ] = useState(signUpInputs);
+
+    const { signup } = useAuth();
     
-    const formHandler = (e) => {
-        e.preventDefault();
-        if(firstName && lastName && email && password && confirmPwd ) {
-            if(formInputs.password === formInputs.confirmPwd) {
-                signup({firstName, lastName, email, password, setError, setErrorState});
-            }
-            else {
-                setError("Password does not match!");
-                setErrorState(true);
-                setTimeout(() => {
-                    setErrorState(false);
-                }, 3000);
-            }     
-        } else {
-            setError("All fields are required!");
-            setErrorState(true);
-            setTimeout(() => {
-                setErrorState(false);
-            }, 3000);
-        }
-    }
+    const {firstName, lastName, email, password, confirmPwd} = formInputs;
+
+    const regex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
     const toggleTermsCondition = () => termsAndCondition ? setTermsAndCondition(false) : setTermsAndCondition(true);
+    
+    const submitFormHandler = (e) => {
+
+        e.preventDefault();
+
+        if (firstName && lastName && email && password && confirmPwd && termsAndCondition) {
+
+            if (password.length < 8) {
+                setError("Password must be at least 8 characters");
+                
+            } else if (!regex.test(password)) {         // test() search a match bw regex & pwd
+                setError("Required 1 Uppercase, 1 Lowercase letter, 1 Special character, and 1 number");
+
+            } else {
+                if(formInputs.password === formInputs.confirmPwd) {
+                    signup({firstName, lastName, email, password, setError, setErrorState});
+                    setError("Account created!");
+                    toastHandler(setErrorState);
+                }
+                else {
+                    setError("Password does not match!");
+                } 
+            }  
+            toastHandler(setErrorState);   
+        } else {
+            setError("All fields are required!");
+            toastHandler(setErrorState); 
+        }
+    }
 
     return (
         <>
@@ -132,19 +143,36 @@ const SignUp = () => {
                         <p className="checkbox_notify">I accept all Terms & Conditions</p>
                     </div>
 
-                    <button onClick={(e) => formHandler(e)} disabled={termsAndCondition} className="btn btn_secondary">Create New Account</button>
+                    <button 
+                        onClick={(e) => submitFormHandler(e)} 
+                        className="btn btn_secondary"
+                    >
+                        Create New Account
+                    </button>
 
-                    <p className="input_subheading"><Link id="input_subheading" to="/login">Already have an account {">"} </Link></p>
+                    <p 
+                        className="input_subheading">
+                        <Link 
+                            id="input_subheading" 
+                            to="/login">
+                            Already have an account {">"} 
+                        </Link>
+                    </p>
 
                 </form>    
 
-                {errorState && <div class="toast flex flex_justify_center flex_align_center toast_active_leading toast_position">
-                    <span> {error} </span>
-                </div> }
+                {errorState && 
+                    <div 
+                        class="toast flex flex_justify_center flex_align_center toast_active_leading toast_position">
+                        <span> 
+                            {error} 
+                        </span>
+                    </div> 
+                }
 
             </div>
         </>
-    );
-}
+    )
+};
 
 export {SignUp};

@@ -5,6 +5,7 @@
 
 .product_heading {
     column-gap: 0.5rem;
+    margin-top: 1rem;
 }
 
 .product_list {
@@ -15,6 +16,14 @@
     margin-top: 0.3rem;
 }
 
-.rating_options label {
-    font-size: 0.8rem;
+@media (max-width: 600px) {
+    .product_list {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        margin-top: 0;
+    }
+
+    .product_heading {
+        column-gap: 0.5rem;
+        margin-top: 2rem;
+    }
 }

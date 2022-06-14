@@ -11,8 +11,8 @@ const ProfileMenu = () => {
             <div className="profile_options">
                 <ul className="menu flex flex_col flex_justify_center flex_align_start">
                     <div className="flex flex_row flex_justify_around flex_align_center">
-                        {state.isAuth ? <h3>Hello <span className="userName"> {customer} </span> </h3> : <p>New Customer?</p> }
-                        {state.isAuth || <Link className="btn btn_secondary user_select" to="/signup">Sign Up</Link>}
+                        {state.isAuth ? <h3>Hello <span className="userName"> {customer.fname} </span> </h3> : <p>New Customer?</p> }
+                        {state.isAuth || <Link className="btn btn_secondary_outline user_select" to="/signup">SignUp</Link>}
                     </div>
                     <Link className="menu_link" to="/profile">
                         <li className="profile_content user_select">Your Profile</li>
@@ -21,22 +21,16 @@ const ProfileMenu = () => {
                         <li className="profile_content user_select">Order Summary</li>
                     </Link>
                     <Link className="menu_link" to="/">
-                        <li className="profile_content user_select">Apply Coupons</li>
-                    </Link>
-                    <Link className="menu_link" to="/">
                         <li className="profile_content user_select">Checkout</li>
                     </Link>
                     <Link className="menu_link" to="/">
                         <li className="profile_content user_select">Address Management</li>
                     </Link>
-                    <Link className="menu_link" to="/forgotpwd">
-                        <li className="profile_content user_select">Forgot Password</li>
-                    </Link>
-                    <Link className="menu_link" to="/login">
-                        <li className="profile_content user_select">Login</li>
-                    </Link>
-                    {state.isAuth && <Link className="menu_link" to="/logout">
+                    {state.isAuth ? <Link className="menu_link" to="/logout">
                         <li onClick={logout} className="profile_content user_select">Logout</li>
+                    </Link>
+                    : <Link className="menu_link" to="/login">
+                        <li className="profile_content user_select">Login</li>
                     </Link>}
                 </ul>
             </div>

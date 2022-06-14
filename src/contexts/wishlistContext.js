@@ -1,20 +1,9 @@
 import axios from "axios";
 import { createContext, useReducer, useContext, useEffect } from "react";
+import { wishlistReducer } from "../reducer/wishlistReducer";
 import { useAuth } from "./authContext";
 
 const WishlistContext = createContext();
-
-const wishlistReducer = (state, action) => {
-	switch (action.type) {
-	case "SET_WISHLIST":
-		return {
-			...state,
-			wishlistItems: action.payload,
-		};
-		default:
-			return state;
-	}
-};
 
 const WishlistProvider = ({ children }) => {
       

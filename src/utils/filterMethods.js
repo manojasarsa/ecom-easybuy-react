@@ -1,19 +1,19 @@
-export const filterData = (productList, showInventory, fastDelivery) =>
+const filterData = (productList, showInventory, fastDelivery) =>
   productList
     .filter((item) => (showInventory ? true : item.inStock))
     .filter((product) => (fastDelivery ? product.fastDelivery : true));
 
-export const sortData = (productList, sortBy) =>
+const sortData = (productList, sortBy) =>
     sortBy === "LOW_TO_HIGH"
     ? [...productList].sort((a, b) => a.discountedPrice - b.discountedPrice)
     : sortBy === "HIGH_TO_LOW"
     ? [...productList].sort((a, b) => b.discountedPrice - a.discountedPrice)
     : productList;
 
-export const sortRange = (productList, rangeValue) =>
+const sortRange = (productList, rangeValue) =>
     productList.filter((item) => item.price <= rangeValue);
 
-export const sortByCategory = (productList, men, women, boys, girls) => {
+const sortByCategory = (productList, men, women, boys, girls) => {
 
     const filteredCategoryList = [];
 
@@ -39,7 +39,7 @@ export const sortByCategory = (productList, men, women, boys, girls) => {
     return filteredCategoryList;
 }
 
-export const sortRating = (productList, ratings) =>
+const sortRating = (productList, ratings) =>
     ratings === "4 Stars & above"
     ? productList.filter(item => item.rating >= 4)
     : ratings === "3 Stars & above"
@@ -50,7 +50,9 @@ export const sortRating = (productList, ratings) =>
     ? productList.filter(item => item.rating >= 1)
     : productList;
 
-export const searchByName = (listData, searchQuery) =>
+const searchByName = (listData, searchQuery) =>
     listData.filter((product) =>
         product.description.toLowerCase().includes(searchQuery.toLowerCase())
 );
+
+export { filterData, sortData, sortRange, sortByCategory, sortRating, searchByName };

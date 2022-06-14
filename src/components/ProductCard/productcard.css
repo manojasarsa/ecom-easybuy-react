@@ -16,12 +16,28 @@
 }
 
 .card_vertical_info .pill {
-     background-color: var(--line-color);
-     color: var(--primary-color);
-     top: 17.7rem;
-     left: 0;
+    background-color: var(--line-color);
+    color: var(--primary-color);
+    top: 17.7rem;
+    left: 0;
 }
 
 .card_vertical_info .icon_btn {
     border: var(--white-color);
+}
+
+.card_image .card_vertical .product_toast {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 600px) {
+    .card_vertical_info .pill {
+        top: 22rem;
+        left: 0;
+        font-size: 1rem;
+    }
+
+    .wishlist_icon {
+        top: 5.5rem;
+    }
 }

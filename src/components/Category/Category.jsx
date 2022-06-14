@@ -7,7 +7,11 @@ const Category = () => {
     const { dispatch } = useFilter();
 
     return (
-        <nav className="main_nav flex flex_align_center">
+        <nav className="main_nav flex flex_col flex_align_center">
+
+            <h1 className="hero_title">Featured Categories</h1>
+
+        <div className="main_nav flex flex_align_center">
 
             <Link onClick={() => dispatch({ type: "MEN" })}
                 className="nav_item flex flex_col flex_align_center" to="/productlist">Men
@@ -28,6 +32,9 @@ const Category = () => {
                 className="nav_item flex flex_col flex_align_center" to="/productlist">Girls
                 <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17464922/2022/3/10/c6a73cb2-0ba4-4fdd-8fb5-c41d08fcd7b41646917282995PrintedT-shirt1.jpg" alt="Girls" className="img_responsive adjust_img" />
             </Link>
+
+            </div>
+            <h1 className="hero_title">Explore Products</h1>
         </nav>
     );
 }

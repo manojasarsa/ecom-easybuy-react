@@ -1,13 +1,13 @@
-import "./filters.css";
+import "./mobilefilterbar.css";
 import { useFilter } from "../../contexts";
 
-const Filters = () => {
+export const MobileFilterBar = () => {
 
     const { state, dispatch } = useFilter();
     const { men, women, boys, girls } = state.categories;
 
     return (
-        <aside className="filter_container flex flex_col">
+        <aside className="mobile_filter_container flex flex_col">
             <div className="flex flex_row flex_justify_between filter_spaces">
                 <h3 className="filter_headings">FILTERS</h3>
                 <h6 className="filter_clearAll" onClick={() => dispatch({ type: "CLEAR" })} > CLEAR ALL </h6>
@@ -152,7 +152,5 @@ const Filters = () => {
                 </div>
             </div>
         </aside>
-    );
-}
-
-export {Filters};
+    )
+};

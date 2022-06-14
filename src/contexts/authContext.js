@@ -15,7 +15,7 @@ const initialState = {
 const AuthProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(authReducer, initialState);
-    const [customer, setCustomer] = useState("");
+    const [customer, setCustomer] = useState({fname: "", lname: ""});
     const navigate = useNavigate();
 
     const signup = async ({firstName, lastName, email, password, setError, setErrorState}) => {
@@ -31,7 +31,8 @@ const AuthProvider = ({children}) => {
                 
                 const {fName} = response.data.createdUser;
                 const {encodedToken} = response.data;
-                setCustomer(response.data.createdUser.firstName);
+                setCustomer({fname: response.data.createdUser.firstName, 
+                    lname: response.data.createdUser.lastName});
 
                 localStorage.setItem("jwtToken", JSON.stringify({userName: fName, token: encodedToken, isAuth: true}));
                 dispatch({ type: "LOGIN", payload: {userName: fName, token: encodedToken, isAuth: true },});
@@ -51,8 +52,9 @@ const AuthProvider = ({children}) => {
                 password: password
             });
             if(response.status === 200) {
-                const {fName} = response.data.foundUser;
+                const fName = response.data.foundUser;
                 const {encodedToken} = response.data;
+                setCustomer({fname: fName.firstName, lname: fName.lastName});
 
                 localStorage.setItem("jwtToken", JSON.stringify({userName: fName, token: encodedToken, isAuth: true}));
                 dispatch({type: "LOGIN", payload: {userName: fName, token: encodedToken, isAuth: true},});

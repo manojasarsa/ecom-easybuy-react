@@ -3,8 +3,6 @@ import { ProductCard } from "../../components";
 import { useProduct, useFilter } from "../../contexts";
 import { sortData, filterData, sortByCategory, sortRange, sortRating, searchByName} from "../../utils/filterMethods";
 
-
-
 const Products = () => {
     const {products, loader, error} = useProduct();
     const { state } = useFilter();
@@ -16,13 +14,12 @@ const Products = () => {
     const getSortRangeList = sortRange(getCategoryList, state.rangeValue);      
     const getRatingList = sortRating(getSortRangeList, state.rating); 
     const getSearchedItem = searchByName(getRatingList, state.searchQuery);
-    
 
     return (
         <main className="product_container">
             <div className="product_heading flex flex_justify_start flex_align_center">
                 <h3>Showing All Products</h3>
-                <p>(Showing 10 Products)</p>
+                <p>(Showing {getSearchedItem.length} Products)</p>
             </div>
             
             <div className="product_list">

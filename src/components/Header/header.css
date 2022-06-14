@@ -11,6 +11,11 @@
 header .header_logo {
     color: var(--secondary-color);
     font-size: 1.5rem;
+    
+}
+
+.navigation .nav_left {
+    margin-left: 0.4rem;
 }
 
 .nav_center {
@@ -66,4 +71,14 @@ header .nav_right span {
     transform: translate(0, -50%);
     cursor: pointer;
     color: var(--grey-color);
+}
+
+@media (max-width: 600px) {
+    .nav_right .cta_btn {
+        display: none;
+    }
+    .search_icon {
+        left: 80%;
+        color: var(--primary-color);
+    }
 }

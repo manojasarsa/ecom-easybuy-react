@@ -1,104 +1,94 @@
 import axios from "axios";
 import { createContext, useReducer, useEffect, useContext } from "react";
+import { cartReducer } from "../reducer/cartReducer";
 import { useAuth } from "./authContext";
 
 const CartContext = createContext();
 
-const cartReducer = (state, action) => {
-	switch (action.type) {
-	case "SET_CART":
-		return {
-			...state,
-			cartItems: action.payload,
-		};
-		default:
-			return state;
-	}
-};
-
 const CartProvider = ({ children }) => {
-	const [cartState, cartDispatch] = useReducer(cartReducer, {
-		cartItems: [],
-	});
+    const [cartState, cartDispatch] = useReducer(cartReducer, {
+        cartItems: [],
+    });
 
-	const { state: { token } } = useAuth();
+    const { state: { token } } = useAuth();
 
-	useEffect(() => {
-		token
-		? (async () => {
-			try {
-				const response = await axios.get("/api/user/cart", {
-					headers: { authorization: token },
-				});
+    useEffect(() => {
+        token
+            ? (async () => {
+                try {
+                    const response = await axios.get("/api/user/cart", {
+                        headers: { authorization: token },
+                    });
 
-				if (response.status === 200) {
-					cartDispatch({ type: "SET_CART", payload: response.data.cart });
-				}
-				} catch (err) {
-					console.error("error", err);
-				}
-		})()
-		: cartDispatch({ type: "SET_CART", payload: [] });
-	}, [token]);
+                    if (response.status === 200) {
+                        cartDispatch({ type: "SET_CART", payload: response.data.cart });
+                    }
+                } catch (err) {
+                    console.error("error", err);
+                }
+            })()
+            : cartDispatch({ type: "SET_CART", payload: [] });
+    }, [token]);
 
-	const addToCart = async (product) => {
-		try {
-			const response = await axios.post(
-			"/api/user/cart",
-			{
-				product,
-			},
-			{
-				headers: { authorization: token },
-			}
-			);
+    const addToCart = async (product) => {
+        try {
+            const response = await axios.post("/api/user/cart",
+                {
+                    product,
+                },
+                {
+                    headers: { authorization: token },
+                }
+            );
 
-			if (response.status === 201) {
-				cartDispatch({ type: "SET_CART", payload: response.data.cart });
-			}
-		} catch (err) {
-			console.error("error occurred", err.message);
-		}
-	};
+            if (response.status === 201) {
+                cartDispatch({ type: "SET_CART", payload: response.data.cart });
+            }
+        } catch (err) {
+            console.error("error occurred", err.response.data);
+        }
+    };
 
-	const removeFromCart = async (productId) => {
-	  	try {
-			const response = await axios.delete(`/api/user/cart/${productId}` ,
-			{
-				headers: { authorization: token }
-			});
+    const removeFromCart = async (productId) => {
+        try {
+            const response = await axios.delete(`/api/user/cart/${productId}`,
+                {
+                    headers: { authorization: token }
+                });
 
-			if(response.status === 200 ) {
-				cartDispatch({type: "SET_CART", payload: response.data.cart})
-			}
-	  	} catch(err) {
-		  	console.error("error occured", err.message);
-	  	}
-  	}
-	  
-	const updateQty = async (typeValue, productId) => {
-		try {
-		  const response = await axios.post(`/api/user/cart/${productId}` ,
-		  {
-			  action: { type: typeValue }
-		  },
-		  {
-			  headers: { authorization: token }
-		  });
+            if (response.status === 200) {
+                cartDispatch({ type: "SET_CART", payload: response.data.cart })
+            }
+        } catch (err) {
+            console.error("error occured", err.message);
+        }
+    }
 
-		  if(response.status === 200 ) {
-			  cartDispatch({type: "SET_CART", payload: response.data.cart})
-		  }
-		} catch(err) {
-			console.error("error occured", err.message);
-		}
-	}
+    const updateQty = async (typeValue, productId, setIsFetching) => {
+        try {
+            setIsFetching((prev) => !prev);
+            const response = await axios.post(`/api/user/cart/${productId}`,
+                {
+                    action: { type: typeValue }
+                },
+                {
+                    headers: { authorization: token }
+                });
 
-	return (
-	<CartContext.Provider value={{ cartState, cartDispatch, addToCart, removeFromCart, updateQty }}>
-	  {children}
-	</CartContext.Provider>
-  );
+            if (response.status === 200) {
+                cartDispatch({ type: "SET_CART", payload: response.data.cart });
+                setIsFetching((prev) => !prev);
+            }
+        } catch (err) {
+            console.error("error occured", err.message);
+        }
+    }
+
+    return (
+        <CartContext.Provider value={{ cartState, cartDispatch, addToCart, removeFromCart, updateQty }}>
+            {children}
+        </CartContext.Provider>
+    );
 };
 
 const useCart = () => useContext(CartContext);

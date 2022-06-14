@@ -1,3 +1,16 @@
+.card_grid {
+    padding: 1rem 0;
+}
+
+/* #cart_wrapper {
+    background-color:yellow;
+    margin: 0;
+} */
+
+.card_wrap #horizontal_text_card {
+    background-color: var(--line-color);
+}
+
 .card_horizontal_text .overflow_desc {
     font-size: .75rem;
     overflow: hidden;
@@ -7,8 +20,8 @@
 }
 
 .cart_qty {
-    gap: 1rem;
-    margin: 1rem;
+    padding: 1rem;
+    gap: 1rem;    
 }
 
 .qty_minus , .qty_add{
@@ -33,4 +46,8 @@
 
 .qty_name {
     font-size: 0.8rem;
+}
+
+.card_wrap #horizontal_text_card .toasty {
+    background-color: var(--secondary-color);
 }
