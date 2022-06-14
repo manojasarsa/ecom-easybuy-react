@@ -135,7 +135,7 @@ const SignUp = () => {
 
                     <div className="inp_checkbox flex flex_justify_start flex_align_center">
                         <input 
-                        onClick={toggleTermsCondition}
+                            onClick={toggleTermsCondition}
                             type="checkbox" 
                             className="input_checkbox" 
                             required={true}

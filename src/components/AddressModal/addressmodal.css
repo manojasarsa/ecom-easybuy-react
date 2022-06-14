@@ -1,0 +1,29 @@
+.address_modal_wrapper {
+    width: 20rem;
+    height: 25rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--line-color);
+}
+
+.address_form {
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.address_input {
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid var(--line-color);
+    border-radius: 5px;
+}
+
+.address_input:focus {
+    outline: var(--grey-color);
+}
+
+.red_star {
+    color: var(--alert-color);
+}

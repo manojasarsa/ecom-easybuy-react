@@ -16,28 +16,27 @@ const UserOrders = () => {
             <div className="user_profile_main flex flex_col">
 
                 <div className="details_box">
-                    <h2>Account</h2>
-                    <h4 className="lines">{fname} {lname}</h4>
+                    <h2 className="account_head">User Profile</h2>
 
-                    <div className="profile_container flex flex_row flex_justify_center flex_align_center">
+                    <div className="profile_container flex">
 
                         <div className="quick_links">
 
                             <ul className="menu flex flex_col flex_justify_center flex_align_start">
                                 <Link className="menu_link" to="/user/profile">
-                                    <li className="profile_option">Profile</li>
+                                    <li className="profile_navigate">Profile</li>
                                 </Link>
                                 <Link className="menu_link" to="/user/address">
-                                    <li className="profile_option">Address Management</li>
+                                    <li className="profile_navigate">Address Management</li>
                                 </Link>
                                 <Link className="menu_link" to="/user/orders">
-                                    <li className="profile_option">Order Summary</li>
+                                    <li className="profile_navigate">Order Summary</li>
                                 </Link>
                             </ul>
 
                         </div>
 
-                        {/* <div className="profile_edit flex flex_col flex_justify_center flex_align_center">
+                        <div className="profile_edit flex flex_col">
 
                             <h2 className="lines">Profile Details</h2>
 
@@ -63,7 +62,7 @@ const UserOrders = () => {
                                     </button>
                                 </li>
                             </ul>
-                        </div> */}
+                        </div>
                         
                     </div>
                 </div>
