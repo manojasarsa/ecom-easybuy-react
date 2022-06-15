@@ -36,7 +36,9 @@ const UserOrders = () => {
 
                         </div>
 
-                        <div className="profile_edit flex flex_col">
+                        {/* TODO */}
+
+                        {/* <div className="profile_edit flex flex_col">
 
                             <h2 className="lines">Profile Details</h2>
 
@@ -62,7 +64,7 @@ const UserOrders = () => {
                                     </button>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                         
                     </div>
                 </div>
