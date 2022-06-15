@@ -1,11 +1,12 @@
 .address_modal_wrapper {
     width: 20rem;
-    height: 25rem;
-    position: absolute;
+    height: 38rem;
+    position: fixed;
     left: 50%;
-    top: 50%;
+    top: 55%;
     transform: translate(-50%, -50%);
     background-color: var(--line-color);
+    z-index: 99;
 }
 
 .address_form {
@@ -26,4 +27,13 @@
 
 .red_star {
     color: var(--alert-color);
+}
+
+.modal_btns_wrapper {
+    width: 100%;
+    padding: 0 3rem;
+}
+
+.modal_btn {
+    padding: 0.2rem 0.5rem;
 }

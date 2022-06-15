@@ -34,6 +34,7 @@
     gap: 1rem;
     padding: 1rem 0;
     border: 1px solid var(--shadow-color);
+    background-color: var(--shadow-color);
 }
 
 .edit_list:hover { 
@@ -89,4 +90,15 @@
 
 .profile_navigate:hover {
     font-weight: 400;
+}
+
+.address_btns {
+    gap: 2rem;
+    width: 100%;
+    justify-content: end;
+    padding-right: 2rem;
+}
+
+.address_btns .edit_icons {
+    cursor: pointer;
 }

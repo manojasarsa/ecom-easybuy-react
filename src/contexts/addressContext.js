@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { addressReducer } from "../reducer/addressReducer";
 import { useAuth } from "./authContext";
 
 const AddressContext = createContext();
@@ -10,44 +11,21 @@ const initialState = {
     error: "",
 }
 
-const addressReducer = (state, action) => {
-    switch(action.type) {
-        case "INITIALIZE": 
-            return { ...state,
-                isLoading: true,
-                error: ""
-            };
-
-        case "SET_ADDRESS":
-            return { ...state,
-                isLoading: false,
-                address: action.payload
-            };
-
-        case "SET_ERROR":
-            return { ...state,
-                isLoading: false, 
-                error: action.payload
-            };
-
-        default: 
-            return state;
-    }
-};
-
-const AddressProvider = ({children}) => {
+const AddressProvider = ({ children }) => {
 
     const [addressState, addressDispatch] = useReducer(addressReducer, initialState);
 
-    const { state: {token} } = useAuth();
+    const { state: { token } } = useAuth();
 
     useEffect(() => {
         (async () => {
             if (token) {
                 try {
                     addressDispatch({ type: "INITIALIZE" });
-                    const response = await getAllAddress(token);
-                    
+                    const response = await axios.get("/api/user/address",
+                        { headers: { authorization: token } },
+                    );
+
                     if (response.status === 200) {
                         addressDispatch({ type: "SET_ADDRESS", payload: response.data.address });
                     }
@@ -62,42 +40,52 @@ const AddressProvider = ({children}) => {
 
     const addNewAddress = async (address) => {
         try {
-          addressDispatch({ type: "INITIALIZE" });
-          const { status, data } = await addAddress(address, token);
 
-          if (status === 201) {
-            addressDispatch({ type: "SET_ADDRESS", payload: data.address });
-          }
+            addressDispatch({ type: "INITIALIZE" });
+            const { status, data } = await axios.post("/api/user/address",
+                { address },
+                { headers: { authorization: token } },
+            );
+
+            if (status === 201) {
+                addressDispatch({ type: "SET_ADDRESS", payload: data.address });
+            }
         } catch (err) {
-          addressDispatch({ type: "SET_ERROR", error: err.response.data[0].errors });
+            addressDispatch({ type: "SET_ERROR", error: err.response.data[0].errors });
         }
-      };
-    
-      const editAddress = async (address) => {
+    };
+
+    const editAddress = async (address) => {
+        console.log("address in edit ", address);
         try {
-          addressDispatch({ type: "INITIALIZE" });
-          const { status, data } = await updateAddress(address, token);
-    
-          if (status === 200) {
-            addressDispatch({ type: "SET_ADDRESS", payload: data.address });
-          }
+            addressDispatch({ type: "INITIALIZE" });
+            const { status, data } = await axios.post(`/api/user/address/${address._id}`,
+                { address },
+                { headers: { authorization: token } },
+            );
+            console.log("in edit", data)
+            if (status === 200) {
+                addressDispatch({ type: "SET_ADDRESS", payload: data.address });
+            }
         } catch (err) {
-          addressDispatch({ type: "SET_ERROR", error: err.response.data[0].errors });
+            addressDispatch({ type: "SET_ERROR", error: err.response.data[0].errors });
         }
-      };
-    
-      const deleteAddress = async (address) => {
+    };
+
+    const deleteAddress = async (address) => {
         try {
-          addressDispatch({ type: "INITIALIZE" });
-          const { status, data } = await removeAddress(address, token);
-    
-          if (status === 200) {
-            addressDispatch({ type: "SET_ADDRESS", payload: data.address });
-          }
+            addressDispatch({ type: "INITIALIZE" });
+            const { status, data } = await axios.delete(`/api/user/address/${address._id}`,
+                { headers: { authorization: token } },
+            );
+
+            if (status === 200) {
+                addressDispatch({ type: "SET_ADDRESS", payload: data.address });
+            }
         } catch (err) {
-          addressDispatch({ type: "SET_ERROR", error: err.response.data[0].errors });
+            addressDispatch({ type: "SET_ERROR", error: err.response.data[0].errors });
         }
-      };
+    };
 
     return (
         <AddressContext.Provider value={{ addressState, addressDispatch, addNewAddress, editAddress, deleteAddress }}>

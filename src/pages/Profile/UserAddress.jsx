@@ -1,30 +1,22 @@
 import "./profile.css";
-import { Header } from "../../components";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts";
+import { AddressCard, AddressModal, Header } from "../../components";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { AddressModal } from "../../components/AddressModal/AddressModal";
+import { useAddress } from "../../contexts/addressContext";
 
 const UserAddress = () => {
 
-    const [address, setAddress] = useState({
-        name: "",
-        fullAddress: "",
-        pincode: "",
-        mobileNo: ""
-    });
-
     const [isAddressModal, setIsAddressModal] = useState(false);
 
-    const { name, fullAddress, pincode, mobileNo } = address;
+    const { addressState } = useAddress();
 
-    const { customer: { fname, lname }, logout } = useAuth();
-
-    const navigate = useNavigate();
+    const { address } = addressState;
 
     return (
         <div className="main_profile_wrapper flex">
             <Header />
+
+            {isAddressModal && <AddressModal isAddressModal={isAddressModal} setIsAddressModal={setIsAddressModal} />}
 
             <div className="user_profile_main flex flex_col">
 
@@ -55,36 +47,21 @@ const UserAddress = () => {
 
                             <button
                                 className="btn btn_secondary_outline"
-                                onClick={() => setIsAddressModal((prev) => !prev)}>
+                                onClick={() => setIsAddressModal(true)}>
                                 + Add New Address
                             </button>
                             
-                            <ul className="edit_list flex flex_col flex_justify_center flex_align_start">
+                            {address.map((addr) =>
+                                <AddressCard key={addr._id} address={addr} />
+                            )}
 
-                                <li className="profile_details flex flex_row ">
-                                    <span className="title_text">{name}</span>
-                                </li>
-
-                                <li className="profile_details flex flex_row flex_justify_between">
-                                    <span className="title_text">{fullAddress}</span>
-                                </li>
-
-                                <li className="profile_details flex flex_row flex_justify_between">
-                                    <span className="title_text">{pincode}</span>
-                                </li>
-
-                                <li className="profile_details flex flex_row flex_justify_between">
-                                    <span className="title_text">{mobileNo}</span>
-                                </li>
-                                {isAddressModal && <AddressModal address={address} setAddress={setAddress} setIsAddressModal={setIsAddressModal} />}
-                            </ul>
+                            {!address.length && <h4>No Address Available</h4>}
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+};
 
 export { UserAddress };
