@@ -12,7 +12,7 @@
     margin: 0 auto;
     margin-top: 2rem;
     border: 1px solid red;
-    height: 100vh;
+    height: fit-content;
     width: 80%;
 }
 
@@ -24,6 +24,16 @@
 .address_wrapper {
     padding: 2rem;
     /* background: yellow; */
+}
+
+.input_address_btn {
+    border: 1px solid red;
+    padding: 1rem;
+    margin: 2rem 0;
+}
+
+.address_label {
+    padding: 1rem;
 }
 
 .items_section {
