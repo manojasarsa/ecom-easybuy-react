@@ -1,13 +1,19 @@
 import "./checkout.css";
-import { AddressCard, AddressModal, Header } from "../../components";
+import { AddressCard, AddressModal, Header, PriceBox } from "../../components";
 import { useAddress } from "../../contexts/addressContext";
 import { useState } from "react";
+import { useCart } from "../../contexts";
 
 const Checkout = () => {
 
     const [isAddressModal, setIsAddressModal] = useState(false);
-
     const { addressState: { address } } = useAddress();
+    const { cartState } = useCart();
+    const [deliveryAddressId, setDeliveryAddressId] = useState(address[0]?._id);
+
+    const deliveryAddress = address.find(addr => addr._id === deliveryAddressId);
+
+    const cartCounter = cartState.cartItems.length;
 
     return (
         <div>
@@ -27,15 +33,19 @@ const Checkout = () => {
                             {address.map(addr =>
 
                                 <div className="input_address_btn">
-                                    <input type="radio" id="addr._id" name="address" value="addr" />
-                                    <label className="flex flex_col address_label" for="addr">
-                                        <span>{addr.name}</span>
+                                    <input 
+                                        type="radio" 
+                                        checked={deliveryAddressId === addr._id}
+                                        onChange={() => setDeliveryAddressId(addr._id)}
+                                    />
+                                    <address className="flex flex_col address_label" for="addr">
+                                        <h4>{addr.name}</h4>
                                         <span>{addr.street}</span>
                                         <span>{addr.city}</span>
                                         <span>{addr.country}</span>
                                         <span>{addr.zipCode}</span>
                                         <span>{addr.mobile}</span>
-                                    </label>
+                                    </address>
                                 </div>
 
                             )}
@@ -53,7 +63,11 @@ const Checkout = () => {
                     <section className="items_section">
                         <h3 className="checkout_heading">Items Overview</h3>
                         <div className="">
-
+                            {cartCounter !== 0 &&
+                                <PriceBox
+                                    deliveryAddress={deliveryAddress}
+                                />
+                            }
                         </div>
                     </section>
 

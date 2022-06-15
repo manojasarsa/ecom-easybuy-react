@@ -1,25 +1,47 @@
 import "./pricebox.css";
 import { useCart } from "../../contexts";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const PriceBox = (totalPrice) => {
+const PriceBox = ({ deliveryAddress }) => {
 
     const { cartState } = useCart();
     const cartCounter = cartState.cartItems.length;
-    const finalAmount = totalPrice.tPrice - totalPrice.dPrice + 99;
-    const savedAmount = totalPrice.tPrice - finalAmount;
+    const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+    const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
+
+    const finalAmount = totalPrice - totalDiscountedPrice + 99;
+    const savedAmount = totalPrice - finalAmount;
+
+    const { cartItems } = cartState;
 
     const navigate = useNavigate();
-    
+
+    const { pathname } = useLocation();
+
+    console.log("delivery add - ", deliveryAddress)
+
     return (
         <div className="cart_price_box flex flex_col">
 
-            <h4>PRICE DETAILS</h4>
+            <div className="purchased_items_wrapper flex flex_col">
+                <h4 className="price_heading">PURCHASED ITEMS</h4>
 
-            <hr className="line_space" />
+                {cartItems.map(item =>
+                    <div className="price_menu flex flex flex_justify_between">
+                        <span
+                            key={item._id}
+                            className="price_name">
+                            {item.title}
+                        </span>
+                        <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(item.price)} x {item.qty} </span>
+                    </div>
+                )}
+            </div>
+
+            <h4 className="price_heading">PRICE DETAILS</h4>
 
             <div className="price_menu flex flex_justify_between">
-                <span className="price_name">Price ( {cartCounter} {cartCounter ===1 ? "item" : "items"})</span>
+                <span className="price_name">Price ( {cartCounter} {cartCounter === 1 ? "item" : "items"})</span>
                 <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(totalPrice.tPrice)}</span>
             </div>
             <div className="price_menu flex flex_justify_between">
@@ -42,13 +64,33 @@ const PriceBox = (totalPrice) => {
 
             <h4 className="line_space total_amount">You will save ₹ {new Intl.NumberFormat("en-IN").format(savedAmount)} on this order</h4>
 
-            <button className="btn btn_secondary"
-                onClick={() => navigate("/checkout")}>
-                PLACE ORDER
-            </button>
+            {pathname === "/checkout" && deliveryAddress && (
+                <div className="delivery_addr_wrapper">
+                    <h3>DELIVERY ADDRESS</h3>
+                    <address className="address_box flex flex_col">
+                        <h4>{deliveryAddress.name}</h4>
+                        <span>{deliveryAddress.street}</span>
+                        <span>{deliveryAddress.city}</span>
+                        <span>{deliveryAddress.country}</span>
+                        <span>{deliveryAddress.zipCode}</span>
+                        <span>{deliveryAddress.mobile}</span>
+                    </address>
+                </div>
+                )}
 
+            {pathname === "/cart" ? (
+                <button className="btn btn_secondary"
+                    onClick={() => navigate("/checkout")}>
+                    PLACE ORDER
+                </button>
+            ) : (
+                <button className="btn btn_secondary"
+                >
+                    Proceed to Pay
+                </button>
+            )}
         </div>
     );
 }
 
-export {PriceBox};
+export { PriceBox };
