@@ -1,0 +1,36 @@
+.checkout_wrapper {
+    margin-top: 7rem;
+}
+
+.checkout_header {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.section_wrapper {
+    margin: 0 auto;
+    margin-top: 2rem;
+    border: 1px solid red;
+    height: 100vh;
+    width: 80%;
+}
+
+.address_section {
+    width: 80%;
+    background: var(--line-color);
+}
+
+.address_wrapper {
+    padding: 2rem;
+    /* background: yellow; */
+}
+
+.items_section {
+    width: 100%;
+    background: var(--shadow-color);
+}
+
+.checkout_heading {
+    text-align: center;
+}

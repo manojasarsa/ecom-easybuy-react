@@ -1,5 +1,6 @@
 import "./pricebox.css";
 import { useCart } from "../../contexts";
+import { useNavigate } from "react-router-dom";
 
 const PriceBox = (totalPrice) => {
 
@@ -7,6 +8,8 @@ const PriceBox = (totalPrice) => {
     const cartCounter = cartState.cartItems.length;
     const finalAmount = totalPrice.tPrice - totalPrice.dPrice + 99;
     const savedAmount = totalPrice.tPrice - finalAmount;
+
+    const navigate = useNavigate();
     
     return (
         <div className="cart_price_box flex flex_col">
@@ -39,7 +42,10 @@ const PriceBox = (totalPrice) => {
 
             <h4 className="line_space total_amount">You will save ₹ {new Intl.NumberFormat("en-IN").format(savedAmount)} on this order</h4>
 
-            <button className="btn btn_secondary">PLACE ORDER</button>
+            <button className="btn btn_secondary"
+                onClick={() => navigate("/checkout")}>
+                PLACE ORDER
+            </button>
 
         </div>
     );

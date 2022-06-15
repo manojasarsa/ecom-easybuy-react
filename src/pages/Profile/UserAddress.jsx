@@ -8,9 +8,7 @@ const UserAddress = () => {
 
     const [isAddressModal, setIsAddressModal] = useState(false);
 
-    const { addressState } = useAddress();
-
-    const { address } = addressState;
+    const { addressState: { address } } = useAddress();
 
     return (
         <div className="main_profile_wrapper flex">
