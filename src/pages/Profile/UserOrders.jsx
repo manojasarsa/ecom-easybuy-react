@@ -2,10 +2,13 @@ import "./profile.css";
 import { Header } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts";
+import { useOrder } from "../../contexts/orderContext";
 
 const UserOrders = () => {
 
     const { customer: {fname, lname}, logout } = useAuth();
+
+    const { orderState: { orders } } = useOrder();
 
     const navigate = useNavigate();
 
@@ -36,35 +39,17 @@ const UserOrders = () => {
 
                         </div>
 
-                        {/* TODO */}
+                        <div className="profile_edit flex flex_col">
 
-                        {/* <div className="profile_edit flex flex_col">
+                            <h2 className="lines">My Orders</h2>
 
-                            <h2 className="lines">Profile Details</h2>
+                            {!orders.length && <h4>No Orders Available!</h4>}
 
-                            <ul className="edit_list flex flex_col flex_justify_center flex_align_start">
-
-                                <li className="profile_details flex flex_row ">
-                                    <span className="profile_title">Name -</span>
-                                    <span className="title_text">{fname} {lname}</span>
-                                </li>
-                                
-                                <li className="profile_details flex flex_row flex_justify_between">
-                                    <span className="profile_title">Email ID -</span>
-                                    <span className="title_text">manojasarsa@xyz.com</span>
-                                </li>
-                                <li className="profile_details profile_logout_btn flex flex_justify_center">
-                                    <button 
-                                        className="btn btn_secondary_outline"
-                                        onClick={() => {
-                                            logout();
-                                            navigate("/logout");
-                                        }}>
-                                        Logout
-                                    </button>
-                                </li>
-                            </ul>
-                        </div> */}
+                            {orders.map((order) =>
+                                <OrderCard key={order._id} order={order} />
+                            )}
+                            
+                        </div>
                         
                     </div>
                 </div>
