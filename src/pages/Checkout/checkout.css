@@ -45,3 +45,10 @@
 .checkout_heading {
     text-align: center;
 }
+
+.empty_msg {
+    padding: 2rem;
+    text-align: center;
+    color: var(--grey-color);
+    margin-top: 3rem;
+}

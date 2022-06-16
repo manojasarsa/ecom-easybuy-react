@@ -1,17 +1,12 @@
 import "./profile.css";
 import { Header } from "../../components";
 import { Link } from "react-router-dom";
-// import { useAuth } from "../../contexts";
 import { useOrder } from "../../contexts/orderContext";
 import { OrderCard } from "../../components/OrderCard/OrderCard";
 
 const UserOrders = () => {
 
-    // const { customer: {fname, lname}, logout } = useAuth();
-
     const { orderState: { orders } } = useOrder();
-
-    // const navigate = useNavigate();
 
     return (
         <div className="main_profile_wrapper flex">

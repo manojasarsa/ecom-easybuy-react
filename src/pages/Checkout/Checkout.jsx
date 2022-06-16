@@ -1,5 +1,5 @@
 import "./checkout.css";
-import { AddressCard, AddressModal, Header, PriceBox } from "../../components";
+import { AddressModal, Header, PriceBox } from "../../components";
 import { useAddress } from "../../contexts/addressContext";
 import { useState } from "react";
 import { useCart } from "../../contexts";
@@ -68,6 +68,8 @@ const Checkout = () => {
                                     deliveryAddress={deliveryAddress}
                                 />
                             }
+
+                            {!cartCounter && <h3 className="empty_msg">No items in cart. Please, add items first.</h3>}
                         </div>
                     </section>
 

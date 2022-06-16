@@ -20,7 +20,7 @@ const ProfileMenu = () => {
                     <Link className="menu_link" to="/user/orders">
                         <li className="profile_content user_select">Order Summary</li>
                     </Link>
-                    <Link className="menu_link" to="/">
+                    <Link className="menu_link" to="/checkout">
                         <li className="profile_content user_select">Checkout</li>
                     </Link>
                     <Link className="menu_link" to="/user/address">

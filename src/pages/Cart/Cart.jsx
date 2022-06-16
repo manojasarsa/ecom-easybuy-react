@@ -7,8 +7,6 @@ const Cart = () => {
 
     const { cartState } = useCart();
     const cartCounter = cartState.cartItems.length;
-    // const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
-    // const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
 
     return (
 
