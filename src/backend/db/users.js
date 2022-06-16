@@ -15,6 +15,7 @@ export const users = [
     password: "Manoj@8947",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    orders: [],
     address: [
         {
             _id: uuid(),
