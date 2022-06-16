@@ -1,10 +1,14 @@
 import "./pricebox.css";
 import { useCart } from "../../contexts";
 import { useLocation, useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import dayjs from "dayjs";
+import { useOrder } from "../../contexts/orderContext";
 
 const PriceBox = ({ deliveryAddress }) => {
 
-    const { cartState } = useCart();
+    const { cartState, clearCart } = useCart();
+    const { addOrder } = useOrder();
     const cartCounter = cartState.cartItems.length;
     const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
     const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
@@ -37,33 +41,48 @@ const PriceBox = ({ deliveryAddress }) => {
         })
     };
 
-    const displayRazorpay = async () => {  
-        
+    const displayRazorpay = async () => {
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-        console.log("inside", res);
+    
         if (!res) {
-            console.log("failed")
-            alert("You're offline... Failed to load Razorpay SDK");
-            return;
+        //   toast.error("Something went wrong.");
+          return;
         }
-
-        // listen to our payment
-
         const options = {
-            key: "rzp_test_A2px3Hdb1gTWCc",
-            currency: "INR",
-            amount: finalAmount * 100,
+          key: "rzp_test_GtfIaWmsadE9fA",
+          amount: finalAmount * 100,
+          currency: "INR",
+          name: "",
+          description: "Thanks for shopping with us!",
+          image: "/assets/favicon.ico",
+          handler: function (response) {
+            const paymentId = response.razorpay_payment_id;
+            const orderId = uuid();
+    
+            const newOrders = {
+              paymentId,
+              orderId,
+              amountPaid: finalAmount,
+              orderedProducts: [...cartItems],
+              deliveryAddress: deliveryAddress,
+              orderedAt: dayjs().format("DD/MM/YYYY hh:mmA"),
+            };
+            addOrder(newOrders);
+            clearCart();
+            navigate("/user/orders");
+          },
+          theme: {
+            color: "hsl(204, 83%, 56%)",
+          },
+          prefill: {
             name: "Manoj Asarsa",
-            description: "Thanks for shopping with EASYBUY",
-            // image: "",
-            handler: function (response) {
-                alert(response.razorpay_payment_id);
-                alert("Payment Successfull");
-            }
-
-            // if (response.razorpay_payment_id) {} 
+            email: "manojasarsa@example.com",
+            contact: "9989545852",
+          },
         };
-    }
+        const paymentObject = new window.Razorpay(options);
+        paymentObject.open();
+      };
 
     return (
         <div className="cart_price_box flex flex_col">

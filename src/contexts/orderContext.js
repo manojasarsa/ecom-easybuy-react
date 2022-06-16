@@ -38,7 +38,7 @@ const OrderProvider = ({ children }) => {
         })();
     }, [token]);
 
-    const addOrder = async (order, token) => {
+    const addOrder = async (order) => {
         try {
             orderDispatch({ type: "INITIALIZE" });
             const res = await axios.post("/api/user/orders", 

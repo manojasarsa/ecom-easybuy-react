@@ -1,0 +1,9 @@
+.order_container {
+
+}
+
+.order_heading {
+    color: var(--success-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
