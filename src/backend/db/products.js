@@ -20,7 +20,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Roadster",
+    title: "Roadster Round T-shirt",
     description: "Women Dusty Pink Cotton Printed Detail Round Neck T-shirt",
     image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13601542/2021/4/28/92ac59d7-1c94-4fa9-8a84-bfaacc3c414e1619586566085TshirtsMetronautMenTshirtsRoadsterMenTshirtsRoadsterMenTopsR1.jpg",
     price: 1900,
@@ -32,7 +32,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "H&M",
+    title: "H&M Jersey",
     description: "Boys Navy Blue Cotton Jersey T-shirt",
     image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17268416/2022/2/24/82b027d2-d27d-4dd7-ba7f-a462fd2f200e1645695087696CottonjerseyT-shirt1.jpg",
     price: 1299,
@@ -44,7 +44,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Puma",
+    title: "Puma 2-pack T-shirt",
     description: "Boys Beige & Brown 2-pack",
     image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17124260/2022/2/10/5cad0fa3-8223-4707-bb1f-eb72b1360ad716445016680612-packjerseytops1.jpg",
     price: 1200,
@@ -56,7 +56,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Pepe Jeans",
+    title: "Pepe Jeans T-shirt",
     description: "Girls Pink Printed T-shirt",
     image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17464922/2022/3/10/c6a73cb2-0ba4-4fdd-8fb5-c41d08fcd7b41646917282995PrintedT-shirt1.jpg",
     price: 5000,
@@ -68,7 +68,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "ADIDAS",
+    title: "ADIDAS Jersey",
     description: "Men Red & White Printed Football Manchester United 21/22 MUFC A JSY Jersey T-shirt",
     image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/14790112/2021/8/9/e6400d90-3bcb-4e3c-aaa4-a581a88cc2b11628494509668-ADIDAS-Men-Tshirts-6861628494509162-1.jpg",
     price: 6550,
@@ -80,7 +80,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Versace",
+    title: "Versace Sweatshirt",
     description: "Men Green & Orange Colourblocked Hooded Sweatshirt",
     image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/15118956/2021/10/6/31ed72ac-7d3a-4c88-8084-837c90c44a111633503992669-Puma-Men-Sweatshirts-7221633503992197-1.jpg",
     price: 2999,

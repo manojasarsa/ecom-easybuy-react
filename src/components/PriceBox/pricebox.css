@@ -8,8 +8,13 @@
     padding: 2.4rem 1rem; 
 }
 
+.price_heading {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--grey-color);
+}
+
 .price_menu {
-    column-gap: 1rem;
+    column-gap: 2rem;
     padding-right: 1rem;
 }
 
@@ -21,6 +26,8 @@
 .price_amount {
     font-size: 0.9rem;
     margin: 0.5rem 0;
+    color: var(--grey-color);
+    font-weight: 600;
 }
 
 .line_space {
@@ -30,4 +37,18 @@
 .total_amount {
     color: var(--success-color);
     margin: 0.5rem 0;
+}
+
+.purchased_items_wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.delivery_addr_wrapper {
+    margin-top: 1rem;
+    padding: 2rem 0;
+}
+
+.address_box {
+    padding: 2rem 0;
+    gap: 0.2rem;
 }

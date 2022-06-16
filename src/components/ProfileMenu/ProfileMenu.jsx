@@ -14,16 +14,16 @@ const ProfileMenu = () => {
                         {state.isAuth ? <h3>Hello <span className="userName"> {customer.fname} </span> </h3> : <p>New Customer?</p> }
                         {state.isAuth || <Link className="btn btn_secondary_outline user_select" to="/signup">SignUp</Link>}
                     </div>
-                    <Link className="menu_link" to="/profile">
+                    <Link className="menu_link" to="/user/profile">
                         <li className="profile_content user_select">Your Profile</li>
                     </Link>
-                    <Link className="menu_link" to="/">
+                    <Link className="menu_link" to="/user/orders">
                         <li className="profile_content user_select">Order Summary</li>
                     </Link>
-                    <Link className="menu_link" to="/">
+                    <Link className="menu_link" to="/checkout">
                         <li className="profile_content user_select">Checkout</li>
                     </Link>
-                    <Link className="menu_link" to="/">
+                    <Link className="menu_link" to="/user/address">
                         <li className="profile_content user_select">Address Management</li>
                     </Link>
                     {state.isAuth ? <Link className="menu_link" to="/logout">

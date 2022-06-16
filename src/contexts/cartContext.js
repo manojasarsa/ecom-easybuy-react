@@ -84,8 +84,23 @@ const CartProvider = ({ children }) => {
         }
     }
 
+    const clearCart = async () => {
+        try {
+            const { status, data } = await axios.post("/api/user/cart/clearCart", 
+                {},
+                { headers: { authorization: token } }, 
+            );
+
+            if (status === 201) {
+                cartDispatch({ type: "SET_CART", payload: data.cart });
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
-        <CartContext.Provider value={{ cartState, cartDispatch, addToCart, removeFromCart, updateQty }}>
+        <CartContext.Provider value={{ cartState, cartDispatch, addToCart, removeFromCart, updateQty, clearCart }}>
             {children}
         </CartContext.Provider>
     );

@@ -15,5 +15,17 @@ export const users = [
     password: "Manoj@8947",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    orders: [],
+    address: [
+        {
+            _id: uuid(),
+            name: "Manoj Asarsa",
+            street: "256 / Rose View Colony, Mount Abu",
+            state: "Rajasthan",
+            country: "India",
+            zipCode: "307501",
+            mobile: "9897554001",
+        },
+    ]
   },
 ];

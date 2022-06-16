@@ -1,4 +1,5 @@
 .user_profile_main {
+    width: 40rem;
     margin: 0 auto;
     margin-top: 10rem;    
     border: 1px solid var(--line-color);
@@ -11,9 +12,6 @@
 .profile_container {
     margin: 0 auto;
     width: 100%;
-    height: 100%;
-    column-gap: 1rem;
-   
 }
 
 .profile_option {
@@ -21,7 +19,9 @@
 }
 
 .quick_links {
-    width: 14rem;
+    margin-top: 0rem;
+    width: 12rem;
+    border-right: 1px solid var(--line-color);
 }
 
 .profile_edit {
@@ -32,11 +32,25 @@
     text-align: center;
     margin-top: 1rem;
     gap: 1rem;
+    padding: 1rem 0;
+    border: 1px solid var(--shadow-color);
+    background-color: var(--shadow-color);
+}
+
+.edit_list:hover { 
+    border: 1px solid var(--line-color);
+}
+
+.account_head {
+    padding: 0.2rem 0 1rem 0;
+    border-bottom: 1px solid var(--line-color);
 }
 
 .lines {
-    padding: 0.2rem 0;
+    text-align: center;
+    padding: 0.2rem 0 1rem 0;
     border-bottom: 1px solid var(--line-color);
+    font-size: 1.3rem;
 }
 
 .profile_details {
@@ -55,6 +69,7 @@
 
 .quick_links .menu_link {
     font-size: 1rem;
+    margin: 1.5rem 3rem;
 }
 
 .profile_title {
@@ -63,4 +78,27 @@
 
 .title_text {
     color: var(--grey-color);
+}
+
+.profile_logout_btn {
+    align-self: center;
+}
+
+.profile_navigate {
+    font-size: 1.2rem;
+}
+
+.profile_navigate:hover {
+    font-weight: 400;
+}
+
+.address_btns {
+    gap: 2rem;
+    width: 100%;
+    justify-content: end;
+    padding-right: 2rem;
+}
+
+.address_btns .edit_icons {
+    cursor: pointer;
 }
