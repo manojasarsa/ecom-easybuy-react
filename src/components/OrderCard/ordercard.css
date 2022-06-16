@@ -1,9 +1,22 @@
 .order_container {
-
+    padding: 1rem 0.5rem;
+    margin-bottom: 1rem;
+    background-color: var(--shadow-color);
+    border-bottom: 1px solid var(--line-color);
 }
 
 .order_heading {
-    color: var(--success-color);
+    margin: 0.5rem 0;
+    color: #38b000;
     font-size: 1.3rem;
     font-weight: 600;
+}
+
+.order_details {
+    gap: 0.5rem;
+    color: var(--grey-color)
+}
+
+.delivery_details {
+    margin: 1rem 0;
 }

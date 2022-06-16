@@ -16,7 +16,7 @@ const OrderCard = ({ order }) => {
             </div>
 
             <div className="delivery_details">
-                <h2>Delivery Address:</h2>
+                <h3>Delivery Address:</h3>
                 <address className="flex flex_col address_label">
                     <h4>{deliveryAddress.name}</h4>
                     <span>{deliveryAddress.street}</span>
@@ -37,7 +37,7 @@ const OrderCard = ({ order }) => {
 
                                 <p className="card_text left_space">{title}</p>
                                 <p className="card_subtext left_space overflow_desc">{description}</p>
-                                <p>qty: {qty}</p>
+                                <p className="card_text left_space">qty: {qty}</p>
                             </div>
                         </div>
                     </div>
