@@ -18,7 +18,52 @@ const PriceBox = ({ deliveryAddress }) => {
 
     const { pathname } = useLocation();
 
-    console.log("delivery add - ", deliveryAddress)
+    // Razorpay Integration
+
+    const loadScript = (src) => {
+        return new Promise((resolve) => {
+            const script = document.createElement("script");
+            script.src = src;
+
+            script.onload = () => {
+                resolve(true)
+            }
+
+            script.onerror = () => {
+                resolve(false);
+            }
+
+            document.body.appendChild(script);
+        })
+    };
+
+    const displayRazorpay = async () => {  
+        
+        const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+        console.log("inside", res);
+        if (!res) {
+            console.log("failed")
+            alert("You're offline... Failed to load Razorpay SDK");
+            return;
+        }
+
+        // listen to our payment
+
+        const options = {
+            key: "rzp_test_A2px3Hdb1gTWCc",
+            currency: "INR",
+            amount: finalAmount * 100,
+            name: "Manoj Asarsa",
+            description: "Thanks for shopping with EASYBUY",
+            // image: "",
+            handler: function (response) {
+                alert(response.razorpay_payment_id);
+                alert("Payment Successfull");
+            }
+
+            // if (response.razorpay_payment_id) {} 
+        };
+    }
 
     return (
         <div className="cart_price_box flex flex_col">
@@ -27,7 +72,7 @@ const PriceBox = ({ deliveryAddress }) => {
                 <h4 className="price_heading">PURCHASED ITEMS</h4>
 
                 {cartItems.map(item =>
-                    <div className="price_menu flex flex flex_justify_between">
+                    <div key={item._id} className="price_menu flex flex flex_justify_between">
                         <span
                             key={item._id}
                             className="price_name">
@@ -85,7 +130,7 @@ const PriceBox = ({ deliveryAddress }) => {
                 </button>
             ) : (
                 <button className="btn btn_secondary"
-                >
+                    onClick={() => displayRazorpay()}>
                     Proceed to Pay
                 </button>
             )}

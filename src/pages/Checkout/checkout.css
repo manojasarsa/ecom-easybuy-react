@@ -11,10 +11,7 @@
 .section_wrapper {
     margin: 0 auto;
     margin-top: 2rem;
-    margin-bottom: 2rem;
-    /* border: 1px solid red; */
-    /* height: fit-content; */
-    
+    margin-bottom: 2rem;    
     width: 80%;
 }
 

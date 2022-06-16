@@ -32,13 +32,13 @@ const Checkout = () => {
 
                             {address.map(addr =>
 
-                                <div className="input_address_btn">
+                                <div key={addr._id} className="input_address_btn">
                                     <input 
                                         type="radio" 
                                         checked={deliveryAddressId === addr._id}
                                         onChange={() => setDeliveryAddressId(addr._id)}
                                     />
-                                    <address className="flex flex_col address_label" for="addr">
+                                    <address className="flex flex_col address_label">
                                         <h4>{addr.name}</h4>
                                         <span>{addr.street}</span>
                                         <span>{addr.city}</span>
