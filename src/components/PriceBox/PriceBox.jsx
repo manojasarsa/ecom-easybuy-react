@@ -106,11 +106,11 @@ const PriceBox = ({ deliveryAddress }) => {
 
             <div className="price_menu flex flex_justify_between">
                 <span className="price_name">Price ( {cartCounter} {cartCounter === 1 ? "item" : "items"})</span>
-                <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(totalPrice.tPrice)}</span>
+                <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(totalPrice)}</span>
             </div>
             <div className="price_menu flex flex_justify_between">
                 <span className="price_name">Discount</span>
-                <span className="price_amount">- ₹ {new Intl.NumberFormat("en-IN").format(totalPrice.dPrice)}</span>
+                <span className="price_amount">- ₹ {new Intl.NumberFormat("en-IN").format(totalDiscountedPrice)}</span>
             </div>
             <div className="price_menu flex flex_justify_between">
                 <span className="price_name">Delivery Charges</span>
