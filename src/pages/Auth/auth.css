@@ -68,7 +68,7 @@ input.input_checkbox {
     color: var(--secondary-color);
 }
 
-.input_container .toast {
+.toast {
     display: flex;
     background-color: var(--secondary-color);
 }

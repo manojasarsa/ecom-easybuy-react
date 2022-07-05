@@ -3,6 +3,7 @@ import { Header } from "../../components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../contexts";
+import { toastHandler } from "../../utils/toastHandler";
 
 const Login = () => {
 
@@ -14,20 +15,24 @@ const Login = () => {
     }
 
     const [formInputs, setFormInputs] = useState(loginInputs);
-    const [error, setError] = useState("");
-    const [errorState, setErrorState] = useState(false);
+    const [toastMsg, setToastMsg] = useState("");
+    const [toastState, setToastState] = useState(false);
     const [showHide, setShowHide] = useState(false);
 
     const { email, password } = formInputs;
 
     const loginHandler = (e) => {
         e.preventDefault();
-        login({email, password, setError, setErrorState});   
+        login({email, password, setToastMsg, setToastState }); 
+        setToastMsg("Welcome Back!");
+        toastHandler(setToastState);  
     }
 
     const guestLoginHandler = (e) => {
         e.preventDefault();
-        login({email: "manojasarsa7611@gmail.com", password: "Manoj@8947", setError, setErrorState});
+        login({email: "manojasarsa7611@gmail.com", password: "Manoj@8947", setToastMsg, setToastState });
+        setToastMsg("Welcome Back!");
+        toastHandler(setToastState);
     } 
 
     return (
@@ -68,8 +73,6 @@ const Login = () => {
 
                     </label>
 
-                    <p className="input_subheading"><Link id="input_subheading" to="/forgotpwd">Forgot your Password?</Link> </p>
-
                     <button className=" btn btn_secondary" onClick={(e) => loginHandler(e)} >Login</button>
                     <button className=" btn btn_secondary_outline" onClick={(e) => guestLoginHandler(e)} >Guest Login</button>
 
@@ -78,9 +81,9 @@ const Login = () => {
                 </form>
             </div>
 
-            {errorState && <div class="alert_error toast flex flex_justify_center flex_align_center toast_box toast_active_leading toast_position">
-                <span> {error} </span>
-            </div> }
+            {toastState && <div class="toast flex flex_justify_center flex_align_center toast_active_leading toast_position">
+                <span> {toastMsg} </span>
+            </div>}
         </>
     );
 }
