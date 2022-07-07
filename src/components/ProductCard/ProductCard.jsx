@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
                         }}>
                             <i className="fa fa-heart wishlist_icon"></i>
                         </button>
-                        : inStock && state.isAuth 
+                        : inStock && state.isAuth
                             ? <button className="icon_btn" onClick={() => {
                                 addToWishlist(product);
                                 setToastMsg("Item Added to Wishlist!");
@@ -65,7 +65,7 @@ const ProductCard = ({ product }) => {
                             to="/cart" >
                             Go to Cart
                         </Link>
-                        : state.isAuth 
+                        : state.isAuth
                             ? <button
                                 disabled={!inStock}
                                 className={inStock ? "btn btn_secondary route_link btn_toast right_space btn_leading" : "btn btn_disabled route_link btn_toast right_space btn_leading"}
@@ -79,11 +79,11 @@ const ProductCard = ({ product }) => {
                             : <button
                                 disabled={!inStock}
                                 className={inStock ? "btn btn_secondary route_link btn_toast right_space btn_leading" : "btn btn_disabled route_link btn_toast right_space btn_leading"}
-                                onClick={() => { 
-                                    navigate("/login"); 
+                                onClick={() => {
+                                    navigate("/login");
                                     addToCart(product);
                                 }}
-                            >   
+                            >
                                 {inStock ? "Add to Cart" : "Out of Stock"}
                             </button>
                     }
@@ -93,13 +93,13 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
 
-            {toastState && 
-                <div 
+            {toastState &&
+                <div
                     className="toast product_toast toast_active_leading toast_position">
-                    <span> 
-                        {toastMsg} 
+                    <span>
+                        {toastMsg}
                     </span>
-                </div> 
+                </div>
             }
 
         </div>

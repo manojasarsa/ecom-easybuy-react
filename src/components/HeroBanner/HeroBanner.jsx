@@ -29,4 +29,4 @@ const HeroBanner = () => {
     );
 }
 
-export {HeroBanner};
+export { HeroBanner };

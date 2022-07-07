@@ -2,14 +2,14 @@ import "./wishlistcard.css";
 import { useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
 
-const WishlistCard = ({product}) => {
+const WishlistCard = ({ product }) => {
 
-    const {title, description, image, price, discountedPrice, rating } = product;
+    const { title, description, image, price, discountedPrice, rating } = product;
 
     const { cartState, addToCart } = useCart();
 
     const { removeFromWishlist } = useWishlist();
-    
+
     const cartItemExist = cartState.cartItems.find((p) => p._id === product._id);
 
     return (
@@ -29,18 +29,18 @@ const WishlistCard = ({product}) => {
                     </p>
 
                     {cartItemExist
-                    ?   <Link
+                        ? <Link
                             className="btn btn_secondary route_link btn_toast right_space btn_leading"
                             to="/cart" >
                             Go to Cart
                         </Link>
-                    :  <button
+                        : <button
                             className="btn btn_secondary route_link btn_toast right_space btn_leading"
                             onClick={() => addToCart(product)} >
-                            Move to Cart 
-                        </button>  
+                            Move to Cart
+                        </button>
                     }
-                    
+
                     <span className="pill pill_wishlist">{rating} ⭐</span>
 
                 </div>
@@ -49,4 +49,4 @@ const WishlistCard = ({product}) => {
     );
 }
 
-export {WishlistCard};
+export { WishlistCard };

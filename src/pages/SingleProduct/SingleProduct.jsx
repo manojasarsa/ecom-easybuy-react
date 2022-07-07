@@ -49,7 +49,7 @@ const SingleProduct = () => {
 
                         <p className="single_product_text left_space">{matchedProduct.description}</p>
                         <p className="single_product_sub left_space">{matchedProduct.title}</p>
-                        
+
                         <h1 className="pill">{matchedProduct.rating} ⭐</h1>
                         <p className="single_product_price card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(matchedProduct.discountedPrice)}
                             <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(matchedProduct.price)}</span>
@@ -71,12 +71,12 @@ const SingleProduct = () => {
                                     disabled={!matchedProduct.inStock}
                                     className={matchedProduct.inStock ? "btn btn_secondary route_link btn_toast right_space btn_leading" : "btn btn_disabled route_link btn_toast right_space btn_leading"}
 
-                                    onClick={() => { 
+                                    onClick={() => {
                                         navigate("/login");
                                         addToCart(matchedProduct);
                                     }}
                                 >
-                                {matchedProduct.inStock ? "Add to Cart" : "Out of Stock"}
+                                    {matchedProduct.inStock ? "Add to Cart" : "Out of Stock"}
                                 </button>
                         }
                     </div>

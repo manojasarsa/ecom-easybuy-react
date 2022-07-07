@@ -11,7 +11,7 @@ const ProfileMenu = () => {
             <div className="profile_options">
                 <ul className="menu flex flex_col flex_justify_center flex_align_start">
                     <div className="flex flex_row flex_justify_around flex_align_center">
-                        {state.isAuth ? <h3>Hello <span className="userName"> {customer.fname} </span> </h3> : <p>New Customer?</p> }
+                        {state.isAuth ? <h3>Hello <span className="userName"> {customer.fname} </span> </h3> : <p>New Customer?</p>}
                         {state.isAuth || <Link className="btn btn_secondary_outline user_select" to="/signup">SignUp</Link>}
                     </div>
                     <Link className="menu_link" to="/user/profile">
@@ -29,13 +29,13 @@ const ProfileMenu = () => {
                     {state.isAuth ? <Link className="menu_link" to="/logout">
                         <li onClick={logout} className="profile_content user_select">Logout</li>
                     </Link>
-                    : <Link className="menu_link" to="/login">
-                        <li className="profile_content user_select">Login</li>
-                    </Link>}
+                        : <Link className="menu_link" to="/login">
+                            <li className="profile_content user_select">Login</li>
+                        </Link>}
                 </ul>
             </div>
         </div>
     );
 }
 
-export {ProfileMenu};
+export { ProfileMenu };

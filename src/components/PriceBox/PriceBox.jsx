@@ -43,46 +43,46 @@ const PriceBox = ({ deliveryAddress }) => {
 
     const displayRazorpay = async () => {
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-    
+
         if (!res) {
-        //   toast.error("Something went wrong.");
-          return;
+            //   toast.error("Something went wrong.");
+            return;
         }
         const options = {
-          key: "rzp_test_GtfIaWmsadE9fA",
-          amount: finalAmount * 100,
-          currency: "INR",
-          name: "",
-          description: "Thanks for shopping with us!",
-          image: "/assets/favicon.ico",
-          handler: function (response) {
-            const paymentId = response.razorpay_payment_id;
-            const orderId = uuid();
-    
-            const newOrders = {
-              paymentId,
-              orderId,
-              amountPaid: finalAmount,
-              orderedProducts: [...cartItems],
-              deliveryAddress: deliveryAddress,
-              orderedAt: dayjs().format("DD/MM/YYYY hh:mmA"),
-            };
-            addOrder(newOrders);
-            clearCart();
-            navigate("/user/orders");
-          },
-          theme: {
-            color: "hsl(204, 83%, 56%)",
-          },
-          prefill: {
-            name: "Manoj Asarsa",
-            email: "manojasarsa@example.com",
-            contact: "9989545852",
-          },
+            key: "rzp_test_GtfIaWmsadE9fA",
+            amount: finalAmount * 100,
+            currency: "INR",
+            name: "",
+            description: "Thanks for shopping with us!",
+            image: "/assets/favicon.ico",
+            handler: function (response) {
+                const paymentId = response.razorpay_payment_id;
+                const orderId = uuid();
+
+                const newOrders = {
+                    paymentId,
+                    orderId,
+                    amountPaid: finalAmount,
+                    orderedProducts: [...cartItems],
+                    deliveryAddress: deliveryAddress,
+                    orderedAt: dayjs().format("DD/MM/YYYY hh:mmA"),
+                };
+                addOrder(newOrders);
+                clearCart();
+                navigate("/user/orders");
+            },
+            theme: {
+                color: "hsl(204, 83%, 56%)",
+            },
+            prefill: {
+                name: "Manoj Asarsa",
+                email: "manojasarsa@example.com",
+                contact: "9989545852",
+            },
         };
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
-      };
+    };
 
     return (
         <div className="cart_price_box flex flex_col">
@@ -140,7 +140,7 @@ const PriceBox = ({ deliveryAddress }) => {
                         <span>{deliveryAddress.mobile}</span>
                     </address>
                 </div>
-                )}
+            )}
 
             {pathname === "/cart" ? (
                 <button className="btn btn_secondary"

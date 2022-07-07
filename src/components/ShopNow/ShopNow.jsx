@@ -11,4 +11,4 @@ const ShopNow = () => {
     );
 }
 
-export {ShopNow};
+export { ShopNow };
