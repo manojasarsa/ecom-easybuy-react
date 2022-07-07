@@ -1,14 +1,22 @@
+.main_modal_container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 999;
+    left: 0;
+    top: 0;
+}
+
 .address_modal_wrapper {
     width: 20rem;
     height: 38rem;
-    position: fixed;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%; 
+    right: 50%;
+    transform: translate(50%,-50%);
     background-color: var(--line-color);
-    z-index: 99;
     border-radius: 1rem;
-    /* background-color: rgba(0, 0, 0, .7); */
 }
 
 .address_form {
@@ -39,4 +47,25 @@
 
 .modal_btn {
     padding: 0.2rem 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .address_modal_wrapper {
+        width: 30rem;
+        height: 60rem;
+    }
+
+    .address_input {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+    
+    }
+
+    .modal_btns_wrapper button {
+        font-size: 1.4rem;
+    }
+
+    .addr_form_heading {
+        font-size: 1.4rem;
+    }
 }

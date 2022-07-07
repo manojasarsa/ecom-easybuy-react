@@ -87,7 +87,7 @@ const Filters = () => {
                             name="sortByFilter"
                             checked={filterState.sortBy === "LOW_TO_HIGH"}
                         />
-                        <span>Low to High</span>
+                        <span> Low to High</span>
                     </label>
                     <label>
                         <input className="filter_margin" onChange={() =>
@@ -97,7 +97,7 @@ const Filters = () => {
                             name="sortByFilter"
                             checked={filterState.sortBy === "HIGH_TO_LOW"}
                         />
-                        <span>High to Low</span>
+                        <span> High to Low</span>
                     </label>
                 </form>
             </div>

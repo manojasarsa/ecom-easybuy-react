@@ -4,14 +4,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import dayjs from "dayjs";
 import { useOrder } from "../../contexts/orderContext";
+import { useState } from "react";
+import { toastHandler } from "../../utils/toastHandler";
 
 const PriceBox = ({ deliveryAddress }) => {
 
     const { cartState, clearCart } = useCart();
     const { addOrder } = useOrder();
+    const [toastMsg, setToastMsg] = useState("");
+    const [toastState, setToastState] = useState(false);
+
     const cartCounter = cartState.cartItems.length;
-    const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
-    const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
+    const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
+    const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + Math.floor((item.discountedPrice * item.qty) * 10 / 100), 0);
 
     const finalAmount = totalPrice - totalDiscountedPrice + 99;
     const savedAmount = totalPrice - finalAmount;
@@ -45,7 +50,6 @@ const PriceBox = ({ deliveryAddress }) => {
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
 
         if (!res) {
-            //   toast.error("Something went wrong.");
             return;
         }
         const options = {
@@ -97,7 +101,9 @@ const PriceBox = ({ deliveryAddress }) => {
                             className="price_name">
                             {item.title}
                         </span>
-                        <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(item.price)} x {item.qty} </span>
+                        <span className="price_amount">
+                            ₹ {new Intl.NumberFormat("en-IN").format(item.discountedPrice)} x {item.qty}
+                        </span>
                     </div>
                 )}
             </div>
@@ -105,16 +111,29 @@ const PriceBox = ({ deliveryAddress }) => {
             <h4 className="price_heading">PRICE DETAILS</h4>
 
             <div className="price_menu flex flex_justify_between">
-                <span className="price_name">Price ( {cartCounter} {cartCounter === 1 ? "item" : "items"})</span>
-                <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(totalPrice)}</span>
+                <span className="price_name">
+                    Price ( {cartCounter} {cartCounter === 1 ? "item" : "items"})
+                </span>
+                <span className="price_amount">
+                    ₹ {new Intl.NumberFormat("en-IN").format(totalPrice)}
+                </span>
+            </div>
+
+            <div className="price_menu flex flex_justify_between">
+                <span className="price_name">
+                    Discount
+                </span>
+                <span className="price_amount">
+                    - ₹ {new Intl.NumberFormat("en-IN").format(totalDiscountedPrice)}
+                </span>
             </div>
             <div className="price_menu flex flex_justify_between">
-                <span className="price_name">Discount</span>
-                <span className="price_amount">- ₹ {new Intl.NumberFormat("en-IN").format(totalDiscountedPrice)}</span>
-            </div>
-            <div className="price_menu flex flex_justify_between">
-                <span className="price_name">Delivery Charges</span>
-                <span className="price_amount">₹ {new Intl.NumberFormat("en-IN").format(99)}</span>
+                <span className="price_name">
+                    Delivery Charges
+                </span>
+                <span className="price_amount">
+                    ₹ {new Intl.NumberFormat("en-IN").format(99)}
+                </span>
             </div>
 
             <hr className="line_space" />
@@ -148,11 +167,24 @@ const PriceBox = ({ deliveryAddress }) => {
                     PLACE ORDER
                 </button>
             ) : (
-                <button className="btn btn_secondary"
-                    onClick={() => displayRazorpay()}>
+                <button
+                    className="btn btn_secondary"
+                    onClick={deliveryAddress ? () => {
+                        setToastMsg("Payment in process, Please Wait!");
+                        toastHandler(setToastState);
+                        displayRazorpay();
+                    } : () => {
+                        setToastMsg("Select one address to continue!");
+                        toastHandler(setToastState);
+                    }}>
                     Proceed to Pay
                 </button>
             )}
+
+            {toastState && <div className="toast flex flex_justify_center flex_align_center toast_active_leading toast_position">
+                <span> {toastMsg} </span>
+            </div>}
+
         </div>
     );
 }

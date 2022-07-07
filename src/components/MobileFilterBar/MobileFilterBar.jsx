@@ -3,8 +3,8 @@ import { useFilter } from "../../contexts";
 
 export const MobileFilterBar = () => {
 
-    const { state, dispatch } = useFilter();
-    const { men, women, boys, girls } = state.categories;
+    const { filterState, dispatch } = useFilter();
+    const { men, women, boys, girls } = filterState.categories;
 
     return (
         <aside className="mobile_filter_container flex flex_col">
@@ -68,12 +68,12 @@ export const MobileFilterBar = () => {
                 </div>
 
                 <label className="range">
-                    <input className="input_range" type="range" min="0" max="6000" step="1000" value={state.rangeValue} onChange={event => dispatch({ type: "PRICE_RANGE", payload: event })}
+                    <input className="input_range" type="range" min="0" max="6000" step="1000" value={filterState.rangeValue} onChange={event => dispatch({ type: "PRICE_RANGE", payload: event })}
                     />
                 </label>
 
                 <div className="flex flex_col flex_align_end">
-                    <h3 className="filter_headings">{state.rangeValue}</h3>
+                    <h3 className="filter_headings">{filterState.rangeValue}</h3>
                 </div>
             </div>
             <div className="filter_sortby flex flex_col filter_spaces">
@@ -85,7 +85,7 @@ export const MobileFilterBar = () => {
                         }
                             type="radio"
                             name="sortByFilter"
-                            checked={state.sortBy === "LOW_TO_HIGH"}
+                            checked={filterState.sortBy === "LOW_TO_HIGH"}
                         />
                         <span>Low to High</span>
                     </label>
@@ -95,7 +95,7 @@ export const MobileFilterBar = () => {
                         }
                             type="radio"
                             name="sortByFilter"
-                            checked={state.sortBy === "HIGH_TO_LOW"}
+                            checked={filterState.sortBy === "HIGH_TO_LOW"}
                         />
                         <span>High to Low</span>
                     </label>
@@ -106,22 +106,22 @@ export const MobileFilterBar = () => {
                 <form className="rating_options flex flex_col">
                     <label>
                         <input className="filter_margin" type="radio" name="rating" value="4 Stars & above"
-                            checked={state.rating === "4 Stars & above"}
+                            checked={filterState.rating === "4 Stars & above"}
                             onChange={() => dispatch({ type: "RATING", payload: "4 Stars & above" })} /> 4 Stars & above
                     </label>
                     <label>
                         <input className="filter_margin" type="radio" name="rating" value="3 Stars & above"
-                            checked={state.rating === "3 Stars & above"}
+                            checked={filterState.rating === "3 Stars & above"}
                             onChange={() => dispatch({ type: "RATING", payload: "3 Stars & above" })} /> 3 Stars & above
                     </label>
                     <label>
                         <input className="filter_margin" type="radio" name="rating" value="2 Stars & above"
-                            checked={state.rating === "2 Stars & above"}
+                            checked={filterState.rating === "2 Stars & above"}
                             onChange={() => dispatch({ type: "RATING", payload: "2 Stars & above" })} /> 2 Stars & above
                     </label>
                     <label>
                         <input className="filter_margin" type="radio" name="rating" value="1 Stars & above"
-                            checked={state.rating === "1 Stars & above"}
+                            checked={filterState.rating === "1 Stars & above"}
                             onChange={() => dispatch({ type: "RATING", payload: "1 Stars & above" })} /> 1 Stars & above
                     </label>
                 </form>
@@ -134,7 +134,7 @@ export const MobileFilterBar = () => {
                             onChange={() => dispatch({ type: "INCLUDE_OUT_OF_STOCK" })}
                             name="INCLUDE_OUT_OF_STOCK"
                             type="checkbox"
-                            checked={state.showInventory}
+                            checked={filterState.showInventory}
                         />
                         <span className="checkbox_notify">Include Out of Stock</span>
                     </label>
@@ -145,7 +145,7 @@ export const MobileFilterBar = () => {
                             onChange={() => dispatch({ type: "FAST_DELIVERY" })}
                             name="FAST_DELIVERY"
                             type="checkbox"
-                            checked={state.fastDelivery}
+                            checked={filterState.fastDelivery}
                         />
                         <span className="checkbox_notify">Fast Delivery</span>
                     </label>

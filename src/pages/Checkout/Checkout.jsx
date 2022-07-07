@@ -33,8 +33,8 @@ const Checkout = () => {
                             {address.map(addr =>
 
                                 <div key={addr._id} className="input_address_btn">
-                                    <input 
-                                        type="radio" 
+                                    <input
+                                        type="radio"
                                         checked={deliveryAddressId === addr._id}
                                         onChange={() => setDeliveryAddressId(addr._id)}
                                     />
@@ -47,10 +47,9 @@ const Checkout = () => {
                                         <span>{addr.mobile}</span>
                                     </address>
                                 </div>
-
                             )}
 
-                            {!address.length && <h4>No Address Available</h4>}
+                            {!address.length && <h4>No Address Available.</h4>}
 
                             <button
                                 className="btn btn_secondary_outline"

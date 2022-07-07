@@ -40,10 +40,11 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
     }
 
     return (
+        <div className="main_modal_container">
         <div className="address_modal_wrapper flex flex_col flex_justify_center flex_align_center">
             <form className="address_form flex flex_col flex_justify_center flex_align_center">
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Name<span className="red_star">*</span></h4>
+                    <h4 className="addr_form_heading">Name<span className="red_star">*</span></h4>
                     <input
                         defaultValue={name}
                         className="address_input"
@@ -54,7 +55,7 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Street<span className="red_star">*</span></h4>
+                    <h4 className="addr_form_heading">Street<span className="red_star">*</span></h4>
                     <input
                         className="address_input"
                         required
@@ -65,7 +66,7 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>State<span className="red_star">*</span></h4>
+                    <h4 className="addr_form_heading">State<span className="red_star">*</span></h4>
                     <input
                         className="address_input"
                         required
@@ -76,7 +77,7 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Country<span className="red_star">*</span></h4>
+                    <h4 className="addr_form_heading">Country<span className="red_star">*</span></h4>
                     <input
                         className="address_input"
                         required
@@ -87,7 +88,7 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>ZipCode<span className="red_star">*</span></h4>
+                    <h4 className="addr_form_heading">ZipCode<span className="red_star">*</span></h4>
                     <input
                         className="address_input"
                         required
@@ -98,7 +99,7 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Mobile No.<span className="red_star">*</span></h4>
+                    <h4 className="addr_form_heading">Mobile No.<span className="red_star">*</span></h4>
                     <input
                         className="address_input"
                         required
@@ -115,6 +116,7 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     </button>
                 </div>
             </form>
+        </div>
         </div>
     )
 }
