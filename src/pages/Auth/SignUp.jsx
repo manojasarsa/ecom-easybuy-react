@@ -11,7 +11,6 @@ const SignUp = () => {
     const [showHideTwo, setShowHideTwo] = useState(false);
     const [error, setError] = useState("");
     const [errorState, setErrorState] = useState(false);
-    const [termsAndCondition, setTermsAndCondition] = useState(false);
 
     const signUpInputs = {
         firstName: "",
@@ -29,13 +28,11 @@ const SignUp = () => {
 
     const regex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-    const toggleTermsCondition = () => termsAndCondition ? setTermsAndCondition(false) : setTermsAndCondition(true);
-
     const submitFormHandler = (e) => {
 
         e.preventDefault();
 
-        if (firstName && lastName && email && password && confirmPwd && termsAndCondition) {
+        if (firstName && lastName && email && password && confirmPwd) {
 
             if (password.length < 8) {
                 setError("Password must be at least 8 characters");
@@ -111,9 +108,12 @@ const SignUp = () => {
                             required={true}
                         />
 
-                        <i className="fa-solid fa-eye show_hide_btn"
+                        {showHideOne ? <i className="fa-solid fa-eye show_hide_btn"
                             onClick={() => setShowHideOne((prev) => !prev)}>
-                        </i>
+                        </i> :
+                            <i className="fa-solid fa-eye-slash show_hide_btn"
+                                onClick={() => setShowHideOne((prev) => !prev)}>
+                            </i>}
 
                     </label>
 
@@ -127,21 +127,14 @@ const SignUp = () => {
                             required={true}
                         />
 
-                        <i className="fa-solid fa-eye show_hide_btn"
+                        {showHideTwo ? <i className="fa-solid fa-eye show_hide_btn"
                             onClick={() => setShowHideTwo((prev) => !prev)}>
-                        </i>
+                        </i> :
+                            <i className="fa-solid fa-eye-slash show_hide_btn"
+                                onClick={() => setShowHideTwo((prev) => !prev)}>
+                            </i>}
 
                     </label>
-
-                    <div className="inp_checkbox flex flex_justify_start flex_align_center">
-                        <input
-                            onClick={toggleTermsCondition}
-                            type="checkbox"
-                            className="input_checkbox"
-                            required={true}
-                        />
-                        <p className="checkbox_notify">I accept all Terms & Conditions</p>
-                    </div>
 
                     <button
                         onClick={(e) => submitFormHandler(e)}

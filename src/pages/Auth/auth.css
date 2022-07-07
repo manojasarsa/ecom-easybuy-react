@@ -5,7 +5,13 @@
 }
 
 .input_field .input_label .input_box {
+    margin-top: 0.5rem;
     color: var(--grey-color);
+    border: 1px solid var(--line-color);
+}
+
+.input_field .input_label .input_box:focus {
+    outline: none;
 }
 
 #input_subheading {
@@ -34,13 +40,18 @@ input.input_checkbox {
 
 .input_field .input_label .show_hide_btn {
     position: absolute;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     right: 2rem;
     bottom: 3rem;
-    top: 50%;
+    top: 60%;
     transform: translate(0, -50%);
     cursor: pointer;
-    color: var(--grey-color);
+    color: var(--light-grey-color);
+}
+
+.input_container .input_field button {
+    margin-left: 0;
+    margin-right: 1rem;
 }
 
 /* logout */

@@ -67,9 +67,12 @@ const Login = () => {
                             onChange={(e) => setFormInputs({ ...formInputs, password: e.target.value })}
                         />
 
-                        <i className="fa-solid fa-eye show_hide_btn"
+                        {showHide ? <i className="fa-solid fa-eye show_hide_btn"
                             onClick={() => setShowHide((prev) => !prev)}>
-                        </i>
+                        </i> :
+                            <i className="fa-solid fa-eye-slash show_hide_btn"
+                                onClick={() => setShowHide((prev) => !prev)}>
+                            </i>}
 
                     </label>
 
