@@ -40,6 +40,10 @@
   font-size: 1.5rem;
 }
 
+.filter_container label {
+    cursor: pointer;
+}
+
 .filter_clearAll {
   color: var(--secondary-color);
   padding-top: 0.6rem;
@@ -55,6 +59,7 @@
   border-radius: 5px;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 .filter_price .range {
