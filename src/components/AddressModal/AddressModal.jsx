@@ -20,15 +20,17 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
     const { addNewAddress, editAddress } = useAddress();
 
     const newAddressHandler = (e) => {
-        e.preventDefault();
-        if (isEditing) {
-            editAddress(newAddress); 
-            setNewAddress(newAddress); 
-            setIsAddressModal((prev) => !prev);
-        } else {
-            addNewAddress(newAddress);
-            setNewAddress(initialAddress); 
-            setIsAddressModal((prev) => !prev);
+        if(name && street && state && country && zipCode && mobile) {
+            e.preventDefault();
+            if (isEditing) {
+                editAddress(newAddress); 
+                setNewAddress(newAddress); 
+                setIsAddressModal((prev) => !prev);
+            } else {
+                addNewAddress(newAddress);
+                setNewAddress(initialAddress); 
+                setIsAddressModal((prev) => !prev);
+            }
         }
     }
 

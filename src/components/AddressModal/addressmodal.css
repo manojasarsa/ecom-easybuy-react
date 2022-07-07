@@ -8,6 +8,7 @@
     background-color: var(--line-color);
     z-index: 99;
     border-radius: 1rem;
+    /* background-color: rgba(0, 0, 0, .7); */
 }
 
 .address_form {
