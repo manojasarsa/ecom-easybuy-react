@@ -7,12 +7,12 @@ const Products = () => {
     const {products, loader, error} = useProduct();
     const { state } = useFilter();
     const { men, women, boys, girls } = state.categories;
-    
-    const getSortedList = sortData(products, state.sortBy);   
-    const getFilteredList = filterData(getSortedList, state.showInventory, state.fastDelivery);
+      
+    const getFilteredList = filterData(products, state.showInventory, state.fastDelivery);
     const getCategoryList = sortByCategory(getFilteredList, men, women, boys, girls);
-    const getSortRangeList = sortRange(getCategoryList, state.rangeValue);      
-    const getRatingList = sortRating(getSortRangeList, state.rating); 
+    const getSortRangeList = sortRange(getCategoryList, state.rangeValue);  
+    const getSortedList = sortData(getSortRangeList, state.sortBy);     
+    const getRatingList = sortRating(getSortedList, state.rating); 
     const getSearchedItem = searchByName(getRatingList, state.searchQuery);
 
     return (
