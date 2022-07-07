@@ -11,7 +11,7 @@ const sortData = (productList, sortBy) =>
     : productList;
 
 const sortRange = (productList, rangeValue) =>
-    productList.filter((item) => item.price <= rangeValue);
+    productList.filter((item) => item.discountedPrice <= rangeValue);
 
 const sortByCategory = (productList, men, women, boys, girls) => {
 

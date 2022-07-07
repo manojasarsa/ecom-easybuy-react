@@ -51,8 +51,8 @@ const SingleProduct = () => {
                         <p className="single_product_sub left_space">{matchedProduct.title}</p>
                         
                         <h1 className="pill">{matchedProduct.rating} ⭐</h1>
-                        <p className="single_product_price card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(matchedProduct.price)}
-                            <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(matchedProduct.discountedPrice)}</span>
+                        <p className="single_product_price card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(matchedProduct.discountedPrice)}
+                            <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(matchedProduct.price)}</span>
                         </p>
 
                         {cartItemExist

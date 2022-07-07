@@ -119,6 +119,11 @@ const Filters = () => {
                         checked={state.rating === "2 Stars & above"}
                         onChange={() => dispatch({type: "RATING", payload: "2 Stars & above" })}/> 2 Stars & above
                     </label>
+                    <label>
+                        <input className="filter_margin" type="radio" name="rating" value="1 Stars & above" 
+                        checked={state.rating === "1 Stars & above"}
+                        onChange={() => dispatch({type: "RATING", payload: "1 Stars & above" })}/> 1 Stars & above
+                    </label>
                 </form>
             </div>
             <div className="filter_category  flex flex_col">
