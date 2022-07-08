@@ -7,7 +7,7 @@ const ProductList = () => {
 
     const [openFilter, setOpenFilter] = useState(false);
     return(
-        <div class="product_main_wrapper">
+        <div className="product_main_wrapper">
             <Header />
             <Filters />
             {openFilter ? <MobileFilterBar /> : <Products />}

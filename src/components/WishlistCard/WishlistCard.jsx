@@ -2,14 +2,14 @@ import "./wishlistcard.css";
 import { useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
 
-const WishlistCard = ({product}) => {
+const WishlistCard = ({ product }) => {
 
-    const {title, description, image, price, discountedPrice, rating } = product;
+    const { title, description, image, price, discountedPrice, rating } = product;
 
     const { cartState, addToCart } = useCart();
 
     const { removeFromWishlist } = useWishlist();
-    
+
     const cartItemExist = cartState.cartItems.find((p) => p._id === product._id);
 
     return (
@@ -22,35 +22,31 @@ const WishlistCard = ({product}) => {
                         <i className="fa fa-heart wishlist_icon"></i>
                     </button>
 
-                    <p className="card_text left_space">{title}</p>
+                    <p className="card_text left_space wishlist_margin">{title}</p>
                     <p className="card_subtext left_space overflow_desc">{description}</p>
-                    <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(price)}
-                        <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
+                    <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}
+                        <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(price)}</span>
                     </p>
 
                     {cartItemExist
-                    ?   <Link
+                        ? <Link
                             className="btn btn_secondary route_link btn_toast right_space btn_leading"
                             to="/cart" >
                             Go to Cart
                         </Link>
-                    :  <button
+                        : <button
                             className="btn btn_secondary route_link btn_toast right_space btn_leading"
                             onClick={() => addToCart(product)} >
-                            Move to Cart 
-                        </button>  
+                            Move to Cart
+                        </button>
                     }
-                    
-                    <span className="pill">{rating} ⭐</span>
 
-                    <div className="alert_success toast flex flex_justify_center flex_align_center  toast_box">
-                        <i className="fa-solid fa-check"></i>
-                        <span>Added to Cart - check it out! </span>
-                    </div>
+                    <span className="pill pill_wishlist">{rating} ⭐</span>
+
                 </div>
             </div>
         </div>
     );
 }
 
-export {WishlistCard};
+export { WishlistCard };

@@ -27,8 +27,8 @@ const CartCard = ({ product }) => {
 
                 <p className="card_text left_space">{title}</p>
                 <p className="card_subtext left_space overflow_desc">{description}</p>
-                <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(price)}
-                    <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
+                <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}
+                    <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(price)}</span>
                 </p>
 
                 <div className="cart_qty flex flex_justify_center flex_align_center">
@@ -73,7 +73,7 @@ const CartCard = ({ product }) => {
                             setToastMsg("Item Moved to Wishlist!");
                             toastHandler(setToastState);
                         }}
-                        className="btn btn_secondary_outline btn_toast right_space btn_leading">
+                        className="btn btn_secondary btn_toast right_space btn_leading">
                         Move to Wishlist
                     </button>
                 }

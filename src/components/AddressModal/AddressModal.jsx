@@ -12,7 +12,7 @@ const defaultValue = {
 }
 
 const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddressModal, isEditing }) => {
-    
+
     const [newAddress, setNewAddress] = useState(initialAddress);
 
     const { name, street, state, country, zipCode, mobile } = newAddress;
@@ -20,15 +20,17 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
     const { addNewAddress, editAddress } = useAddress();
 
     const newAddressHandler = (e) => {
-        e.preventDefault();
-        if (isEditing) {
-            editAddress(newAddress); 
-            setNewAddress(newAddress); 
-            setIsAddressModal((prev) => !prev);
-        } else {
-            addNewAddress(newAddress);
-            setNewAddress(initialAddress); 
-            setIsAddressModal((prev) => !prev);
+        if (name && street && state && country && zipCode && mobile) {
+            e.preventDefault();
+            if (isEditing) {
+                editAddress(newAddress);
+                setNewAddress(newAddress);
+                setIsAddressModal((prev) => !prev);
+            } else {
+                addNewAddress(newAddress);
+                setNewAddress(initialAddress);
+                setIsAddressModal((prev) => !prev);
+            }
         }
     }
 
@@ -38,22 +40,23 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
     }
 
     return (
+        <div className="main_modal_container">
         <div className="address_modal_wrapper flex flex_col flex_justify_center flex_align_center">
             <form className="address_form flex flex_col flex_justify_center flex_align_center">
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Name<span className="red_star">*</span></h4>
-                    <input 
+                    <h4 className="addr_form_heading">Name<span className="red_star">*</span></h4>
+                    <input
                         defaultValue={name}
                         className="address_input"
                         required
-                        onChange={(e) => 
+                        onChange={(e) =>
                             setNewAddress({ ...newAddress, name: e.target.value })
                         }
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Street<span className="red_star">*</span></h4>
-                    <input 
+                    <h4 className="addr_form_heading">Street<span className="red_star">*</span></h4>
+                    <input
                         className="address_input"
                         required
                         defaultValue={street}
@@ -63,8 +66,8 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>State<span className="red_star">*</span></h4>
-                    <input 
+                    <h4 className="addr_form_heading">State<span className="red_star">*</span></h4>
+                    <input
                         className="address_input"
                         required
                         defaultValue={state}
@@ -74,8 +77,8 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Country<span className="red_star">*</span></h4>
-                    <input 
+                    <h4 className="addr_form_heading">Country<span className="red_star">*</span></h4>
+                    <input
                         className="address_input"
                         required
                         defaultValue={country}
@@ -85,8 +88,8 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>ZipCode<span className="red_star">*</span></h4>
-                    <input 
+                    <h4 className="addr_form_heading">ZipCode<span className="red_star">*</span></h4>
+                    <input
                         className="address_input"
                         required
                         defaultValue={zipCode}
@@ -96,8 +99,8 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <label className="label flex flex_col flex_align_start">
-                    <h4>Mobile No.<span className="red_star">*</span></h4>
-                    <input 
+                    <h4 className="addr_form_heading">Mobile No.<span className="red_star">*</span></h4>
+                    <input
                         className="address_input"
                         required
                         defaultValue={mobile}
@@ -107,12 +110,13 @@ const AddressModal = ({ initialAddress = defaultValue, isAddressModal, setIsAddr
                     />
                 </label>
                 <div className="modal_btns_wrapper flex flex_justify_between">
-                <button className="btn btn_primary_outline" onClick={(e) => cancelModalHandler(e)}>Cancel</button>
-                <button className="btn btn_secondary" onClick={(e) => newAddressHandler(e)}>
-                    {isEditing ? "Update" : "Save"}
-                </button>
-            </div>
+                    <button className="btn btn_primary_outline" onClick={(e) => cancelModalHandler(e)}>Cancel</button>
+                    <button className="btn btn_secondary" onClick={(e) => newAddressHandler(e)}>
+                        {isEditing ? "Update" : "Save"}
+                    </button>
+                </div>
             </form>
+        </div>
         </div>
     )
 }

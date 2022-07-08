@@ -1,6 +1,6 @@
 import "./productcard.css";
 import { useCart, useWishlist } from "../../contexts";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts";
 import { useState } from "react";
 import { toastHandler } from "../../utils/toastHandler";
@@ -10,12 +10,14 @@ const ProductCard = ({ product }) => {
     const { cartState, addToCart } = useCart();
     const { state } = useAuth();
 
+    const navigate = useNavigate();
+
     const [toastState, setToastState] = useState(false);
     const [toastMsg, setToastMsg] = useState("");
 
     const { wishlistState, addToWishlist, removeFromWishlist } = useWishlist();
 
-    const { title, description, image, price, discountedPrice, rating } = product;
+    const { title, description, image, price, discountedPrice, rating, inStock } = product;
 
     const cartItemExist = cartState.cartItems.find((p) => p._id === product._id);
 
@@ -31,14 +33,14 @@ const ProductCard = ({ product }) => {
                     </Link>
 
                     {wishlistItemExist
-                        ? <button className="icon_btn" onClick={() => {
+                        ? inStock && <button className="icon_btn" onClick={() => {
                             removeFromWishlist(product._id);
                             setToastMsg("Item Removed from Wishlist!");
                             toastHandler(setToastState);
                         }}>
                             <i className="fa fa-heart wishlist_icon"></i>
                         </button>
-                        : state.isAuth 
+                        : inStock && state.isAuth
                             ? <button className="icon_btn" onClick={() => {
                                 addToWishlist(product);
                                 setToastMsg("Item Added to Wishlist!");
@@ -46,15 +48,15 @@ const ProductCard = ({ product }) => {
                             }}>
                                 <i className="far fa-heart wishlist_icon"></i>
                             </button>
-                            : <Link className="icon_btn" to="/login" onClick={() => addToWishlist(product)}>
+                            : inStock && <Link className="icon_btn" to="/login" onClick={() => addToWishlist(product)}>
                                 <i className="far fa-heart wishlist_icon"></i>
                             </Link>
                     }
 
                     <p className="card_text left_space">{title}</p>
                     <p className="card_subtext left_space overflow_desc">{description}</p>
-                    <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(price)}
-                        <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}</span>
+                    <p className="card_text card_price left_space">₹ {new Intl.NumberFormat("en-IN").format(discountedPrice)}
+                        <span className="text_line_through">₹ {new Intl.NumberFormat("en-IN").format(price)}</span>
                     </p>
 
                     {cartItemExist
@@ -63,22 +65,27 @@ const ProductCard = ({ product }) => {
                             to="/cart" >
                             Go to Cart
                         </Link>
-                        : state.isAuth 
+                        : state.isAuth
                             ? <button
-                                className="btn btn_secondary route_link btn_toast right_space btn_leading"
+                                disabled={!inStock}
+                                className={inStock ? "btn btn_secondary route_link btn_toast right_space btn_leading" : "btn btn_disabled route_link btn_toast right_space btn_leading"}
                                 onClick={() => {
                                     addToCart(product);
                                     setToastMsg("Item Added to Cart!");
                                     toastHandler(setToastState);
                                 }} >
-                                Add to Cart
+                                {inStock ? "Add to Cart" : "Out of Stock"}
                             </button>
-                            : <Link
-                                className="btn btn_secondary route_link btn_toast right_space btn_leading"
-                                onClick={() => addToCart(product)}
-                                to="/login">
-                                Add to Cart
-                            </Link>
+                            : <button
+                                disabled={!inStock}
+                                className={inStock ? "btn btn_secondary route_link btn_toast right_space btn_leading" : "btn btn_disabled route_link btn_toast right_space btn_leading"}
+                                onClick={() => {
+                                    navigate("/login");
+                                    addToCart(product);
+                                }}
+                            >
+                                {inStock ? "Add to Cart" : "Out of Stock"}
+                            </button>
                     }
 
                     <span className="pill">{rating} ⭐</span>
@@ -86,13 +93,13 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
 
-            {toastState && 
-                <div 
+            {toastState &&
+                <div
                     className="toast product_toast toast_active_leading toast_position">
-                    <span> 
-                        {toastMsg} 
+                    <span>
+                        {toastMsg}
                     </span>
-                </div> 
+                </div>
             }
 
         </div>

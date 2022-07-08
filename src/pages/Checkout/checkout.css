@@ -52,3 +52,7 @@
     color: var(--grey-color);
     margin-top: 3rem;
 }
+
+.input_address_btn input {
+    cursor: pointer;
+}
