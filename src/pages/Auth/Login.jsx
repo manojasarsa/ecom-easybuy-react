@@ -23,9 +23,14 @@ const Login = () => {
 
     const loginHandler = (e) => {
         e.preventDefault();
-        login({ email, password, setToastMsg, setToastState });
-        setToastMsg("Welcome Back!");
-        toastHandler(setToastState);
+        if (email && password) {
+            login({ email, password, setToastMsg, setToastState });
+            setToastMsg("Welcome Back!");
+            toastHandler(setToastState);
+        } else {
+            setToastMsg("All fields required!");
+            toastHandler(setToastState);
+        }
     }
 
     const guestLoginHandler = (e) => {
