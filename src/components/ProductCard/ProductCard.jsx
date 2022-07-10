@@ -28,11 +28,12 @@ const ProductCard = ({ product }) => {
             <div className="card_vertical">
                 <div className="card_vertical_info flex flex_col flex_justify_start">
 
-                    <Link to={`/productlist/${product._id}`}>
-                        <img className="img_responsive adjust_image" src={image} alt={title} />
-                    </Link>
+                    <Link to={`/productlist/${product._id}`} className="img_pill_wrapper">
+                        <img className="img_responsive" src={image} alt={title} />
+                        
+                        <span className="pill">{rating} ⭐</span>
 
-                    {wishlistItemExist
+                        {wishlistItemExist
                         ? inStock && <button className="icon_btn" onClick={() => {
                             removeFromWishlist(product._id);
                             setToastMsg("Item Removed from Wishlist!");
@@ -52,6 +53,7 @@ const ProductCard = ({ product }) => {
                                 <i className="far fa-heart wishlist_icon"></i>
                             </Link>
                     }
+                    </Link>
 
                     <p className="card_text left_space">{title}</p>
                     <p className="card_subtext left_space overflow_desc">{description}</p>
@@ -87,8 +89,6 @@ const ProductCard = ({ product }) => {
                                 {inStock ? "Add to Cart" : "Out of Stock"}
                             </button>
                     }
-
-                    <span className="pill">{rating} ⭐</span>
 
                 </div>
             </div>

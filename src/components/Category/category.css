@@ -1,15 +1,25 @@
 .main_nav {
     gap: 1.5rem;
     grid-area: nav;
-    margin-top: 1rem;
+    margin-top: rem;
+}
+
+.img_title {
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 0.5rem 0;
+}
+
+.category_margin .nav_item img {
+    padding: 0 4.5rem;
+    background: var(--shadow-color);
 }
 
 .hero_title {
     margin: 2rem 0;
     padding: 1rem;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-family: 'Marck Script', cursive;
-    /* color: rgb(163, 89, 66); */
     color: var(--primary-color);
     border-bottom: 2px solid var(--secondary-color);
     transition: 1s ease-in-out;
@@ -35,9 +45,20 @@
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
     border-radius: 5%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }
 
 .main_nav a{
     color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .hero_title {
+        margin: 2rem 0;
+        font-size: 2rem;
+    }
+    .category_margin .nav_item img {
+        padding: 0;
+        background: var(--shadow-color);
+    }
 }

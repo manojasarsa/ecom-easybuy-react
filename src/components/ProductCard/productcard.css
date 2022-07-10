@@ -6,20 +6,24 @@
     width: 12rem;
 }
 
-.wishlist_icon {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-    position: absolute;
-    right: 0.5rem;
-    top: 2rem;
-    cursor: pointer;
+.card_vertical_info .img_pill_wrapper {
+    position: relative;
+    background-color: var(--shadow-color);
 }
 
-.card_vertical_info .pill {
+.card_vertical_info .img_pill_wrapper .pill {
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: var(--line-color);
     color: var(--primary-color);
-    top: 17.7rem;
-    left: 0;
+}
+
+.img_pill_wrapper .wishlist_icon {
+    font-size: 1.1rem;
+    position: absolute;
+    cursor: pointer;
+    color: var(--secondary-color);
 }
 
 .card_vertical_info .icon_btn {
@@ -31,13 +35,13 @@
 }
 
 @media (max-width: 600px) {
-    .card_vertical_info .pill {
+    /* .card_vertical_info .pill {
         top: 22rem;
         left: 0;
         font-size: 1rem;
-    }
+    } */
 
-    .wishlist_icon {
+    /* .wishlist_icon {
         top: 5.5rem;
-    }
+    } */
 }
