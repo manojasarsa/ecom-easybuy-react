@@ -45,9 +45,7 @@ const sortRating = (productList, ratings) =>
     : ratings === "3 Stars & above"
     ? productList.filter(item => item.rating >= 3)
     : ratings === "2 Stars & above" 
-    ? productList.filter(item => item.rating >= 3)
-    : ratings === "1 Stars & above"
-    ? productList.filter(item => item.rating >= 1)
+    ? productList.filter(item => item.rating >= 2)
     : productList;
 
 const searchByName = (listData, searchQuery) =>

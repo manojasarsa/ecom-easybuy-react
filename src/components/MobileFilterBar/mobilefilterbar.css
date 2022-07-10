@@ -5,3 +5,9 @@
     background-color: var(--shadow-color);
     margin: 8rem auto;
 }
+
+@media (min-width: 600px) {
+    .mobile_filter_container {
+        display: none;
+    }
+}

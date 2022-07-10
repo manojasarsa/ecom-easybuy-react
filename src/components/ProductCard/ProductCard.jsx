@@ -28,8 +28,13 @@ const ProductCard = ({ product }) => {
             <div className="card_vertical">
                 <div className="card_vertical_info flex flex_col flex_justify_start">
 
-                    <Link to={`/productlist/${product._id}`} className="img_pill_wrapper">
-                        <img className="img_responsive" src={image} alt={title} />
+                    <div className="img_pill_wrapper">
+                        <img 
+                            className="img_responsive" 
+                            src={image} 
+                            alt={title}
+                            onClick={() => navigate(`/productlist/${product._id}`)}
+                         />
                         
                         <span className="pill">{rating} ⭐</span>
 
@@ -53,7 +58,7 @@ const ProductCard = ({ product }) => {
                                 <i className="far fa-heart wishlist_icon"></i>
                             </Link>
                     }
-                    </Link>
+                    </div>
 
                     <p className="card_text left_space">{title}</p>
                     <p className="card_subtext left_space overflow_desc">{description}</p>

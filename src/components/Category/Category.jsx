@@ -20,7 +20,7 @@ const Category = () => {
 
                 <Link onClick={() => dispatch({ type: "WOMEN" })}
                     className="nav_item flex flex_col flex_align_center" to="/productlist"><span className="img_title">Women</span>
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13601542/2021/4/28/92ac59d7-1c94-4fa9-8a84-bfaacc3c414e1619586566085TshirtsMetronautMenTshirtsRoadsterMenTshirtsRoadsterMenTopsR1.jpg" alt="Women" className="img_responsive" />
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17808668/2022/5/26/ef4c76dd-2309-4241-a417-2cddf1cca2471653544129522MANGOWomenLavenderYellowTypographyPrintedExtendedSleevesPure1.jpg" alt="Women" className="img_responsive" />
                 </Link>
 
                 <Link onClick={() => dispatch({ type: "BOYS" })}
@@ -34,7 +34,7 @@ const Category = () => {
                 </Link>
 
             </div>
-            <h1 className="hero_title">Explore Products</h1>
+            <h1 className="hero_title">EasyBuy Exclusive</h1>
         </nav>
     );
 }
