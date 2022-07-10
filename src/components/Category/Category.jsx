@@ -11,30 +11,30 @@ const Category = () => {
 
             <h1 className="hero_title">Featured Categories</h1>
 
-            <div className="main_nav flex flex_align_center">
+            <div className="main_nav category_margin flex flex_align_center">
 
                 <Link onClick={() => dispatch({ type: "MEN" })}
-                    className="nav_item flex flex_col flex_align_center" to="/productlist">Men
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/14632916/2021/7/5/58641bdf-509e-486c-b5b6-04d2b7da57341625470492157-US-Polo-Assn-Men-Tshirts-3211625470491687-1.jpg" alt="Men" className="img_responsive adjust_img" />
+                    className="nav_item flex flex_col flex_align_center" to="/productlist"><span className="img_title">Men</span>
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/14296056/2021/10/12/a66ee025-11d0-4560-be15-db24f6aad9f01634019104762-WROGN-Men-Jackets-2641634019103771-1.jpg" alt="Men" className="img_responsive" />
                 </Link>
 
                 <Link onClick={() => dispatch({ type: "WOMEN" })}
-                    className="nav_item flex flex_col flex_align_center" to="/productlist">Women
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13601542/2021/4/28/92ac59d7-1c94-4fa9-8a84-bfaacc3c414e1619586566085TshirtsMetronautMenTshirtsRoadsterMenTshirtsRoadsterMenTopsR1.jpg" alt="Women" className="img_responsive adjust_img" />
+                    className="nav_item flex flex_col flex_align_center" to="/productlist"><span className="img_title">Women</span>
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17808668/2022/5/26/ef4c76dd-2309-4241-a417-2cddf1cca2471653544129522MANGOWomenLavenderYellowTypographyPrintedExtendedSleevesPure1.jpg" alt="Women" className="img_responsive" />
                 </Link>
 
                 <Link onClick={() => dispatch({ type: "BOYS" })}
-                    className="nav_item flex flex_col flex_align_center" to="/productlist">Boys
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17268416/2022/2/24/82b027d2-d27d-4dd7-ba7f-a462fd2f200e1645695087696CottonjerseyT-shirt1.jpg" alt="Boys" className="img_responsive adjust_img" />
+                    className="nav_item flex flex_col flex_align_center" to="/productlist"><span className="img_title">Boys</span>
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17124260/2022/2/10/5cad0fa3-8223-4707-bb1f-eb72b1360ad716445016680612-packjerseytops1.jpg" alt="Boys" className="img_responsive" />
                 </Link>
 
                 <Link onClick={() => dispatch({ type: "GIRLS" })}
-                    className="nav_item flex flex_col flex_align_center" to="/productlist">Girls
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17464922/2022/3/10/c6a73cb2-0ba4-4fdd-8fb5-c41d08fcd7b41646917282995PrintedT-shirt1.jpg" alt="Girls" className="img_responsive adjust_img" />
+                    className="nav_item flex flex_col flex_align_center" to="/productlist"><span className="img_title">Girls</span>
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/18084562/2022/4/29/3962f30a-7712-4b75-ae02-23d5e26fd05d1651202490622Cottonjerseycroppedtop1.jpg" alt="Girls" className="img_responsive" />
                 </Link>
 
             </div>
-            <h1 className="hero_title">Explore Products</h1>
+            <h1 className="hero_title">EasyBuy Exclusive</h1>
         </nav>
     );
 }
