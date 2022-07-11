@@ -4,10 +4,8 @@
 }
 
 .new_arrivals {
-    /* display: grid; */
     position: relative;
     background-color: var(--shadow-color);
-    /* background-color: #f8edeb; */
     width: 100%;
     height: 100%;
     color: var(--primary-color);
@@ -19,16 +17,6 @@
     left: 40%;
     display: inline-flex;
     font-size: 1rem;   
-}
-
-/* .content,
-.background {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-} */
-
-.new_arrivals .background {
-    /* justify-self: end; */
 }
 
 .tag_heading {
@@ -48,6 +36,14 @@
 
 @media (max-width: 600px) {
     .tag_heading {
-        font-size: 0.8rem;
+        font-size: 1rem;
+        background-color: var(--shadow-color);
+        padding: 0.3rem 0.5rem;
+    }
+    .content {
+        color: var(--primary-color);
+        top: 50%;
+        left: 40%;
+        font-size: 1rem;   
     }
 }

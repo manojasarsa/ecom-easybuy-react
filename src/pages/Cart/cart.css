@@ -48,3 +48,9 @@
     margin: 10rem auto;
     gap: 0.6rem;
 }
+
+@media (max-width: 600px) {
+    .cart_box_items {
+        grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    }
+}

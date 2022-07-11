@@ -18,7 +18,7 @@ const PriceBox = ({ deliveryAddress }) => {
     const totalPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + (item.discountedPrice * item.qty), 0);
     const totalDiscountedPrice = cartCounter !== 0 && cartState.cartItems.reduce((acc, item) => acc + Math.floor((item.discountedPrice * item.qty) * 10 / 100), 0);
 
-    const finalAmount = totalPrice - totalDiscountedPrice + 99;
+    const finalAmount = totalPrice - totalDiscountedPrice + 49;
     const savedAmount = totalPrice - finalAmount;
 
     const { cartItems } = cartState;
@@ -57,8 +57,8 @@ const PriceBox = ({ deliveryAddress }) => {
             amount: finalAmount * 100,
             currency: "INR",
             name: "",
-            description: "Thanks for shopping with us!",
-            image: "/assets/favicon.ico",
+            image: "/assets/eb.png",
+            description: "Thanks for shopping with Easy Buy!",
             handler: function (response) {
                 const paymentId = response.razorpay_payment_id;
                 const orderId = uuid();
@@ -76,7 +76,7 @@ const PriceBox = ({ deliveryAddress }) => {
                 navigate("/user/orders");
             },
             theme: {
-                color: "hsl(204, 83%, 56%)",
+                color: "#ff3f6c"
             },
             prefill: {
                 name: "Manoj Asarsa",
@@ -132,7 +132,7 @@ const PriceBox = ({ deliveryAddress }) => {
                     Delivery Charges
                 </span>
                 <span className="price_amount">
-                    ₹ {new Intl.NumberFormat("en-IN").format(99)}
+                    ₹ {new Intl.NumberFormat("en-IN").format(49)}
                 </span>
             </div>
 
@@ -145,7 +145,7 @@ const PriceBox = ({ deliveryAddress }) => {
 
             <hr className="line_space" />
 
-            <h4 className="line_space total_amount">You will save ₹ {new Intl.NumberFormat("en-IN").format(savedAmount)} on this order</h4>
+            {savedAmount > 0 && <h4 className="line_space total_amount">You will save ₹ {new Intl.NumberFormat("en-IN").format(savedAmount)} on this order</h4>}
 
             {pathname === "/checkout" && deliveryAddress && (
                 <div className="delivery_addr_wrapper">
