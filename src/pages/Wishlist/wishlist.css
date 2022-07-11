@@ -10,4 +10,11 @@
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     margin: 0 10rem;
-} 
+}
+
+@media (max-width: 600px) {
+    .wishlist_items {
+        margin: 0 auto;
+        padding: 0rem 2rem;
+    }
+}

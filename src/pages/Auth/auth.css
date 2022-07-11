@@ -80,6 +80,7 @@ input.input_checkbox {
 }
 
 .toast {
+    z-index: 100;
     display: flex;
     background-color: var(--secondary-color);
 }
